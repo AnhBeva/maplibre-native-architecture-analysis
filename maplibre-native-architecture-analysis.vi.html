@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phân Tích Kiến Trúc MapLibre Native</title>
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --paper: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #e5e9f0;
+      --blue: #2563eb;
+      --teal: #14b8a6;
+      --violet: #7c3aed;
+      --soft: #eef5ff;
+      --shadow: 0 22px 70px rgba(25, 39, 74, .10);
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 20% 0%, rgba(37, 99, 235, .11), transparent 32rem),
+        radial-gradient(circle at 80% 4%, rgba(20, 184, 166, .12), transparent 30rem),
+        linear-gradient(180deg, #fbfdff 0%, var(--bg) 46rem);
+      line-height: 1.65;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .layout { display: grid; grid-template-columns: 300px minmax(0, 1fr); min-height: 100vh; }
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 28px 20px;
+      border-right: 1px solid rgba(229, 233, 240, .85);
+      background: rgba(255, 255, 255, .74);
+      backdrop-filter: blur(22px);
+      overflow: auto;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .mark {
+      width: 38px; height: 38px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      box-shadow: 0 10px 30px rgba(37, 99, 235, .25);
+    }
+    .brand strong { display: block; font-size: 14px; letter-spacing: .02em; }
+    .brand span { display: block; font-size: 12px; color: var(--muted); }
+    .search {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 11px 12px;
+      color: var(--ink);
+      background: #fff;
+      outline: none;
+      margin-bottom: 18px;
+    }
+    .toc { display: grid; gap: 4px; }
+    .toc a {
+      display: block;
+      padding: 8px 10px;
+      border-radius: 10px;
+      color: #344054;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .toc a:hover { background: var(--soft); text-decoration: none; color: var(--blue); }
+    main { min-width: 0; }
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      align-items: center;
+      padding: 72px 56px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-inner { max-width: 1180px; margin: 0 auto; width: 100%; }
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      color: #155eef;
+      background: rgba(37, 99, 235, .08);
+      border: 1px solid rgba(37, 99, 235, .14);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 650;
+    }
+    h1 {
+      max-width: 980px;
+      margin: 22px 0 18px;
+      font-size: clamp(44px, 8vw, 92px);
+      line-height: .96;
+      letter-spacing: 0;
+    }
+    .hero p {
+      max-width: 820px;
+      font-size: 20px;
+      color: #475467;
+      margin: 0 0 30px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .metric, .card, .callout {
+      border: 1px solid rgba(229, 233, 240, .9);
+      background: rgba(255, 255, 255, .82);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+    .metric { padding: 18px; min-height: 116px; }
+    .metric strong { display: block; font-size: 24px; line-height: 1.1; }
+    .metric span { display: block; color: var(--muted); font-size: 13px; margin-top: 8px; }
+    section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 46px 56px;
+    }
+    h2 {
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.06;
+      margin: 0 0 18px;
+      letter-spacing: 0;
+    }
+    h3 { font-size: 22px; margin: 28px 0 10px; }
+    .lead { color: #475467; font-size: 18px; max-width: 900px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .card { padding: 22px; }
+    .card h3 { margin-top: 0; }
+    .callout {
+      padding: 22px 24px;
+      border-left: 4px solid var(--blue);
+      color: #344054;
+      margin: 22px 0;
+    }
+    .diagram {
+      margin: 28px 0;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .diagram img { display: block; width: 100%; height: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 22px 0;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 1px 0 var(--line);
+    }
+    th, td { text-align: left; vertical-align: top; padding: 13px 14px; border-bottom: 1px solid var(--line); }
+    th { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: #475467; background: #f3f6fb; }
+    tr:last-child td { border-bottom: 0; }
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    }
+    code { background: #eef2f7; padding: 2px 6px; border-radius: 7px; font-size: .92em; }
+    pre {
+      background: #111827;
+      color: #e5e7eb;
+      border-radius: 16px;
+      padding: 18px;
+      overflow: auto;
+      line-height: 1.5;
+      box-shadow: var(--shadow);
+    }
+    pre code { background: transparent; padding: 0; color: inherit; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0; }
+    .pill {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: #344054;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .section-index {
+      color: var(--blue);
+      font-weight: 750;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 10px;
+    }
+    footer {
+      padding: 42px 56px 70px;
+      text-align: center;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,.55);
+    }
+    .hidden { display: none !important; }
+    @media (max-width: 980px) {
+      .layout { display: block; }
+      .sidebar { position: relative; width: auto; height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      .toc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero, section { padding-left: 24px; padding-right: 24px; }
+      .hero-grid, .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .toc, .hero-grid, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding-top: 44px; }
+      h1 { font-size: 44px; }
+      .hero p, .lead { font-size: 16px; }
+      table { font-size: 14px; }
+      th, td { padding: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="mark" aria-hidden="true"></div>
+        <div>
+          <strong>MapLibre Native</strong>
+          <span>Architecture Analysis</span>
+        </div>
+      </div>
+      <input id="search" class="search" type="search" placeholder="Tìm nhanh section...">
+      <nav id="toc" class="toc">
+        <a href="#executive">Executive Summary</a>
+        <a href="#first-principles">First Principles</a>
+        <a href="#system">Tổng quan hệ thống</a>
+        <a href="#source">Source code</a>
+        <a href="#core">Core Engine</a>
+        <a href="#rendering">Rendering Pipeline</a>
+        <a href="#style">Style / Source / Layer</a>
+        <a href="#tile">Tile System</a>
+        <a href="#platform">Platform Abstraction</a>
+        <a href="#android">Android</a>
+        <a href="#ios">iOS</a>
+        <a href="#graphics">Graphics Backend</a>
+        <a href="#networking">Networking / Cache / Offline</a>
+        <a href="#performance">Performance</a>
+        <a href="#extension">Extension Points</a>
+        <a href="#value">Architectural Value</a>
+        <a href="#gofa">Bài học cho Gofa</a>
+        <a href="#glossary">Glossary</a>
+      </nav>
+    </aside>
+
+    <main>
+      <header class="hero">
+        <div class="hero-inner">
+          <span class="eyebrow">Source-based analysis · commit 103a1447</span>
+          <h1>Phân Tích Kiến Trúc MapLibre Native</h1>
+          <p>Bộ tài liệu chuyên sâu cho CTO, Architect, Tech Lead và Senior Developer muốn hiểu native map rendering engine từ first principles tới ứng dụng thực tế cho navigation.</p>
+          <div class="hero-grid">
+            <div class="metric"><strong>C++ Core</strong><span>Style, camera, tile, renderer dùng chung cross-platform.</span></div>
+            <div class="metric"><strong>GPU-first</strong><span>Upload pass, layer group, render pass, drawable abstraction.</span></div>
+            <div class="metric"><strong>Native SDK</strong><span>Android JNI, iOS ObjC++, Metal/OpenGL/WebGPU surface.</span></div>
+            <div class="metric"><strong>Gofa-ready</strong><span>Bài học cho route, traffic, offline corridor và engine boundary.</span></div>
+          </div>
+        </div>
+      </header>
+
+      <section id="executive" data-title="Executive Summary">
+        <div class="section-index">3.1</div>
+        <h2>Executive Summary</h2>
+        <p class="lead">MapLibre Native là native map rendering engine mã nguồn mở, dùng C++ core để render bản đồ vector/raster bằng GPU trên nhiều platform. Nó giải quyết bài toán biến style JSON, vector tile, glyph, sprite, camera và input người dùng thành frame bản đồ mượt, tương tác và có thể offline.</p>
+        <div class="diagram"><img src="assets/maplibre-analysis/01-architecture-overview.png" alt="Tổng quan kiến trúc MapLibre Native"></div>
+        <div class="grid-2">
+          <div class="card"><h3>Vì sao cần native map engine?</h3><p>Navigation cần pan/zoom/pitch/bearing liên tục, đặt label tránh va chạm, cập nhật route/traffic/location realtime, kiểm soát cache/offline và render surface native. Bitmap tile hoặc web wrapper đơn giản không đủ cho các yêu cầu đó.</p></div>
+          <div class="card"><h3>Giá trị cốt lõi</h3><p>C++ core cross-platform, style declarative, tile-based scalability, GPU-first rendering, platform SDK giữ lifecycle/input, còn engine giữ logic map/render.</p></div>
+        </div>
+      </section>
+
+      <section id="first-principles" data-title="First Principles">
+        <div class="section-index">3.2</div>
+        <h2>First Principles Analysis</h2>
+        <p>Bản đồ số là mô hình không gian nhiều lớp. Vector tile là nguyên liệu địa lý; raster tile là kết quả render sẵn. App navigation cần nguyên liệu để đổi style, query feature, xoay/nghiêng camera, render route/traffic và giữ label ổn định.</p>
+        <table>
+          <tr><th>Khái niệm</th><th>Bản chất</th><th>Hệ quả kiến trúc</th></tr>
+          <tr><td>Camera</td><td>Trạng thái nhìn bản đồ: center, zoom, bearing, pitch, padding</td><td>Thay đổi mỗi frame, không được kéo theo parse lại toàn bộ style.</td></tr>
+          <tr><td>Style</td><td>Mô tả declarative của bản đồ</td><td>Cần diff, snapshot immutable và runtime styling.</td></tr>
+          <tr><td>Source</td><td>Nơi lấy dữ liệu</td><td>Một source phục vụ nhiều layer, cache theo tile/resource.</td></tr>
+          <tr><td>Layer</td><td>Quy tắc vẽ dữ liệu</td><td>Layer ordering và paint/layout property quyết định render pass.</td></tr>
+          <tr><td>Tile</td><td>Đơn vị tải/parse/cache</td><td>Scale được từ viewport nhỏ tới toàn cầu.</td></tr>
+        </table>
+      </section>
+
+      <section id="system" data-title="Tổng quan hệ thống">
+        <div class="section-index">3.3</div>
+        <h2>Tổng Quan Kiến Trúc Hệ Thống</h2>
+        <div class="diagram"><img src="assets/maplibre-analysis/11-system-layer-stack.svg" alt="MapLibre Native layer stack"></div>
+        <div class="callout">Thiết kế quan trọng nhất: platform SDK quản lý API, lifecycle, input và surface; C++ core quản lý map semantics; graphics backend quản lý GPU API. Ba vùng này không được nhập nhằng.</div>
+      </section>
+
+      <section id="source" data-title="Source code">
+        <div class="section-index">3.4</div>
+        <h2>Phân Tích Cấu Trúc Source Code</h2>
+        <table>
+          <tr><th>Khu vực</th><th>Vai trò</th><th>Ý nghĩa kiến trúc</th></tr>
+          <tr><td><code>include/mbgl</code></td><td>Public C++ API</td><td>Ranh giới ổn định giữa core và platform wrapper.</td></tr>
+          <tr><td><code>src/mbgl/map</code></td><td>Map lifecycle, camera, transform</td><td>Nơi tạo <code>UpdateParameters</code> từ style/camera/platform.</td></tr>
+          <tr><td><code>src/mbgl/style</code></td><td>Style spec, layer/source impl, expression</td><td>Declarative model + immutable diff.</td></tr>
+          <tr><td><code>src/mbgl/renderer</code></td><td>Renderer orchestration</td><td><code>RenderOrchestrator</code>, <code>RenderTree</code>, passes, layer groups.</td></tr>
+          <tr><td><code>src/mbgl/tile</code></td><td>Tile lifecycle</td><td><code>TileLoader</code>, <code>GeometryTileWorker</code>, vector/raster tile.</td></tr>
+          <tr><td><code>src/mbgl/storage</code></td><td>Resource loading/cache/offline</td><td><code>FileSource</code>, <code>DatabaseFileSource</code>, PMTiles/MBTiles/network.</td></tr>
+          <tr><td><code>platform/android</code></td><td>Android SDK/JNI</td><td><code>MapView</code>, <code>NativeMapView</code>, <code>MapRenderer</code>.</td></tr>
+          <tr><td><code>platform/ios</code>, <code>platform/darwin</code></td><td>Apple SDK</td><td><code>MLNMapView</code>, <code>MLNRenderFrontend</code>, Metal/OpenGL/WebGPU.</td></tr>
+          <tr><td><code>render-test</code>, <code>metrics</code></td><td>Visual regression</td><td>Bảo vệ renderer bằng image diff, thiết yếu với map engine.</td></tr>
+        </table>
+      </section>
+
+      <section id="core" data-title="Core Engine">
+        <div class="section-index">3.5</div>
+        <h2>Core Engine</h2>
+        <p><code>Map::Impl</code> giữ <code>Transform</code>, <code>Style</code>, <code>AnnotationManager</code>, <code>FileSource</code>, <code>RendererFrontend</code> và <code>MapObserver</code>. Khi camera hoặc style thay đổi, <code>onUpdate()</code> đóng gói snapshot gồm transform state, source impls, layer impls, images, glyph URL, sprite state, light và tile LOD options.</p>
+        <div class="diagram"><img src="assets/maplibre-analysis/12-core-map-lifecycle.svg" alt="Core map lifecycle"></div>
+        <div class="grid-3">
+          <div class="card"><h3>State management</h3><p>Public style object mutable, private impl immutable. Renderer diff snapshot thay vì share mutable state.</p></div>
+          <div class="card"><h3>Scheduling</h3><p>Actor, mailbox, scheduler và run loop giúp worker/render thread giao tiếp bằng task.</p></div>
+          <div class="card"><h3>Observer</h3><p>Map/style/renderer/tile/shader callbacks được platform SDK chuyển thành native events.</p></div>
+        </div>
+      </section>
+
+      <section id="rendering" data-title="Rendering Pipeline">
+        <div class="section-index">3.6</div>
+        <h2>Rendering Pipeline</h2>
+        <div class="diagram"><img src="assets/maplibre-analysis/02-rendering-pipeline.png" alt="Rendering pipeline"></div>
+        <p><code>RenderOrchestrator::createRenderTree()</code> diff image/layer/source, tạo hoặc update <code>RenderLayer</code>/<code>RenderSource</code>, cập nhật tile pyramid, prepare source/layer, chạy symbol placement, rồi trả về <code>RenderTree</code>. <code>Renderer::Impl::render()</code> chạy upload pass, layer group update, 3D pass, render targets, clear, opaque pass, translucent pass, debug pass và present.</p>
+      </section>
+
+      <section id="style" data-title="Style Source Layer">
+        <div class="section-index">3.7</div>
+        <h2>Style / Source / Layer Architecture</h2>
+        <div class="diagram"><img src="assets/maplibre-analysis/03-style-source-layer.png" alt="Style Source Layer relationship"></div>
+        <table>
+          <tr><th>Thành phần</th><th>Bản chất</th><th>Ví dụ</th><th>Vai trò</th></tr>
+          <tr><td>Style</td><td>Cấu hình bản đồ đầy đủ</td><td>Demo style JSON</td><td>Kết nối source, layer, sprite, glyph, light.</td></tr>
+          <tr><td>Source</td><td>Provider dữ liệu</td><td>Vector, raster, GeoJSON, DEM</td><td>Cung cấp tile/feature cho layer.</td></tr>
+          <tr><td>Layer</td><td>Quy tắc render</td><td>Line road, symbol label</td><td>Chọn source và áp layout/paint/filter.</td></tr>
+          <tr><td>Layout</td><td>Thuộc tính ảnh hưởng bucket</td><td><code>text-field</code>, <code>line-cap</code></td><td>Thường cần relayout tile.</td></tr>
+          <tr><td>Paint</td><td>Thuộc tính visual</td><td><code>line-color</code>, <code>fill-opacity</code></td><td>Có thể evaluate/upload nhẹ hơn.</td></tr>
+        </table>
+      </section>
+
+      <section id="tile" data-title="Tile System">
+        <div class="section-index">3.8</div>
+        <h2>Tile System</h2>
+        <div class="diagram"><img src="assets/maplibre-analysis/04-tile-pyramid.png" alt="Tile pyramid"></div>
+        <p>Tile chia thế giới thành các ô <code>z/x/y</code> để tải, parse, cache và render độc lập. <code>TilePyramid</code> giữ active tiles, rendered tiles và <code>TileCache</code>. <code>TileLoader</code> request cache trước, network sau khi tile required. <code>GeometryTileWorker</code> parse vector feature, tạo bucket và xử lý glyph/image dependency.</p>
+        <div class="diagram"><img src="assets/maplibre-analysis/13-tile-lifecycle-flow.svg" alt="Tile lifecycle flow"></div>
+        <div class="pill-row">
+          <span class="pill">Raster tile</span><span class="pill">Vector tile</span><span class="pill">Overscaling</span><span class="pill">Tile cache</span><span class="pill">Offline region</span><span class="pill">MVT</span>
+        </div>
+      </section>
+
+      <section id="platform" data-title="Platform Abstraction">
+        <div class="section-index">3.9</div>
+        <h2>Platform Abstraction</h2>
+        <div class="diagram"><img src="assets/maplibre-analysis/05-platform-abstraction.png" alt="Platform abstraction"></div>
+        <table>
+          <tr><th>Platform</th><th>Ngôn ngữ/API</th><th>Kết nối với core</th><th>Vai trò</th></tr>
+          <tr><td>Android</td><td>Java/Kotlin + JNI C++</td><td><code>NativeMapView</code>, <code>MapRenderer</code></td><td>Lifecycle, gesture, surface, resource bridge.</td></tr>
+          <tr><td>iOS</td><td>ObjC/Swift-facing + ObjC++</td><td><code>MLNMapView</code>, <code>MLNRenderFrontend</code></td><td>UIKit view, delegate, Metal/OpenGL/WebGPU backend.</td></tr>
+          <tr><td>macOS/Darwin</td><td>ObjC++ shared layer</td><td><code>platform/darwin</code></td><td>Shared Apple networking/style/offline wrappers.</td></tr>
+          <tr><td>Linux/GLFW/Node/Qt</td><td>C++/bindings</td><td>Core API + backend</td><td>Desktop, testing, tooling, embedding.</td></tr>
+        </table>
+      </section>
+
+      <section id="android" data-title="Android Architecture">
+        <div class="section-index">3.10</div>
+        <h2>Android Architecture</h2>
+        <div class="diagram"><img src="assets/maplibre-analysis/06-android-ios-binding.png" alt="Android iOS binding architecture"></div>
+        <p><code>MapView</code> là public view, tạo <code>MapLibreMap</code>, <code>Projection</code>, <code>UiSettings</code>, annotation containers, <code>Transform</code>, <code>MapGestureDetector</code> và <code>LocationComponent</code>. Native peer <code>NativeMapView</code> expose camera/style/query/annotation qua JNI và kế thừa <code>MapObserver</code>. <code>MapRenderer</code> giữ render backend, renderer, actor ref, window và update parameters trên GL/render thread.</p>
+        <div class="diagram"><img src="assets/maplibre-analysis/14-android-render-flow.svg" alt="Android SDK to native render flow"></div>
+      </section>
+
+      <section id="ios" data-title="iOS Architecture">
+        <div class="section-index">3.11</div>
+        <h2>iOS Architecture</h2>
+        <p><code>MLNMapView</code> tạo backend implementation theo compile flag: Metal, WebGPU hoặc OpenGL. <code>MLNRenderFrontend</code> nhận <code>UpdateParameters</code>, gọi <code>setNeedsRerender</code>, rồi render trong <code>BackendScope</code>. Metal implementation dùng <code>MTKView</code>, <code>MTLCommandQueue</code>, <code>MTLCommandBuffer</code>, <code>CAMetalDrawable</code>, pixel format <code>BGRA8Unorm</code> và depth/stencil <code>Depth32Float_Stencil8</code>.</p>
+        <div class="callout">iOS wrapper không chỉ là binding. Nó chuyển render/loading/style events thành delegate callbacks, kiểm soát UIKit view lifecycle và che giấu backend cụ thể khỏi Swift/ObjC API public.</div>
+      </section>
+
+      <section id="graphics" data-title="Graphics Backend">
+        <div class="section-index">3.12</div>
+        <h2>Graphics Backend</h2>
+        <div class="diagram"><img src="assets/maplibre-analysis/07-gpu-rendering-flow.png" alt="GPU rendering flow"></div>
+        <table>
+          <tr><th>Backend</th><th>Source</th><th>Ý nghĩa</th></tr>
+          <tr><td>OpenGL</td><td><code>src/mbgl/gl</code></td><td>Legacy rộng platform, nhưng yếu trên Apple hiện đại.</td></tr>
+          <tr><td>Metal</td><td><code>src/mbgl/mtl</code>, iOS Metal impl</td><td>Backend chính cho Apple, command buffer/render pass rõ hơn.</td></tr>
+          <tr><td>Vulkan</td><td><code>src/mbgl/vulkan</code></td><td>Explicit GPU control cho Android/desktop.</td></tr>
+          <tr><td>WebGPU</td><td><code>src/mbgl/webgpu</code></td><td>Abstraction hiện đại, gần tư duy Rust <code>wgpu</code>.</td></tr>
+          <tr><td>gfx</td><td><code>src/mbgl/gfx</code></td><td>Context, drawable, upload pass, render pass, buffer, texture abstraction.</td></tr>
+        </table>
+      </section>
+
+      <section id="networking" data-title="Networking Cache Offline">
+        <div class="section-index">3.13</div>
+        <h2>Networking, Cache, Offline</h2>
+        <div class="diagram"><img src="assets/maplibre-analysis/08-cache-offline-system.png" alt="Cache and offline map system"></div>
+        <p><code>FileSource</code> hợp nhất Asset, Database, FileSystem, Network, MBTiles, PMTiles và ResourceLoader. <code>DatabaseFileSource</code> giữ ambient cache và offline region APIs: reset/pack database, invalidate/clear ambient cache, set maximum cache size, create/list/delete/invalidate offline regions, observer status và merge offline regions.</p>
+        <div class="diagram"><img src="assets/maplibre-analysis/15-resource-loading-flow.svg" alt="Resource loading and cache flow"></div>
+      </section>
+
+      <section id="performance" data-title="Performance">
+        <div class="section-index">3.14</div>
+        <h2>Performance Architecture</h2>
+        <div class="diagram"><img src="assets/maplibre-analysis/09-performance-bottleneck-map.png" alt="Performance bottleneck map"></div>
+        <table>
+          <tr><th>Bottleneck</th><th>Cách MapLibre xử lý</th><th>Bài học cho Gofa</th></tr>
+          <tr><td>CPU geometry</td><td>Worker tile, bucket theo layer type</td><td>Không parse overlay trên main thread.</td></tr>
+          <tr><td>Symbol placement</td><td>Placement, CrossTileSymbolIndex, coalescing</td><td>Cập nhật label/traffic theo cadence.</td></tr>
+          <tr><td>GPU draw calls</td><td>Layer group, pass ordering, drawables</td><td>Batch marker/route/traffic overlay.</td></tr>
+          <tr><td>Network/cache miss</td><td>CacheOnly trước NetworkOnly, offline database</td><td>Offline corridor theo route.</td></tr>
+          <tr><td>Memory pressure</td><td>Tile cache, reduceMemoryUse, atlas lifecycle</td><td>Giới hạn icon atlas và traffic history.</td></tr>
+        </table>
+      </section>
+
+      <section id="extension" data-title="Extension Points">
+        <div class="section-index">3.15</div>
+        <h2>Extension Points</h2>
+        <div class="grid-3">
+          <div class="card"><h3>Runtime style</h3><p>Add/remove source/layer, đổi paint/layout, feature state.</p></div>
+          <div class="card"><h3>Custom source/layer</h3><p>GeoJSON/custom geometry/custom drawable/plugin layer cho overlay đặc thù.</p></div>
+          <div class="card"><h3>Offline/navigation</h3><p>Offline region, route line, traffic layer, puck, maneuver arrow, query features.</p></div>
+        </div>
+      </section>
+
+      <section id="value" data-title="Architectural Value">
+        <div class="section-index">3.16</div>
+        <h2>Architectural Value</h2>
+        <table>
+          <tr><th>Giá trị</th><th>Ý nghĩa</th><th>Vì sao quan trọng</th></tr>
+          <tr><td>Cross-platform core</td><td>Một C++ engine dùng chung</td><td>Đồng nhất render behavior giữa Android/iOS.</td></tr>
+          <tr><td>Separation of concerns</td><td>App, SDK, core, style, tile, renderer tách rời</td><td>Đổi backend hoặc SDK ít ảnh hưởng phần còn lại.</td></tr>
+          <tr><td>Declarative style</td><td>Style JSON là contract</td><td>Design/data/runtime update linh hoạt.</td></tr>
+          <tr><td>GPU-first rendering</td><td>Drawable, bucket, pass, shader registry</td><td>Đạt performance native cho vector map phức tạp.</td></tr>
+          <tr><td>Tile scalability</td><td>Xử lý theo viewport</td><td>Scale từ thành phố tới toàn cầu.</td></tr>
+          <tr><td>Ecosystem compatibility</td><td>Style Spec, MVT, PMTiles/MBTiles</td><td>Dễ dùng tooling và data hiện có.</td></tr>
+        </table>
+      </section>
+
+      <section id="gofa" data-title="Bài học cho Gofa">
+        <div class="section-index">3.17</div>
+        <h2>Bài Học Cho Gofa</h2>
+        <div class="diagram"><img src="assets/maplibre-analysis/10-gofa-architecture.png" alt="Gofa architecture inspired by MapLibre Native"></div>
+        <div class="diagram"><img src="assets/maplibre-analysis/16-gofa-product-flow.svg" alt="Gofa navigation map boundary"></div>
+        <table>
+          <tr><th>Bài học</th><th>Ứng dụng cho Gofa</th><th>Ưu tiên</th></tr>
+          <tr><td>Giữ navigation logic ngoài renderer</td><td>Routing, ETA, reroute, trip state nằm trên map adapter</td><td>Rất cao</td></tr>
+          <tr><td>Dùng source/layer cho overlay</td><td>Route, traffic, destination, pickup/dropoff render batch</td><td>Rất cao</td></tr>
+          <tr><td>Coalesce realtime updates</td><td>Location/traffic update theo frame hoặc interval</td><td>Rất cao</td></tr>
+          <tr><td>Offline corridor</td><td>Prefetch/cache theo tuyến và vùng lân cận</td><td>Cao</td></tr>
+          <tr><td>Fork có chọn lọc</td><td>Chỉ fork khi cần đổi renderer/cache/offline/threading sâu</td><td>Trung bình</td></tr>
+          <tr><td>Rust + wgpu</td><td>Học mô hình pass/drawable/tile worker, dựng render-test trước</td><td>Rất cao</td></tr>
+        </table>
+      </section>
+
+      <section id="glossary" data-title="Glossary">
+        <div class="section-index">3.18</div>
+        <h2>Glossary</h2>
+        <table>
+          <tr><th>Thuật ngữ</th><th>Giải thích dễ hiểu</th><th>Bản chất kỹ thuật</th><th>Ví dụ</th></tr>
+          <tr><td>Vector tile</td><td>Ô dữ liệu bản đồ chứa hình học</td><td>MVT/MLT geometry + properties</td><td>Road/building tile.</td></tr>
+          <tr><td>Raster tile</td><td>Ô ảnh bản đồ</td><td>PNG/JPEG/WebP đã render</td><td>Satellite imagery.</td></tr>
+          <tr><td>Tile pyramid</td><td>Lưới tile nhiều zoom</td><td>Quadtree theo zoom</td><td><code>z/x/y</code>.</td></tr>
+          <tr><td>Style JSON</td><td>File mô tả bản đồ</td><td>MapLibre Style Spec</td><td>Source + layer list.</td></tr>
+          <tr><td>Source</td><td>Nguồn dữ liệu cho layer</td><td>Vector/raster/GeoJSON/image/DEM</td><td>OpenMapTiles source.</td></tr>
+          <tr><td>Layer</td><td>Quy tắc vẽ dữ liệu</td><td>Layout/paint/filter</td><td>Road label layer.</td></tr>
+          <tr><td>Renderer</td><td>Thành phần tạo frame</td><td><code>Renderer</code>, backend context</td><td>Render vào Surface.</td></tr>
+          <tr><td>Render pass</td><td>Một lượt render có state đích</td><td>Upload/3D/opaque/translucent</td><td>Opaque pass.</td></tr>
+          <tr><td>Bucket</td><td>Dữ liệu GPU-ready</td><td>Vertex/index buffers</td><td><code>LineBucket</code>.</td></tr>
+          <tr><td>Symbol placement</td><td>Đặt nhãn/icon tránh va chạm</td><td>Collision index + placement</td><td>Tên đường.</td></tr>
+          <tr><td>Camera</td><td>Vị trí nhìn bản đồ</td><td>center, zoom, bearing, pitch</td><td>Follow vehicle.</td></tr>
+          <tr><td>Viewport</td><td>Vùng màn hình đang nhìn</td><td>Size + transform</td><td>MapView size.</td></tr>
+          <tr><td>Annotation</td><td>Overlay tiện dụng</td><td>Marker/line/polygon API</td><td>Pin điểm đón.</td></tr>
+          <tr><td>JNI</td><td>Cầu nối Java/Kotlin với C++</td><td>Java Native Interface</td><td><code>NativeMapView</code>.</td></tr>
+          <tr><td>Native binding</td><td>Lớp chuyển API platform sang core</td><td>ObjC++/JNI wrappers</td><td><code>MLNMapView</code>.</td></tr>
+          <tr><td>GPU draw call</td><td>Lệnh GPU vẽ geometry</td><td>Bind shader/buffer/texture rồi draw</td><td>Vẽ road line.</td></tr>
+          <tr><td>Cache</td><td>Lưu resource để dùng lại</td><td>Memory + database cache</td><td>Tile cache.</td></tr>
+          <tr><td>Offline map</td><td>Bản đồ dùng không mạng</td><td>Offline region + database</td><td>Tải trước tuyến.</td></tr>
+          <tr><td>Geometry</td><td>Hình học không gian</td><td>Point/LineString/Polygon</td><td>Đường, hồ.</td></tr>
+          <tr><td>Feature</td><td>Geometry + thuộc tính</td><td>GeoJSON/MVT feature</td><td>Road class primary.</td></tr>
+          <tr><td>MVT</td><td>Mapbox Vector Tile</td><td>Protobuf vector tile format</td><td><code>.pbf</code> tile.</td></tr>
+          <tr><td>Projection</td><td>Chiếu địa lý lên mặt phẳng</td><td>Web Mercator/math</td><td>LatLng sang pixel.</td></tr>
+          <tr><td>Coordinate system</td><td>Hệ tọa độ</td><td>WGS84, tile units, world/screen units</td><td>LatLng → screen point.</td></tr>
+        </table>
+      </section>
+
+      <section id="findings" data-title="Findings">
+        <div class="section-index">Key Findings</div>
+        <h2>Phát Hiện Kiến Trúc Quan Trọng</h2>
+        <div class="diagram"><img src="assets/maplibre-analysis/17-core-dataflow-map.svg" alt="Core dataflow map"></div>
+        <div class="grid-2">
+          <div class="card"><h3>Immutable style diff</h3><p>Đây là nền tảng concurrency và incremental rendering của engine.</p></div>
+          <div class="card"><h3>RenderOrchestrator</h3><p>Là bộ não của frame: diff, update, placement, render tree.</p></div>
+          <div class="card"><h3>Tile worker state machine</h3><p>Coalescing giúp tránh starvation khi tile/layer/dependency update dồn dập.</p></div>
+          <div class="card"><h3>Backend modularization</h3><p>GL/Metal/Vulkan/WebGPU nằm sau <code>gfx</code>, tạo đường cho Rust/wgpu-style thinking.</p></div>
+        </div>
+      </section>
+
+      <footer>
+        Phân tích dựa trên MapLibre Native source code tại commit <code>103a1447c043c36cf48ba18d9db735949bfcb360</code>. File Markdown đầy đủ: <code>maplibre-native-architecture-analysis.vi.md</code>.
+      </footer>
+    </main>
+  </div>
+  <script>
+    const search = document.getElementById('search');
+    const sections = [...document.querySelectorAll('main section')];
+    const links = [...document.querySelectorAll('#toc a')];
+    search.addEventListener('input', () => {
+      const q = search.value.trim().toLowerCase();
+      links.forEach(link => {
+        const text = link.textContent.toLowerCase();
+        link.classList.toggle('hidden', q && !text.includes(q));
+      });
+      sections.forEach(section => {
+        const text = (section.dataset.title + ' ' + section.textContent).toLowerCase();
+        section.classList.toggle('hidden', q && !text.includes(q));
+      });
+    });
+  </script>
+</body>
+</html>

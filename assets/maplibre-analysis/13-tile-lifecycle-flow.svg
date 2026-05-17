@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="940" viewBox="0 0 1600 940" role="img" aria-label="Tile Lifecycle Flow">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="0.55" stop-color="#f8fbff"/><stop offset="1" stop-color="#edf6ff"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.98"/><stop offset="1" stop-color="#f3f8ff" stop-opacity="0.96"/></linearGradient>
+    <linearGradient id="center" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef6ff"/><stop offset="1" stop-color="#e6fffb"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#1d3557" flood-opacity="0.13"/></filter>
+  </defs>
+  <rect width="1600" height="940" fill="url(#bg)"/>
+  <circle cx="1250" cy="90" r="280" fill="#14b8a6" fill-opacity="0.08"/>
+  <circle cx="150" cy="850" r="340" fill="#2563eb" fill-opacity="0.07"/>
+  <text x="72" y="88" font-size="52" font-weight="820" fill="#071025">Tile Lifecycle Flow</text>
+  <text x="74" y="126" font-size="22" fill="#667085">Viewport-driven loading, parsing, caching and rendering</text>
+  
+      <g filter="url(#shadow)"><rect x="-25" y="390" width="180" height="120" rx="24" fill="url(#card)" stroke="#2563eb" stroke-opacity="0.34"/></g>
+      <circle cx="65" cy="428" r="22" fill="#2563eb" fill-opacity="0.14"/>
+      <text x="65" y="437" text-anchor="middle" font-size="22" font-weight="800" fill="#2563eb">1</text>
+      <text x="65" y="474" text-anchor="middle" font-size="20" font-weight="740" fill="#101828">Viewport</text><path d="M 163 450 L 175 450" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/><path d="M 165 442 L 175 450 L 165 458" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <g filter="url(#shadow)"><rect x="185" y="390" width="180" height="120" rx="24" fill="url(#card)" stroke="#2563eb" stroke-opacity="0.34"/></g>
+      <circle cx="275" cy="428" r="22" fill="#2563eb" fill-opacity="0.14"/>
+      <text x="275" y="437" text-anchor="middle" font-size="22" font-weight="800" fill="#2563eb">2</text>
+      <text x="275" y="474" text-anchor="middle" font-size="20" font-weight="740" fill="#101828">Tile Cover</text><path d="M 373 450 L 385 450" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/><path d="M 375 442 L 385 450 L 375 458" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <g filter="url(#shadow)"><rect x="395" y="390" width="180" height="120" rx="24" fill="url(#card)" stroke="#2563eb" stroke-opacity="0.34"/></g>
+      <circle cx="485" cy="428" r="22" fill="#2563eb" fill-opacity="0.14"/>
+      <text x="485" y="437" text-anchor="middle" font-size="22" font-weight="800" fill="#2563eb">3</text>
+      <text x="485" y="474" text-anchor="middle" font-size="20" font-weight="740" fill="#101828">Tile Reuse</text><path d="M 583 450 L 595 450" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/><path d="M 585 442 L 595 450 L 585 458" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <g filter="url(#shadow)"><rect x="605" y="390" width="180" height="120" rx="24" fill="url(#card)" stroke="#2563eb" stroke-opacity="0.34"/></g>
+      <circle cx="695" cy="428" r="22" fill="#2563eb" fill-opacity="0.14"/>
+      <text x="695" y="437" text-anchor="middle" font-size="22" font-weight="800" fill="#2563eb">4</text>
+      <text x="695" y="474" text-anchor="middle" font-size="20" font-weight="740" fill="#101828">Cache / Network</text><path d="M 793 450 L 805 450" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/><path d="M 795 442 L 805 450 L 795 458" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <g filter="url(#shadow)"><rect x="815" y="390" width="180" height="120" rx="24" fill="url(#card)" stroke="#2563eb" stroke-opacity="0.34"/></g>
+      <circle cx="905" cy="428" r="22" fill="#2563eb" fill-opacity="0.14"/>
+      <text x="905" y="437" text-anchor="middle" font-size="22" font-weight="800" fill="#2563eb">5</text>
+      <text x="905" y="474" text-anchor="middle" font-size="20" font-weight="740" fill="#101828">setData</text><path d="M 1003 450 L 1015 450" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/><path d="M 1005 442 L 1015 450 L 1005 458" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <g filter="url(#shadow)"><rect x="1025" y="390" width="180" height="120" rx="24" fill="url(#card)" stroke="#2563eb" stroke-opacity="0.34"/></g>
+      <circle cx="1115" cy="428" r="22" fill="#2563eb" fill-opacity="0.14"/>
+      <text x="1115" y="437" text-anchor="middle" font-size="22" font-weight="800" fill="#2563eb">6</text>
+      <text x="1115" y="474" text-anchor="middle" font-size="20" font-weight="740" fill="#101828">Worker Parse</text><path d="M 1213 450 L 1225 450" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/><path d="M 1215 442 L 1225 450 L 1215 458" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <g filter="url(#shadow)"><rect x="1235" y="390" width="180" height="120" rx="24" fill="url(#card)" stroke="#2563eb" stroke-opacity="0.34"/></g>
+      <circle cx="1325" cy="428" r="22" fill="#2563eb" fill-opacity="0.14"/>
+      <text x="1325" y="437" text-anchor="middle" font-size="22" font-weight="800" fill="#2563eb">7</text>
+      <text x="1325" y="474" text-anchor="middle" font-size="20" font-weight="740" fill="#101828">Buckets</text><path d="M 1423 450 L 1435 450" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/><path d="M 1425 442 L 1435 450 L 1425 458" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <g filter="url(#shadow)"><rect x="1445" y="390" width="180" height="120" rx="24" fill="url(#card)" stroke="#2563eb" stroke-opacity="0.34"/></g>
+      <circle cx="1535" cy="428" r="22" fill="#2563eb" fill-opacity="0.14"/>
+      <text x="1535" y="437" text-anchor="middle" font-size="22" font-weight="800" fill="#2563eb">8</text>
+      <text x="1535" y="474" text-anchor="middle" font-size="20" font-weight="740" fill="#101828">Render Tile</text>
+</svg>

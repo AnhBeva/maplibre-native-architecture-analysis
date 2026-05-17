@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="940" viewBox="0 0 1600 940" role="img" aria-label="Core Dataflow Map">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="0.55" stop-color="#f8fbff"/><stop offset="1" stop-color="#edf6ff"/></linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.98"/><stop offset="1" stop-color="#f3f8ff" stop-opacity="0.96"/></linearGradient>
+    <linearGradient id="center" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef6ff"/><stop offset="1" stop-color="#e6fffb"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#1d3557" flood-opacity="0.13"/></filter>
+  </defs>
+  <rect width="1600" height="940" fill="url(#bg)"/>
+  <circle cx="1250" cy="90" r="280" fill="#14b8a6" fill-opacity="0.08"/>
+  <circle cx="150" cy="850" r="340" fill="#2563eb" fill-opacity="0.07"/>
+  <text x="72" y="88" font-size="52" font-weight="820" fill="#071025">Core Dataflow Map</text>
+  <text x="74" y="126" font-size="22" fill="#667085">From platform events to GPU frame with style, tile and renderer boundaries</text>
+  <g filter="url(#shadow)"><rect x="650" y="390" width="300" height="160" rx="34" fill="url(#center)" stroke="#2563eb" stroke-opacity="0.45"/></g><text x="800" y="458" text-anchor="middle" font-size="31" font-weight="800" fill="#101828">mbgl Core Frame</text><text x="800" y="492" text-anchor="middle" font-size="18" fill="#475467">Snapshot-driven rendering</text><path d="M 800 470 C 800 370, 800 235, 800 185" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6 8"/>
+    <g filter="url(#shadow)">
+      <rect x="655" y="137" width="290" height="96" rx="26" fill="url(#card)" stroke="#14b8a6" stroke-opacity="0.36"/>
+    </g>
+    <circle cx="713" cy="185" r="30" fill="#14b8a6" fill-opacity="0.12"/>
+    <text x="713" y="195" text-anchor="middle" font-size="26" font-weight="800" fill="#14b8a6">1</text>
+    <text x="765" y="179" font-size="28" font-weight="760" fill="#101828">Platform SDK</text>
+    <text x="765" y="211" font-size="18" fill="#475467">View + input</text>
+  <path d="M 800 470 C 940.7296668442453 407.65101981412664, 1104.9142781625317 323.4798965631976, 1167.460796759974 292.30540647026095" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6 8"/>
+    <g filter="url(#shadow)">
+      <rect x="1022.4607967599741" y="244.30540647026095" width="290" height="96" rx="26" fill="url(#card)" stroke="#14b8a6" stroke-opacity="0.36"/>
+    </g>
+    <circle cx="1080.460796759974" cy="292.30540647026095" r="30" fill="#14b8a6" fill-opacity="0.12"/>
+    <text x="1080.460796759974" y="302.30540647026095" text-anchor="middle" font-size="26" font-weight="800" fill="#14b8a6">2</text>
+    <text x="1132.460796759974" y="286.30540647026095" font-size="28" font-weight="760" fill="#101828">Map::Impl</text>
+    <text x="1132.460796759974" y="318.30540647026095" font-size="18" fill="#475467">UpdateParameters</text>
+  <path d="M 800 470 C 975.4870241927283 492.25209339563145, 1180.2218857509113 522.2924194797339, 1258.2161187254571 533.4184661775496" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6 8"/>
+    <g filter="url(#shadow)">
+      <rect x="1113.2161187254571" y="485.4184661775496" width="290" height="96" rx="26" fill="url(#card)" stroke="#14b8a6" stroke-opacity="0.36"/>
+    </g>
+    <circle cx="1171.2161187254571" cy="533.4184661775496" r="30" fill="#14b8a6" fill-opacity="0.12"/>
+    <text x="1171.2161187254571" y="543.4184661775496" text-anchor="middle" font-size="26" font-weight="800" fill="#14b8a6">3</text>
+    <text x="1223.2161187254571" y="527.4184661775496" font-size="28" font-weight="760" fill="#101828">Style Snapshot</text>
+    <text x="1223.2161187254571" y="559.4184661775496" font-size="18" fill="#475467">Immutable impls</text>
+  <path d="M 800 470 C 878.0990730411604 560.0968867902419, 969.2146582558477 681.7276839570684, 1003.9253573852524 726.7761273521894" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6 8"/>
+    <g filter="url(#shadow)">
+      <rect x="858.9253573852524" y="678.7761273521894" width="290" height="96" rx="26" fill="url(#card)" stroke="#14b8a6" stroke-opacity="0.36"/>
+    </g>
+    <circle cx="916.9253573852524" cy="726.7761273521894" r="30" fill="#14b8a6" fill-opacity="0.12"/>
+    <text x="916.9253573852524" y="736.7761273521894" text-anchor="middle" font-size="26" font-weight="800" fill="#14b8a6">4</text>
+    <text x="968.9253573852524" y="720.7761273521894" font-size="28" font-weight="760" fill="#101828">Tile System</text>
+    <text x="968.9253573852524" y="752.7761273521894" font-size="18" fill="#475467">Pyramid + cache</text>
+  <path d="M 800 470 C 721.9009269588396 560.0968867902419, 630.7853417441524 681.7276839570684, 596.0746426147477 726.7761273521894" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6 8"/>
+    <g filter="url(#shadow)">
+      <rect x="451.07464261474775" y="678.7761273521894" width="290" height="96" rx="26" fill="url(#card)" stroke="#14b8a6" stroke-opacity="0.36"/>
+    </g>
+    <circle cx="509.07464261474775" cy="726.7761273521894" r="30" fill="#14b8a6" fill-opacity="0.12"/>
+    <text x="509.07464261474775" y="736.7761273521894" text-anchor="middle" font-size="26" font-weight="800" fill="#14b8a6">5</text>
+    <text x="561.0746426147477" y="720.7761273521894" font-size="28" font-weight="760" fill="#101828">Workers</text>
+    <text x="561.0746426147477" y="752.7761273521894" font-size="18" fill="#475467">Parse + layout</text>
+  <path d="M 800 470 C 624.5129758072717 492.25209339563145, 419.77811424908884 522.2924194797339, 341.7838812745429 533.4184661775496" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6 8"/>
+    <g filter="url(#shadow)">
+      <rect x="196.78388127454292" y="485.4184661775496" width="290" height="96" rx="26" fill="url(#card)" stroke="#14b8a6" stroke-opacity="0.36"/>
+    </g>
+    <circle cx="254.78388127454292" cy="533.4184661775496" r="30" fill="#14b8a6" fill-opacity="0.12"/>
+    <text x="254.78388127454292" y="543.4184661775496" text-anchor="middle" font-size="26" font-weight="800" fill="#14b8a6">6</text>
+    <text x="306.7838812745429" y="527.4184661775496" font-size="28" font-weight="760" fill="#101828">RenderTree</text>
+    <text x="306.7838812745429" y="559.4184661775496" font-size="18" fill="#475467">Layers + passes</text>
+  <path d="M 800 470 C 659.2703331557547 407.65101981412664, 495.0857218374683 323.47989656319766, 432.5392032400259 292.305406470261" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="6 8"/>
+    <g filter="url(#shadow)">
+      <rect x="287.5392032400259" y="244.305406470261" width="290" height="96" rx="26" fill="url(#card)" stroke="#14b8a6" stroke-opacity="0.36"/>
+    </g>
+    <circle cx="345.5392032400259" cy="292.305406470261" r="30" fill="#14b8a6" fill-opacity="0.12"/>
+    <text x="345.5392032400259" y="302.305406470261" text-anchor="middle" font-size="26" font-weight="800" fill="#14b8a6">7</text>
+    <text x="397.5392032400259" y="286.305406470261" font-size="28" font-weight="760" fill="#101828">GPU Backend</text>
+    <text x="397.5392032400259" y="318.305406470261" font-size="18" fill="#475467">Drawables</text>
+  
+</svg>
