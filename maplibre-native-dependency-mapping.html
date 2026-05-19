@@ -1,7 +1,7 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MapLibre Native Dependency Mapping</title><style>:root{--bg:#f5f5f7;--paper:rgba(255,255,255,.9);--ink:#1d1d1f;--muted:#6e6e73;--line:#d2d2d7;--blue:#0071e3;--green:#34c759;--orange:#ff9f0a;--red:#ff3b30;--shadow:0 24px 80px rgba(0,0,0,.08);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 18% 0%,rgba(90,200,250,.16),transparent 36rem),linear-gradient(180deg,#fbfbfd 0%,var(--bg) 42%,#fff 100%);color:var(--ink);line-height:1.58}a{color:inherit;text-decoration:none}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;background:#f2f2f7;border:1px solid #e5e5ea;border-radius:7px;padding:.08rem .32rem}.shell{display:grid;grid-template-columns:292px minmax(0,1fr);min-height:100vh}aside{position:sticky;top:0;height:100vh;padding:28px 22px;border-right:1px solid rgba(210,210,215,.72);background:rgba(245,245,247,.78);backdrop-filter:blur(24px);overflow:auto}.brand{display:flex;align-items:center;gap:11px;margin-bottom:24px;font-weight:760;letter-spacing:0}.mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--blue),#5ac8fa);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}nav a{display:block;padding:9px 11px;margin:4px 0;border-radius:10px;color:#424245;font-size:.95rem}nav a:hover{background:rgba(0,113,227,.08);color:var(--blue)}main{padding:44px clamp(24px,5vw,72px) 72px;max-width:1320px;width:100%}.hero{padding:clamp(34px,6vw,74px);border-radius:32px;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.72));box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.8);margin-bottom:28px}.eyebrow{color:var(--blue);font-weight:740;font-size:.88rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}h1,h2,h3,h4,h5{letter-spacing:0;line-height:1.12}h1{font-size:clamp(2.5rem,7vw,5.8rem);margin:0 0 18px;max-width:980px}h2{font-size:clamp(2rem,4vw,3.2rem);margin:0 0 18px}h3{font-size:1.8rem;margin:34px 0 12px}h4{font-size:1.35rem;margin:28px 0 10px}h5,h6{font-size:1.08rem;margin:20px 0 8px}p{color:#424245;margin:0 0 14px}.hero p{max-width:860px;font-size:clamp(1.05rem,2vw,1.35rem);color:var(--muted)}.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.pill{border:1px solid rgba(0,113,227,.18);background:rgba(0,113,227,.07);color:#064f9e;border-radius:999px;padding:8px 12px;font-size:.92rem;font-weight:650}section{margin-top:28px;padding:clamp(24px,4vw,42px);border-radius:22px;background:var(--paper);border:1px solid rgba(210,210,215,.72);box-shadow:0 10px 40px rgba(0,0,0,.04)}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{grid-column:span 3;padding:20px;background:#fff;border:1px solid #e5e5ea;border-radius:18px;min-height:150px}.card.wide{grid-column:span 6}.metric{font-size:2.4rem;font-weight:780;line-height:1;margin-bottom:8px}.doc-body{background:#fff;border:1px solid #e5e5ea;border-radius:18px;padding:clamp(20px,3vw,34px);overflow:hidden}.doc-body>h2:first-child{font-size:2rem}.doc-meta{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 20px}.table-wrap{overflow-x:auto;border:1px solid #e5e5ea;border-radius:16px;background:#fff;margin:16px 0 22px}table{width:100%;border-collapse:collapse;min-width:760px;font-size:.95rem}th,td{padding:13px 15px;border-bottom:1px solid #ededf2;text-align:left;vertical-align:top}th{color:#1d1d1f;background:#fbfbfd;font-weight:730}tr:last-child td{border-bottom:0}.diagram{width:100%;min-height:260px;border-radius:18px;background:linear-gradient(180deg,#fff,#f7f9fc);border:1px solid #e5e5ea;padding:18px;overflow:auto}.codeblock{border:1px solid #e5e5ea;border-radius:16px;overflow:hidden;background:#0b1020;margin:16px 0 22px}.code-title{background:#151b2f;color:#c7d2fe;padding:9px 13px;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}.codeblock pre{margin:0;padding:16px;overflow:auto;color:#f8fafc;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88rem;line-height:1.5}.codeblock code{background:transparent;border:0;color:inherit;padding:0;border-radius:0}.raw-md{margin-top:34px;border:1px solid #d2d2d7;border-radius:16px;background:#fbfbfd;overflow:hidden}.raw-md summary{cursor:pointer;padding:14px 16px;font-weight:760;color:#1d1d1f}.raw-md pre{margin:0;padding:18px;max-height:520px;overflow:auto;background:#fff;border-top:1px solid #e5e5ea;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.86rem;line-height:1.5;color:#1d1d1f}.source-list{columns:2;column-gap:24px;padding-left:18px;color:#424245}.source-list li{break-inside:avoid;margin-bottom:8px}footer{color:var(--muted);padding:30px 0 0;font-size:.94rem}@media(max-width:900px){.shell{display:block}aside{position:static;height:auto;border-right:0;border-bottom:1px solid rgba(210,210,215,.72)}nav{display:flex;flex-wrap:wrap;gap:4px}nav a{margin:0}.card,.card.wide{grid-column:1/-1}.source-list{columns:1}table{min-width:680px}}</style></head><body><div class="shell"><aside><div class="brand"><span class="mark"></span><span>MapLibre Native<br>Dependency Mapping</span></div><nav><a href="#summary">Executive Summary</a><a href="#service">Service Graph</a><a href="#event">Event Graph</a><a href="#db">DB Dependency</a><a href="#protocol">Protocol Dependency</a><a href="#source-evidence">Source Evidence</a></nav></aside><main><header class="hero"><div class="eyebrow">Runtime Architecture Map</div><h1>Dependency Mapping toàn diện cho maplibre-native</h1><p>HTML tổng hợp này render đầy đủ nội dung của cả 4 file Markdown đã tạo. Mỗi phần còn có khối “Nguyên văn Markdown” để đối chiếu đầy đủ, không lược bỏ nội dung.</p><div class="meta"><span class="pill">Static HTML tự chứa</span><span class="pill">Không dùng CDN</span><span class="pill">Tiếng Việt có dấu</span><span class="pill">Bao gồm đầy đủ 4 file .md</span></div></header><section id="summary"><h2>Executive Summary</h2><div class="grid"><article class="card"><div class="metric">4</div><h3>Markdown nguồn</h3><p>Service, event, DB và protocol được giữ nguyên thành file riêng.</p></article><article class="card"><div class="metric">902</div><h3>Dòng Markdown</h3><p>HTML này render đầy đủ toàn bộ nội dung của 4 file `.md`.</p></article><article class="card"><div class="metric">0</div><h3>Phụ thuộc ngoài</h3><p>Không script, không CDN, không stylesheet remote.</p></article><article class="card"><div class="metric">5</div><h3>Artifact</h3><p>4 `.md` và 1 `.html` tổng hợp tại workspace root.</p></article><article class="card wide"><h3>Luồng lõi</h3><p><code>Map::Impl</code> nhận event từ camera/style/renderer, tạo <code>UpdateParameters</code> chứa immutable snapshots và đẩy sang renderer.</p></article><article class="card wide"><h3>Gateway dữ liệu</h3><p><code>MainResourceLoader</code> route qua asset, MBTiles, PMTiles, local file, SQLite cache hoặc network, rồi forward network response vào DB khi cacheable.</p></article></div></section><section id="service"><div class="doc-meta"><span class="pill">Service Graph</span><span class="pill">165 dòng Markdown</span><span class="pill">Render đầy đủ + nguyên văn</span></div><div class="doc-body"><h2 id="service-dependency-mapping---service-graph-của-maplibre-native">Dependency Mapping - Service graph của <code>maplibre-native</code></h2>
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MapLibre Native Dependency Mapping</title><style>:root{--bg:#f5f5f7;--paper:rgba(255,255,255,.9);--ink:#1d1d1f;--muted:#6e6e73;--line:#d2d2d7;--blue:#0071e3;--green:#34c759;--orange:#ff9f0a;--red:#ff3b30;--shadow:0 24px 80px rgba(0,0,0,.08);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 18% 0%,rgba(90,200,250,.16),transparent 36rem),linear-gradient(180deg,#fbfbfd 0%,var(--bg) 42%,#fff 100%);color:var(--ink);line-height:1.58}a{color:inherit;text-decoration:none}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;background:#f2f2f7;border:1px solid #e5e5ea;border-radius:7px;padding:.08rem .32rem}.shell{display:grid;grid-template-columns:292px minmax(0,1fr);min-height:100vh}aside{position:sticky;top:0;height:100vh;padding:28px 22px;border-right:1px solid rgba(210,210,215,.72);background:rgba(245,245,247,.78);backdrop-filter:blur(24px);overflow:auto}.brand{display:flex;align-items:center;gap:11px;margin-bottom:24px;font-weight:760;letter-spacing:0}.mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--blue),#5ac8fa);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}nav a{display:block;padding:9px 11px;margin:4px 0;border-radius:10px;color:#424245;font-size:.95rem}nav a:hover{background:rgba(0,113,227,.08);color:var(--blue)}main{padding:44px clamp(24px,5vw,72px) 72px;max-width:1320px;width:100%}.hero{padding:clamp(34px,6vw,74px);border-radius:32px;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.72));box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.8);margin-bottom:28px}.eyebrow{color:var(--blue);font-weight:740;font-size:.88rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}h1,h2,h3,h4,h5{letter-spacing:0;line-height:1.12}h1{font-size:clamp(2.5rem,7vw,5.8rem);margin:0 0 18px;max-width:980px}h2{font-size:clamp(2rem,4vw,3.2rem);margin:0 0 18px}h3{font-size:1.8rem;margin:34px 0 12px}h4{font-size:1.35rem;margin:28px 0 10px}h5,h6{font-size:1.08rem;margin:20px 0 8px}p{color:#424245;margin:0 0 14px}.hero p{max-width:860px;font-size:clamp(1.05rem,2vw,1.35rem);color:var(--muted)}.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.pill{border:1px solid rgba(0,113,227,.18);background:rgba(0,113,227,.07);color:#064f9e;border-radius:999px;padding:8px 12px;font-size:.92rem;font-weight:650}section{margin-top:28px;padding:clamp(24px,4vw,42px);border-radius:22px;background:var(--paper);border:1px solid rgba(210,210,215,.72);box-shadow:0 10px 40px rgba(0,0,0,.04)}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{grid-column:span 3;padding:20px;background:#fff;border:1px solid #e5e5ea;border-radius:18px;min-height:150px}.card.wide{grid-column:span 6}.metric{font-size:2.4rem;font-weight:780;line-height:1;margin-bottom:8px}.doc-body{background:#fff;border:1px solid #e5e5ea;border-radius:18px;padding:clamp(20px,3vw,34px);overflow:hidden}.doc-body>h2:first-child{font-size:2rem}.doc-meta{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 20px}.table-wrap{overflow-x:auto;border:1px solid #e5e5ea;border-radius:16px;background:#fff;margin:16px 0 22px}table{width:100%;border-collapse:collapse;min-width:760px;font-size:.95rem}th,td{padding:13px 15px;border-bottom:1px solid #ededf2;text-align:left;vertical-align:top}th{color:#1d1d1f;background:#fbfbfd;font-weight:730}tr:last-child td{border-bottom:0}.diagram-card{margin:22px 0 28px;border-radius:24px;background:linear-gradient(180deg,#fff,#f7f9fc);border:1px solid rgba(210,210,215,.92);box-shadow:0 18px 60px rgba(0,0,0,.07);overflow:hidden}.diagram-card figcaption{display:flex;align-items:center;gap:9px;padding:13px 18px;color:#424245;background:rgba(251,251,253,.9);border-bottom:1px solid #e5e5ea;font-weight:750;font-size:.92rem}.dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--blue),#5ac8fa);display:inline-block}.mermaid{padding:24px;min-height:120px;overflow:auto;text-align:center;background:radial-gradient(circle at 10% 0%,rgba(0,113,227,.08),transparent 20rem),#fff}.mermaid svg{max-width:100%;height:auto}.mermaid .node rect,.mermaid .node polygon,.mermaid .node circle,.mermaid .node ellipse{filter:drop-shadow(0 8px 14px rgba(0,0,0,.08))}.diagram-source{border-top:1px solid #e5e5ea;background:#fbfbfd}.diagram-source summary{cursor:pointer;padding:11px 18px;color:#6e6e73;font-weight:650}.diagram-source pre{margin:0;max-height:260px;overflow:auto;padding:14px 18px;background:#fff;border-top:1px solid #e5e5ea;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.84rem}.codeblock{border:1px solid #e5e5ea;border-radius:16px;overflow:hidden;background:#0b1020;margin:16px 0 22px}.code-title{background:#151b2f;color:#c7d2fe;padding:9px 13px;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}.codeblock pre{margin:0;padding:16px;overflow:auto;color:#f8fafc;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88rem;line-height:1.5}.codeblock code{background:transparent;border:0;color:inherit;padding:0;border-radius:0}.raw-md{margin-top:34px;border:1px solid #d2d2d7;border-radius:16px;background:#fbfbfd;overflow:hidden}.raw-md summary{cursor:pointer;padding:14px 16px;font-weight:760;color:#1d1d1f}.raw-md pre{margin:0;padding:18px;max-height:520px;overflow:auto;background:#fff;border-top:1px solid #e5e5ea;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.86rem;line-height:1.5;color:#1d1d1f}.source-list{columns:2;column-gap:24px;padding-left:18px;color:#424245}.source-list li{break-inside:avoid;margin-bottom:8px}.render-status{position:fixed;right:18px;bottom:18px;z-index:20;border:1px solid rgba(0,113,227,.18);background:rgba(255,255,255,.9);backdrop-filter:blur(18px);box-shadow:0 10px 30px rgba(0,0,0,.09);border-radius:999px;padding:9px 13px;color:#064f9e;font-weight:700;font-size:.86rem}footer{color:var(--muted);padding:30px 0 0;font-size:.94rem}@media(max-width:900px){.shell{display:block}aside{position:static;height:auto;border-right:0;border-bottom:1px solid rgba(210,210,215,.72)}nav{display:flex;flex-wrap:wrap;gap:4px}nav a{margin:0}.card,.card.wide{grid-column:1/-1}.source-list{columns:1}table{min-width:680px}.mermaid{padding:16px}}</style></head><body><div class="shell"><aside><div class="brand"><span class="mark"></span><span>MapLibre Native<br>Dependency Mapping</span></div><nav><a href="#summary">Executive Summary</a><a href="#service">Service Graph</a><a href="#event">Event Graph</a><a href="#db">DB Dependency</a><a href="#protocol">Protocol Dependency</a><a href="#source-evidence">Source Evidence</a></nav></aside><main><header class="hero"><div class="eyebrow">Runtime Architecture Map</div><h1>Dependency Mapping toàn diện cho maplibre-native</h1><p>HTML tổng hợp này render đầy đủ nội dung của cả 4 file Markdown đã tạo. Mermaid được render thành sơ đồ trực quan sáng, tinh gọn, theo phong cách Apple; mỗi diagram vẫn có source để đối chiếu.</p><div class="meta"><span class="pill">GitHub Pages ready</span><span class="pill">Mermaid render đẹp</span><span class="pill">Tiếng Việt có dấu</span><span class="pill">Bao gồm đầy đủ 4 file .md</span></div></header><section id="summary"><h2>Executive Summary</h2><div class="grid"><article class="card"><div class="metric">4</div><h3>Markdown nguồn</h3><p>Service, event, DB và protocol được giữ nguyên thành file riêng.</p></article><article class="card"><div class="metric">902</div><h3>Dòng Markdown</h3><p>HTML này render đầy đủ toàn bộ nội dung của 4 file `.md`.</p></article><article class="card"><div class="metric">17</div><h3>Diagram render</h3><p>Toàn bộ Mermaid block được render thành sơ đồ sáng, bo góc, theo phong cách Apple.</p></article><article class="card"><div class="metric">5</div><h3>Artifact</h3><p>4 `.md` và 1 `.html` tổng hợp tại workspace root.</p></article><article class="card wide"><h3>Luồng lõi</h3><p><code>Map::Impl</code> nhận event từ camera/style/renderer, tạo <code>UpdateParameters</code> chứa immutable snapshots và đẩy sang renderer.</p></article><article class="card wide"><h3>Gateway dữ liệu</h3><p><code>MainResourceLoader</code> route qua asset, MBTiles, PMTiles, local file, SQLite cache hoặc network, rồi forward network response vào DB khi cacheable.</p></article></div></section><section id="service"><div class="doc-meta"><span class="pill">Service Graph</span><span class="pill">165 dòng Markdown</span><span class="pill">1 Mermaid diagram</span><span class="pill">Render đầy đủ + nguyên văn</span></div><div class="doc-body"><h2 id="service-dependency-mapping---service-graph-của-maplibre-native">Dependency Mapping - Service graph của <code>maplibre-native</code></h2>
 <p>Tài liệu này mô tả graph dịch vụ/runtime subsystem của <code>maplibre-native</code> dựa trên source hiện tại trong <code>maplibre-native/</code>. “Service” ở đây là các khối thực thi lớn trong SDK native, không phải microservice mạng.</p>
 <h3 id="service-1-bức-tranh-tổng-quan">1. Bức tranh tổng quan</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart LR
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram SERVICE-01</figcaption><div class="mermaid">flowchart LR
   App[&quot;Ứng dụng / SDK wrapper&lt;br/&gt;Android, iOS, macOS, Qt, Node, GLFW&quot;] --&gt; Map[&quot;mbgl::Map&quot;]
   Map --&gt; Transform[&quot;Transform / Camera&quot;]
   Map --&gt; Style[&quot;style::Style&quot;]
@@ -38,7 +38,44 @@
   FSM --&gt; PMTiles[&quot;PMTilesFileSource&quot;]
   DB --&gt; SQLite[&quot;OfflineDatabase / SQLite&quot;]
   Online --&gt; HTTP[&quot;HTTPFileSource&lt;br/&gt;cURL hoặc Android Java HTTP&quot;]
-  PMTiles --&gt; FileSource</code></pre></div>
+  PMTiles --&gt; FileSource</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>flowchart LR
+  App[&quot;Ứng dụng / SDK wrapper&lt;br/&gt;Android, iOS, macOS, Qt, Node, GLFW&quot;] --&gt; Map[&quot;mbgl::Map&quot;]
+  Map --&gt; Transform[&quot;Transform / Camera&quot;]
+  Map --&gt; Style[&quot;style::Style&quot;]
+  Map --&gt; RendererFrontend[&quot;RendererFrontend&quot;]
+  Map --&gt; FileSource[&quot;MainResourceLoader&lt;br/&gt;(FileSource ResourceLoader)&quot;]
+
+  Style --&gt; StyleParser[&quot;Style parser / conversion&quot;]
+  Style --&gt; Sources[&quot;Style Sources&quot;]
+  Style --&gt; Layers[&quot;Style Layers&quot;]
+  Style --&gt; Sprites[&quot;Sprite + Image definitions&quot;]
+
+  RendererFrontend --&gt; Renderer[&quot;Renderer&quot;]
+  Renderer --&gt; Orchestrator[&quot;RenderOrchestrator&quot;]
+  Orchestrator --&gt; RenderSources[&quot;RenderSource / TilePyramid&quot;]
+  Orchestrator --&gt; RenderLayers[&quot;RenderLayer&quot;]
+  Orchestrator --&gt; GlyphManager[&quot;GlyphManager&quot;]
+  Orchestrator --&gt; ImageManager[&quot;ImageManager&quot;]
+  Orchestrator --&gt; Atlases[&quot;LineAtlas / PatternAtlas&quot;]
+  Renderer --&gt; Backend[&quot;gfx backend&lt;br/&gt;OpenGL / Metal / Vulkan / WebGPU&quot;]
+
+  RenderSources --&gt; Tile[&quot;Tile / RenderTile / Bucket&quot;]
+  Tile --&gt; Workers[&quot;Worker thread pool&lt;br/&gt;layout, parse, placement&quot;]
+  Tile --&gt; FileSource
+  GlyphManager --&gt; FileSource
+  ImageManager --&gt; FileSource
+  Style --&gt; FileSource
+
+  FileSource --&gt; FSM[&quot;FileSourceManager&quot;]
+  FSM --&gt; Asset[&quot;AssetFileSource&quot;]
+  FSM --&gt; Local[&quot;LocalFileSource&quot;]
+  FSM --&gt; DB[&quot;DatabaseFileSource&quot;]
+  FSM --&gt; Online[&quot;OnlineFileSource&quot;]
+  FSM --&gt; MBTiles[&quot;MBTilesFileSource&quot;]
+  FSM --&gt; PMTiles[&quot;PMTilesFileSource&quot;]
+  DB --&gt; SQLite[&quot;OfflineDatabase / SQLite&quot;]
+  Online --&gt; HTTP[&quot;HTTPFileSource&lt;br/&gt;cURL hoặc Android Java HTTP&quot;]
+  PMTiles --&gt; FileSource</pre></details></figure>
 <p>Luồng chính bắt đầu từ SDK platform tạo <code>mbgl::Map</code>. <code>Map::Impl</code> sở hữu <code>style::Style</code>, <code>Transform</code>, <code>AnnotationManager</code>, giữ <code>FileSource</code> dùng chung và đăng ký chính nó làm <code>style::Observer</code> + <code>RendererObserver</code>. Mỗi lần trạng thái thay đổi, <code>Map::Impl::onUpdate()</code> đóng gói <code>UpdateParameters</code> gồm snapshot style immutable, camera, sprite/glyph state, nguồn file và gửi sang <code>RendererFrontend</code>.</p>
 <h3 id="service-2-bảng-subsystem-chính">2. Bảng subsystem chính</h3>
 <div class="table-wrap"><table><thead><tr><th>Subsystem</th><th>Vị trí source tiêu biểu</th><th>Vai trò</th><th>Input</th><th>Output / dependency xuống dưới</th><th>Thread sở hữu</th></tr></thead><tbody>
@@ -299,10 +336,10 @@ Luồng chính bắt đầu từ SDK platform tạo `mbgl::Map`. `Map::Impl` s�
 | Observer fan-out | `Map::Impl` vừa là style observer vừa là renderer observer; thứ tự event ảnh hưởng SDK callbacks. |
 | Platform HTTP bridge | Default dùng cURL, Android dùng Java module; cùng `Response` contract nhưng implementation khác. |
 
-</pre></details></div></section><section id="event"><div class="doc-meta"><span class="pill">Event Graph</span><span class="pill">212 dòng Markdown</span><span class="pill">Render đầy đủ + nguyên văn</span></div><div class="doc-body"><h2 id="event-dependency-mapping---event-graph-của-maplibre-native">Dependency Mapping - Event graph của <code>maplibre-native</code></h2>
+</pre></details></div></section><section id="event"><div class="doc-meta"><span class="pill">Event Graph</span><span class="pill">212 dòng Markdown</span><span class="pill">7 Mermaid diagram</span><span class="pill">Render đầy đủ + nguyên văn</span></div><div class="doc-body"><h2 id="event-dependency-mapping---event-graph-của-maplibre-native">Dependency Mapping - Event graph của <code>maplibre-native</code></h2>
 <p>Tài liệu này mô tả các luồng event/callback chính trong <code>maplibre-native</code>, bao gồm observer ở tầng map/render/style, actor mailbox, async request, tile/glyph/sprite và offline download.</p>
 <h3 id="event-1-bản-đồ-observer-tổng-quát">1. Bản đồ observer tổng quát</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart TD
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram EVENT-01</figcaption><div class="mermaid">flowchart TD
   Transform[&quot;Transform&quot;] --&gt;|TransformObserver| MapImpl[&quot;Map::Impl&quot;]
   StyleImpl[&quot;style::Style::Impl&quot;] --&gt;|style::Observer| MapImpl
   Renderer[&quot;Renderer / RenderOrchestrator&quot;] --&gt;|RendererObserver| MapImpl
@@ -315,8 +352,22 @@ Luồng chính bắt đầu từ SDK platform tạo `mbgl::Map`. `Map::Impl` s�
   Orchestrator --&gt;|RendererObserver| Renderer
   Renderer --&gt; MapImpl
 
-  FileSource[&quot;FileSourceRequest&quot;] --&gt;|Callback(Response)| Requester[&quot;Style / Tile / Glyph / Sprite / Offline&quot;]
-  OfflineDownload[&quot;OfflineDownload&quot;] --&gt;|OfflineRegionObserver| OfflineSDK[&quot;Offline SDK callbacks&quot;]</code></pre></div>
+  FileSource[&quot;FileSourceRequest&quot;] --&gt;|&quot;Callback Response&quot;| Requester[&quot;Style / Tile / Glyph / Sprite / Offline&quot;]
+  OfflineDownload[&quot;OfflineDownload&quot;] --&gt;|OfflineRegionObserver| OfflineSDK[&quot;Offline SDK callbacks&quot;]</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>flowchart TD
+  Transform[&quot;Transform&quot;] --&gt;|TransformObserver| MapImpl[&quot;Map::Impl&quot;]
+  StyleImpl[&quot;style::Style::Impl&quot;] --&gt;|style::Observer| MapImpl
+  Renderer[&quot;Renderer / RenderOrchestrator&quot;] --&gt;|RendererObserver| MapImpl
+  MapImpl --&gt;|MapObserver| SDK[&quot;SDK platform callbacks&quot;]
+  MapImpl --&gt;|ActionJournal| Journal[&quot;ActionJournal tùy chọn&quot;]
+
+  RenderSource[&quot;RenderSource&quot;] --&gt;|RenderSourceObserver| Orchestrator[&quot;RenderOrchestrator&quot;]
+  GlyphManager[&quot;GlyphManager&quot;] --&gt;|GlyphManagerObserver| Orchestrator
+  ImageManager[&quot;ImageManager&quot;] --&gt;|ImageManagerObserver| Orchestrator
+  Orchestrator --&gt;|RendererObserver| Renderer
+  Renderer --&gt; MapImpl
+
+  FileSource[&quot;FileSourceRequest&quot;] --&gt;|&quot;Callback Response&quot;| Requester[&quot;Style / Tile / Glyph / Sprite / Offline&quot;]
+  OfflineDownload[&quot;OfflineDownload&quot;] --&gt;|OfflineRegionObserver| OfflineSDK[&quot;Offline SDK callbacks&quot;]</pre></details></figure>
 <p><code>Map::Impl</code> là nút hợp nhất event quan trọng nhất: nó nhận event từ camera/style/renderer rồi chuyển lên <code>MapObserver</code> của SDK. <code>RenderOrchestrator</code> là nút hợp nhất event của renderer data plane: tile, glyph, image.</p>
 <h3 id="event-2-event-catalog">2. Event catalog</h3>
 <div class="table-wrap"><table><thead><tr><th>Event family</th><th>Emitter</th><th>Interface</th><th>Receiver chính</th><th>Ý nghĩa</th></tr></thead><tbody>
@@ -333,7 +384,7 @@ Luồng chính bắt đầu từ SDK platform tạo `mbgl::Map`. `Map::Impl` s�
 <tr><td>Shader lifecycle</td><td><code>gfx::Context</code> / renderer</td><td><code>RendererObserver</code>, <code>MapObserver</code></td><td>SDK</td><td>Register/pre/post/fail shader compile</td></tr>
 </tbody></table></div>
 <h3 id="event-3-luồng-style-load">3. Luồng style load</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>sequenceDiagram
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram EVENT-02</figcaption><div class="mermaid">sequenceDiagram
   participant SDK
   participant Map as Map::Impl
   participant Style as style::Style::Impl
@@ -352,7 +403,26 @@ Luồng chính bắt đầu từ SDK platform tạo `mbgl::Map`. `Map::Impl` s�
   else parse/load error
     Style-&gt;&gt;Map: onStyleError(exception)
     Map-&gt;&gt;SDK: onDidFailLoadingMap(type, message)
-  end</code></pre></div>
+  end</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>sequenceDiagram
+  participant SDK
+  participant Map as Map::Impl
+  participant Style as style::Style::Impl
+  participant FS as MainResourceLoader
+  participant R as RendererFrontend
+
+  SDK-&gt;&gt;Style: loadURL(url)
+  Style-&gt;&gt;Map: onStyleLoading()
+  Map-&gt;&gt;SDK: onWillStartLoadingMap()
+  Style-&gt;&gt;FS: request(Resource::Style)
+  FS--&gt;&gt;Style: Callback(Response)
+  alt parse OK
+    Style-&gt;&gt;Map: onStyleLoaded()
+    Map-&gt;&gt;SDK: onDidFinishLoadingStyle()
+    Map-&gt;&gt;R: update(UpdateParameters)
+  else parse/load error
+    Style-&gt;&gt;Map: onStyleError(exception)
+    Map-&gt;&gt;SDK: onDidFailLoadingMap(type, message)
+  end</pre></details></figure>
 <p>Các điểm cần chú ý:</p>
 <div class="table-wrap"><table><thead><tr><th>Bước</th><th>Dependency</th><th>Ghi chú</th></tr></thead><tbody>
 <tr><td><code>onStyleLoading</code></td><td>Style -&gt; Map -&gt; SDK</td><td>Đánh dấu <code>loading = true</code>, reset trạng thái renderer fully loaded.</td></tr>
@@ -361,7 +431,7 @@ Luồng chính bắt đầu từ SDK platform tạo `mbgl::Map`. `Map::Impl` s�
 <tr><td><code>onUpdate</code></td><td>Style -&gt; Map -&gt; RendererFrontend</td><td>Không render ở still mode nếu chưa có still-image request.</td></tr>
 </tbody></table></div>
 <h3 id="event-4-luồng-camera-event">4. Luồng camera event</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart LR
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram EVENT-03</figcaption><div class="mermaid">flowchart LR
   API[&quot;SDK camera API / gesture&quot;] --&gt; Transform
   Transform --&gt; Will[&quot;Map::Impl::onCameraWillChange&quot;]
   Transform --&gt; Is[&quot;Map::Impl::onCameraIsChanging&quot;]
@@ -370,10 +440,19 @@ Luồng chính bắt đầu từ SDK platform tạo `mbgl::Map`. `Map::Impl` s�
   Is --&gt; Observer
   Did --&gt; Observer
   Did --&gt; Update[&quot;Map::Impl::onUpdate&quot;]
-  Update --&gt; RendererFrontend</code></pre></div>
+  Update --&gt; RendererFrontend</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>flowchart LR
+  API[&quot;SDK camera API / gesture&quot;] --&gt; Transform
+  Transform --&gt; Will[&quot;Map::Impl::onCameraWillChange&quot;]
+  Transform --&gt; Is[&quot;Map::Impl::onCameraIsChanging&quot;]
+  Transform --&gt; Did[&quot;Map::Impl::onCameraDidChange&quot;]
+  Will --&gt; Observer[&quot;MapObserver&quot;]
+  Is --&gt; Observer
+  Did --&gt; Observer
+  Did --&gt; Update[&quot;Map::Impl::onUpdate&quot;]
+  Update --&gt; RendererFrontend</pre></details></figure>
 <p>Camera event có hai lớp tác dụng: callback cho app và render invalidation. Các thay đổi camera làm <code>TransformState</code> đổi, từ đó <code>RenderOrchestrator</code> cập nhật tile cover, placement, transition và render tree.</p>
 <h3 id="event-5-luồng-render-frame">5. Luồng render frame</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>sequenceDiagram
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram EVENT-04</figcaption><div class="mermaid">sequenceDiagram
   participant Map as Map::Impl
   participant Frontend as RendererFrontend
   participant Renderer
@@ -390,10 +469,27 @@ Luồng chính bắt đầu từ SDK platform tạo `mbgl::Map`. `Map::Impl` s�
   alt full render complete
     Renderer-&gt;&gt;Map: onDidFinishRenderingMap()
     Map-&gt;&gt;SDK: onDidFinishRenderingMap(Full/Partial)
-  end</code></pre></div>
+  end</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>sequenceDiagram
+  participant Map as Map::Impl
+  participant Frontend as RendererFrontend
+  participant Renderer
+  participant Orch as RenderOrchestrator
+  participant SDK as MapObserver
+
+  Map-&gt;&gt;Frontend: update(shared UpdateParameters)
+  Frontend-&gt;&gt;Orch: createRenderTree/update
+  Orch--&gt;&gt;Renderer: RenderTree
+  Renderer-&gt;&gt;SDK: onWillStartRenderingMap/frame qua Map::Impl
+  Renderer-&gt;&gt;Renderer: upload + render passes
+  Renderer-&gt;&gt;Map: onDidFinishRenderingFrame(mode,repaint,placement,stats)
+  Map-&gt;&gt;SDK: onDidFinishRenderingFrame(RenderFrameStatus)
+  alt full render complete
+    Renderer-&gt;&gt;Map: onDidFinishRenderingMap()
+    Map-&gt;&gt;SDK: onDidFinishRenderingMap(Full/Partial)
+  end</pre></details></figure>
 <p><code>Renderer::Impl</code> gọi <code>observer-&gt;onWillStartRenderingMap()</code> khi <code>renderState == Never</code>, gọi <code>onWillStartRenderingFrame()</code> mỗi frame, và trả <code>RenderingStats</code>. <code>Map::Impl</code> chỉ forward frame lifecycle cho SDK trong continuous mode.</p>
 <h3 id="event-6-luồng-tile-event">6. Luồng tile event</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart TD
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram EVENT-05</figcaption><div class="mermaid">flowchart TD
   Update[&quot;UpdateParameters&quot;] --&gt; TP[&quot;TileParameters&quot;]
   TP --&gt; Source[&quot;RenderTileSource / TilePyramid&quot;]
   Source --&gt; Request[&quot;Tile request Resource::Tile&quot;]
@@ -405,7 +501,19 @@ Luồng chính bắt đầu từ SDK platform tạo `mbgl::Map`. `Map::Impl` s�
   RSO --&gt; Orch[&quot;RenderOrchestrator&quot;]
   Orch --&gt; RO[&quot;RendererObserver::onTileAction&quot;]
   RO --&gt; Map[&quot;Map::Impl&quot;]
-  Map --&gt; SDK[&quot;MapObserver::onTileAction&quot;]</code></pre></div>
+  Map --&gt; SDK[&quot;MapObserver::onTileAction&quot;]</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>flowchart TD
+  Update[&quot;UpdateParameters&quot;] --&gt; TP[&quot;TileParameters&quot;]
+  TP --&gt; Source[&quot;RenderTileSource / TilePyramid&quot;]
+  Source --&gt; Request[&quot;Tile request Resource::Tile&quot;]
+  Request --&gt; FS[&quot;MainResourceLoader&quot;]
+  FS --&gt; Response[&quot;Response data/error/noContent&quot;]
+  Response --&gt; Tile[&quot;Tile parse/layout&quot;]
+  Tile --&gt; Action[&quot;TileOperation&quot;]
+  Action --&gt; RSO[&quot;RenderSourceObserver&quot;]
+  RSO --&gt; Orch[&quot;RenderOrchestrator&quot;]
+  Orch --&gt; RO[&quot;RendererObserver::onTileAction&quot;]
+  RO --&gt; Map[&quot;Map::Impl&quot;]
+  Map --&gt; SDK[&quot;MapObserver::onTileAction&quot;]</pre></details></figure>
 <p><code>TileOperation</code> được bridge lên platform. Darwin có enum <code>MLNTileOperation</code> tương ứng: requested from cache/network, load from cache/network, start/end parse, error, cancelled, null op. Android bridge nằm ở <code>platform/android/MapLibreAndroid/src/cpp/tile/tile_operation.cpp</code>.</p>
 <h3 id="event-7-luồng-glyph-và-spriteimage">7. Luồng glyph và sprite/image</h3>
 <div class="table-wrap"><table><thead><tr><th>Luồng</th><th>Chuỗi event</th><th>Điểm cần nhớ</th></tr></thead><tbody>
@@ -415,7 +523,7 @@ Luồng chính bắt đầu từ SDK platform tạo `mbgl::Map`. `Map::Impl` s�
 <tr><td>Remove unused images</td><td><code>ImageManager</code> phát danh sách image không dùng</td><td>SDK có thể giữ lại bằng <code>MapObserver::onCanRemoveUnusedStyleImage</code>.</td></tr>
 </tbody></table></div>
 <h3 id="event-8-actor-mailbox-và-async-request">8. Actor, mailbox và async request</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart LR
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram EVENT-06</figcaption><div class="mermaid">flowchart LR
   Caller[&quot;Caller thread&quot;] --&gt; Async[&quot;AsyncRequest owner&quot;]
   Caller --&gt; Req[&quot;FileSourceRequest&quot;]
   Req --&gt; Mailbox[&quot;Mailbox&quot;]
@@ -424,7 +532,16 @@ Luồng chính bắt đầu từ SDK platform tạo `mbgl::Map`. `Map::Impl` s�
   Target --&gt; Callback[&quot;setResponse(Response)&quot;]
   Callback --&gt; CallerLoop[&quot;Callback bound về requesting thread&quot;]
   Async --&gt;|destroy/cancel| Cancel[&quot;onCancel&quot;]
-  Cancel --&gt; Target</code></pre></div>
+  Cancel --&gt; Target</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>flowchart LR
+  Caller[&quot;Caller thread&quot;] --&gt; Async[&quot;AsyncRequest owner&quot;]
+  Caller --&gt; Req[&quot;FileSourceRequest&quot;]
+  Req --&gt; Mailbox[&quot;Mailbox&quot;]
+  Mailbox --&gt; Scheduler[&quot;Scheduler / RunLoop&quot;]
+  Scheduler --&gt; Target[&quot;Target thread actor&quot;]
+  Target --&gt; Callback[&quot;setResponse(Response)&quot;]
+  Callback --&gt; CallerLoop[&quot;Callback bound về requesting thread&quot;]
+  Async --&gt;|destroy/cancel| Cancel[&quot;onCancel&quot;]
+  Cancel --&gt; Target</pre></details></figure>
 <p>Các primitive chính:</p>
 <div class="table-wrap"><table><thead><tr><th>Primitive</th><th>Vai trò</th></tr></thead><tbody>
 <tr><td><code>ActorRef&lt;T&gt;</code></td><td>Gọi method của object ở thread/scheduler khác bằng message.</td></tr>
@@ -435,7 +552,7 @@ Luồng chính bắt đầu từ SDK platform tạo `mbgl::Map`. `Map::Impl` s�
 <tr><td><code>util::Thread&lt;T&gt;</code></td><td>Tạo object T trên thread riêng và expose actor.</td></tr>
 </tbody></table></div>
 <h3 id="event-9-offline-event-graph">9. Offline event graph</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>sequenceDiagram
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram EVENT-07</figcaption><div class="mermaid">sequenceDiagram
   participant SDK as Offline SDK
   participant DFS as DatabaseFileSource
   participant DBT as DatabaseFileSourceThread
@@ -453,7 +570,25 @@ Luồng chính bắt đầu từ SDK platform tạo `mbgl::Map`. `Map::Impl` s�
   DL-&gt;&gt;Net: request style/source/sprite/glyph/tile
   Net--&gt;&gt;DL: Response
   DL-&gt;&gt;DB: putRegionResource/putRegionTile
-  DL--&gt;&gt;SDK: OfflineRegionObserver status/error</code></pre></div>
+  DL--&gt;&gt;SDK: OfflineRegionObserver status/error</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>sequenceDiagram
+  participant SDK as Offline SDK
+  participant DFS as DatabaseFileSource
+  participant DBT as DatabaseFileSourceThread
+  participant DB as OfflineDatabase
+  participant DL as OfflineDownload
+  participant Net as OnlineFileSource
+
+  SDK-&gt;&gt;DFS: create/list/get region
+  DFS-&gt;&gt;DBT: actor invoke
+  DBT-&gt;&gt;DB: SQL operation
+  DB--&gt;&gt;SDK: callback expected/result
+  SDK-&gt;&gt;DFS: setOfflineRegionObserver(region)
+  SDK-&gt;&gt;DFS: setOfflineRegionDownloadState(Active)
+  DBT-&gt;&gt;DL: get/create OfflineDownload
+  DL-&gt;&gt;Net: request style/source/sprite/glyph/tile
+  Net--&gt;&gt;DL: Response
+  DL-&gt;&gt;DB: putRegionResource/putRegionTile
+  DL--&gt;&gt;SDK: OfflineRegionObserver status/error</pre></details></figure>
 <p>Offline callbacks chạy từ database/offline machinery; platform SDK chịu trách nhiệm marshal callback về thread phù hợp. Android <code>OfflineRegion</code> tạo observer C++ wrapper rồi gọi Java callback qua JNI.</p>
 <h3 id="event-10-failure-propagation">10. Failure propagation</h3>
 <div class="table-wrap"><table><thead><tr><th>Nguồn lỗi</th><th>Mapping</th><th>Receiver</th></tr></thead><tbody>
@@ -485,7 +620,7 @@ flowchart TD
   Orchestrator --&gt;|RendererObserver| Renderer
   Renderer --&gt; MapImpl
 
-  FileSource[&quot;FileSourceRequest&quot;] --&gt;|Callback(Response)| Requester[&quot;Style / Tile / Glyph / Sprite / Offline&quot;]
+  FileSource[&quot;FileSourceRequest&quot;] --&gt;|&quot;Callback Response&quot;| Requester[&quot;Style / Tile / Glyph / Sprite / Offline&quot;]
   OfflineDownload[&quot;OfflineDownload&quot;] --&gt;|OfflineRegionObserver| OfflineSDK[&quot;Offline SDK callbacks&quot;]
 ```
 
@@ -677,10 +812,10 @@ Offline callbacks chạy từ database/offline machinery; platform SDK chịu tr
 | Tile error | `RenderSourceObserver::onTileError` | Renderer/Map observer |
 | DB corrupt/not DB | `OfflineDatabase::handleError`, remove/reinitialize nếu cần | Log `Event::Database`, callbacks có exception nếu operation offline |
 
-</pre></details></div></section><section id="db"><div class="doc-meta"><span class="pill">DB Dependency</span><span class="pill">300 dòng Markdown</span><span class="pill">Render đầy đủ + nguyên văn</span></div><div class="doc-body"><h2 id="db-dependency-mapping---db-dependency-của-maplibre-native">Dependency Mapping - DB dependency của <code>maplibre-native</code></h2>
+</pre></details></div></section><section id="db"><div class="doc-meta"><span class="pill">DB Dependency</span><span class="pill">300 dòng Markdown</span><span class="pill">6 Mermaid diagram</span><span class="pill">Render đầy đủ + nguyên văn</span></div><div class="doc-body"><h2 id="db-dependency-mapping---db-dependency-của-maplibre-native">Dependency Mapping - DB dependency của <code>maplibre-native</code></h2>
 <p>Tài liệu này mô tả dependency dữ liệu SQLite/offline/cache trong <code>maplibre-native</code>, tập trung vào <code>DatabaseFileSource</code>, <code>OfflineDatabase</code>, <code>OfflineDownload</code>, schema và lifecycle cache/offline.</p>
 <h3 id="db-1-bản-đồ-db-runtime">1. Bản đồ DB runtime</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart TD
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram DB-01</figcaption><div class="mermaid">flowchart TD
   Requester[&quot;Style / Tile / Glyph / Sprite requester&quot;] --&gt; MRL[&quot;MainResourceLoader&quot;]
   MRL --&gt;|cache-capable request| DFS[&quot;DatabaseFileSource&quot;]
   DFS --&gt; DBThread[&quot;DatabaseFileSourceThread&quot;]
@@ -698,7 +833,25 @@ Offline callbacks chạy từ database/offline machinery; platform SDK chịu tr
   DFS --&gt; Downloads[&quot;OfflineDownload map&quot;]
   Downloads --&gt; Online
   Downloads --&gt; ODB
-  Downloads --&gt; Observer[&quot;OfflineRegionObserver&quot;]</code></pre></div>
+  Downloads --&gt; Observer[&quot;OfflineRegionObserver&quot;]</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>flowchart TD
+  Requester[&quot;Style / Tile / Glyph / Sprite requester&quot;] --&gt; MRL[&quot;MainResourceLoader&quot;]
+  MRL --&gt;|cache-capable request| DFS[&quot;DatabaseFileSource&quot;]
+  DFS --&gt; DBThread[&quot;DatabaseFileSourceThread&quot;]
+  DBThread --&gt; ODB[&quot;OfflineDatabase&quot;]
+  ODB --&gt; SQLite[&quot;mapbox::sqlite::Database&quot;]
+  SQLite --&gt; Tables[&quot;resources, tiles, regions,&lt;br/&gt;region_resources, region_tiles&quot;]
+
+  MRL --&gt;|network fallback| Online[&quot;OnlineFileSource&quot;]
+  Online --&gt; HTTP[&quot;HTTPFileSource&quot;]
+  HTTP --&gt; Response[&quot;Response&quot;]
+  Response --&gt;|forward| DFS
+  DFS --&gt;|put| ODB
+
+  OfflineAPI[&quot;OfflineManager / SDK&quot;] --&gt; DFS
+  DFS --&gt; Downloads[&quot;OfflineDownload map&quot;]
+  Downloads --&gt; Online
+  Downloads --&gt; ODB
+  Downloads --&gt; Observer[&quot;OfflineRegionObserver&quot;]</pre></details></figure>
 <p><code>DatabaseFileSource</code> là adapter async public cho DB. <code>OfflineDatabase</code> là implementation SQLite thực tế. <code>MainResourceLoader</code> dùng <code>DatabaseFileSource</code> cho ambient cache và dùng <code>forward()</code> để ghi response network vào DB. Offline region API cũng đi qua <code>DatabaseFileSource</code>.</p>
 <h3 id="db-2-thành-phần-chính">2. Thành phần chính</h3>
 <div class="table-wrap"><table><thead><tr><th>Thành phần</th><th>Source</th><th>Vai trò</th><th>Dependency</th></tr></thead><tbody>
@@ -711,7 +864,7 @@ Offline callbacks chạy từ database/offline machinery; platform SDK chịu tr
 </tbody></table></div>
 <h3 id="db-3-schema-dependency">3. Schema dependency</h3>
 <p>Schema chính nằm ở <code>platform/default/include/mbgl/storage/offline_schema.sql</code>.</p>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>erDiagram
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram DB-02</figcaption><div class="mermaid">erDiagram
   resources {
     integer id PK
     text url UK
@@ -760,7 +913,56 @@ Offline callbacks chạy từ database/offline machinery; platform SDK chịu tr
   regions ||--o{ region_resources : owns
   resources ||--o{ region_resources : included_by
   regions ||--o{ region_tiles : owns
-  tiles ||--o{ region_tiles : included_by</code></pre></div>
+  tiles ||--o{ region_tiles : included_by</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>erDiagram
+  resources {
+    integer id PK
+    text url UK
+    integer kind
+    integer expires
+    integer modified
+    text etag
+    blob data
+    integer compressed
+    integer accessed
+    integer must_revalidate
+  }
+
+  tiles {
+    integer id PK
+    text url_template
+    integer pixel_ratio
+    integer z
+    integer x
+    integer y
+    integer expires
+    integer modified
+    text etag
+    blob data
+    integer compressed
+    integer accessed
+    integer must_revalidate
+  }
+
+  regions {
+    integer id PK
+    text definition
+    blob description
+  }
+
+  region_resources {
+    integer region_id FK
+    integer resource_id FK
+  }
+
+  region_tiles {
+    integer region_id FK
+    integer tile_id FK
+  }
+
+  regions ||--o{ region_resources : owns
+  resources ||--o{ region_resources : included_by
+  regions ||--o{ region_tiles : owns
+  tiles ||--o{ region_tiles : included_by</pre></details></figure>
 <h4 id="db-31-resources">3.1 <code>resources</code></h4>
 <p>Chứa mọi resource không phải tile: style, source TileJSON, glyphs, sprite image, sprite JSON, image. Khóa unique là <code>url</code>.</p>
 <div class="table-wrap"><table><thead><tr><th>Cột</th><th>Ý nghĩa</th></tr></thead><tbody>
@@ -782,7 +984,7 @@ Offline callbacks chạy từ database/offline machinery; platform SDK chịu tr
 <h4 id="db-33-regions-regionresources-regiontiles">3.3 <code>regions</code>, <code>region_resources</code>, <code>region_tiles</code></h4>
 <p><code>regions.definition</code> là JSON định nghĩa offline region: bounding box hoặc GeoJSON geometry, style URL, zoom range, pixel ratio, include ideographs. <code>region_resources</code> và <code>region_tiles</code> nối nhiều-nhiều để các region chồng lấn chia sẻ data. Resource/tile không thuộc region nào được xem là ambient cache.</p>
 <h3 id="db-4-lifecycle-db-và-migration">4. Lifecycle DB và migration</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart TD
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram DB-03</figcaption><div class="mermaid">flowchart TD
   Open[&quot;OfflineDatabase(path, TileServerOptions)&quot;] --&gt; Init[&quot;initialize()&quot;]
   Init --&gt; Mode{&quot;readOnly?&quot;}
   Mode --&gt;|yes| RO[&quot;open ReadOnly&lt;br/&gt;PRAGMA foreign_keys=ON&quot;]
@@ -795,7 +997,20 @@ Offline callbacks chạy từ database/offline machinery; platform SDK chịu tr
   V4 --&gt; V6[&quot;migrateToVersion6&quot;]
   V5 --&gt; V6
   Version --&gt; OK[&quot;6: ready&quot;]
-  Version --&gt; Bad[&quot;unknown/downgrade: removeExisting + initialize&quot;]</code></pre></div>
+  Version --&gt; Bad[&quot;unknown/downgrade: removeExisting + initialize&quot;]</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>flowchart TD
+  Open[&quot;OfflineDatabase(path, TileServerOptions)&quot;] --&gt; Init[&quot;initialize()&quot;]
+  Init --&gt; Mode{&quot;readOnly?&quot;}
+  Mode --&gt;|yes| RO[&quot;open ReadOnly&lt;br/&gt;PRAGMA foreign_keys=ON&quot;]
+  Mode --&gt;|no| RW[&quot;open ReadWriteCreate&lt;br/&gt;busy timeout, foreign keys&quot;]
+  RW --&gt; Version[&quot;PRAGMA user_version&quot;]
+  Version --&gt; V0[&quot;0/1: drop old http_cache,&lt;br/&gt;create schema, user_version=6&quot;]
+  Version --&gt; V2[&quot;2: migrateToVersion3&quot;]
+  V2 --&gt; V5[&quot;migrateToVersion5&quot;]
+  Version --&gt; V4[&quot;4: migrateToVersion5&quot;]
+  V4 --&gt; V6[&quot;migrateToVersion6&quot;]
+  V5 --&gt; V6
+  Version --&gt; OK[&quot;6: ready&quot;]
+  Version --&gt; Bad[&quot;unknown/downgrade: removeExisting + initialize&quot;]</pre></details></figure>
 <p>Các pragma quan trọng:</p>
 <div class="table-wrap"><table><thead><tr><th>PRAGMA / mode</th><th>Tác dụng</th></tr></thead><tbody>
 <tr><td><code>foreign_keys = ON</code></td><td>Bảo toàn cascade/delete relation giữa region và join tables.</td></tr>
@@ -805,7 +1020,7 @@ Offline callbacks chạy từ database/offline machinery; platform SDK chịu tr
 <tr><td><code>user_version = 6</code></td><td>Version schema hiện hành theo code.</td></tr>
 </tbody></table></div>
 <h3 id="db-5-read-path-cache-lookup">5. Read path: cache lookup</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>sequenceDiagram
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram DB-04</figcaption><div class="mermaid">sequenceDiagram
   participant MRL as MainResourceLoader
   participant DFS as DatabaseFileSource
   participant DBT as DB thread
@@ -823,7 +1038,25 @@ Offline callbacks chạy từ database/offline machinery; platform SDK chịu tr
     DB-&gt;&gt;DB: getResource(url)
     DB--&gt;&gt;DBT: Response + size
   end
-  DBT--&gt;&gt;MRL: Response</code></pre></div>
+  DBT--&gt;&gt;MRL: Response</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>sequenceDiagram
+  participant MRL as MainResourceLoader
+  participant DFS as DatabaseFileSource
+  participant DBT as DB thread
+  participant DB as OfflineDatabase
+
+  MRL-&gt;&gt;DFS: request(Resource)
+  DFS-&gt;&gt;DBT: actor request(resource)
+  DBT-&gt;&gt;DB: get(resource)
+  alt storagePolicy == Volatile
+    DBT--&gt;&gt;MRL: noContent NotFound
+  else Tile
+    DB-&gt;&gt;DB: getTile(url_template,pixel_ratio,z,x,y)
+    DB--&gt;&gt;DBT: Response + size
+  else Resource
+    DB-&gt;&gt;DB: getResource(url)
+    DB--&gt;&gt;DBT: Response + size
+  end
+  DBT--&gt;&gt;MRL: Response</pre></details></figure>
 <p>Read behavior:</p>
 <div class="table-wrap"><table><thead><tr><th>Điều kiện</th><th>Hành vi</th></tr></thead><tbody>
 <tr><td><code>Resource::StoragePolicy::Volatile</code></td><td>Bỏ qua DB, trả not found/noContent.</td></tr>
@@ -834,7 +1067,7 @@ Offline callbacks chạy từ database/offline machinery; platform SDK chịu tr
 <tr><td>Cache miss</td><td>Network fallback nếu <code>Resource::LoadingMethod</code> cho phép network.</td></tr>
 </tbody></table></div>
 <h3 id="db-6-write-path-network-response-vào-cache">6. Write path: network response vào cache</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>sequenceDiagram
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram DB-05</figcaption><div class="mermaid">sequenceDiagram
   participant Online as OnlineFileSource
   participant MRL as MainResourceLoader
   participant DFS as DatabaseFileSource
@@ -851,7 +1084,24 @@ Offline callbacks chạy từ database/offline machinery; platform SDK chịu tr
     DB-&gt;&gt;DB: update/insert tiles
   else Resource
     DB-&gt;&gt;DB: update/insert resources
-  end</code></pre></div>
+  end</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>sequenceDiagram
+  participant Online as OnlineFileSource
+  participant MRL as MainResourceLoader
+  participant DFS as DatabaseFileSource
+  participant DB as OfflineDatabase
+
+  Online--&gt;&gt;MRL: Response
+  MRL-&gt;&gt;DFS: forward(resource,response)
+  DFS-&gt;&gt;DB: put(resource,response)
+  DB-&gt;&gt;DB: compress if useful
+  DB-&gt;&gt;DB: evict(size) nếu cần
+  alt response.notModified
+    DB-&gt;&gt;DB: update expires/must_revalidate/accessed
+  else Tile
+    DB-&gt;&gt;DB: update/insert tiles
+  else Resource
+    DB-&gt;&gt;DB: update/insert resources
+  end</pre></details></figure>
 <p>Write rules:</p>
 <div class="table-wrap"><table><thead><tr><th>Rule</th><th>Ý nghĩa</th></tr></thead><tbody>
 <tr><td>Không ghi <code>response.error</code></td><td>Error response không cache.</td></tr>
@@ -878,7 +1128,7 @@ Offline callbacks chạy từ database/offline machinery; platform SDK chịu tr
 <tr><td><code>runPackDatabaseAutomatically</code></td><td>Bật/tắt vacuum tự động sau clear/delete.</td></tr>
 </tbody></table></div>
 <h3 id="db-8-offline-region-lifecycle">8. Offline region lifecycle</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart TD
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram DB-06</figcaption><div class="mermaid">flowchart TD
   Create[&quot;createOfflineRegion(definition, metadata)&quot;] --&gt; Region[&quot;regions row&quot;]
   Region --&gt; Observer[&quot;setOfflineRegionObserver&quot;]
   Observer --&gt; Active[&quot;setOfflineRegionDownloadState(Active)&quot;]
@@ -890,7 +1140,19 @@ Offline callbacks chạy từ database/offline machinery; platform SDK chịu tr
   Put --&gt; Status[&quot;OfflineRegionStatus&quot;]
   Status --&gt; Complete{&quot;complete?&quot;}
   Complete --&gt;|no| Download
-  Complete --&gt;|yes| Done[&quot;Observer status complete&quot;]</code></pre></div>
+  Complete --&gt;|yes| Done[&quot;Observer status complete&quot;]</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>flowchart TD
+  Create[&quot;createOfflineRegion(definition, metadata)&quot;] --&gt; Region[&quot;regions row&quot;]
+  Region --&gt; Observer[&quot;setOfflineRegionObserver&quot;]
+  Observer --&gt; Active[&quot;setOfflineRegionDownloadState(Active)&quot;]
+  Active --&gt; Download[&quot;OfflineDownload&quot;]
+  Download --&gt; Style[&quot;Download style&quot;]
+  Style --&gt; Resources[&quot;Resolve source, sprite, glyphs, images&quot;]
+  Resources --&gt; Tiles[&quot;Compute/download covering tiles&quot;]
+  Tiles --&gt; Put[&quot;putRegionResource / putRegionTile&quot;]
+  Put --&gt; Status[&quot;OfflineRegionStatus&quot;]
+  Status --&gt; Complete{&quot;complete?&quot;}
+  Complete --&gt;|no| Download
+  Complete --&gt;|yes| Done[&quot;Observer status complete&quot;]</pre></details></figure>
 <p>Offline operation API:</p>
 <div class="table-wrap"><table><thead><tr><th>API</th><th>Dependency</th></tr></thead><tbody>
 <tr><td><code>listOfflineRegions</code></td><td>SELECT <code>regions</code>, deserialize definition/metadata.</td></tr>
@@ -1222,10 +1484,10 @@ Offline operation API:
 | Compression/decompression | CPU overhead, lỗi corrupt blob | `util::compress/decompress`, `getResource/getTile` |
 | Merge side database | Cần write access để migrate DB phụ; tile count limit có thể fail | `mergeOfflineRegions`, `MapboxTileLimitExceededException` |
 
-</pre></details></div></section><section id="protocol"><div class="doc-meta"><span class="pill">Protocol Dependency</span><span class="pill">225 dòng Markdown</span><span class="pill">Render đầy đủ + nguyên văn</span></div><div class="doc-body"><h2 id="protocol-dependency-mapping---protocol-dependency-của-maplibre-native">Dependency Mapping - Protocol dependency của <code>maplibre-native</code></h2>
+</pre></details></div></section><section id="protocol"><div class="doc-meta"><span class="pill">Protocol Dependency</span><span class="pill">225 dòng Markdown</span><span class="pill">3 Mermaid diagram</span><span class="pill">Render đầy đủ + nguyên văn</span></div><div class="doc-body"><h2 id="protocol-dependency-mapping---protocol-dependency-của-maplibre-native">Dependency Mapping - Protocol dependency của <code>maplibre-native</code></h2>
 <p>Tài liệu này mô tả dependency protocol/URL/resource routing trong <code>maplibre-native</code>: <code>asset://</code>, <code>file://</code>, <code>mbtiles://</code>, <code>pmtiles://</code>, HTTP/HTTPS, canonical tile server URLs, resource kinds, cache/network loading methods, Android HTTP bridge và cURL default path.</p>
 <h3 id="protocol-1-protocol-routing-tổng-quát">1. Protocol routing tổng quát</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart TD
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram PROTOCOL-01</figcaption><div class="mermaid">flowchart TD
   Resource[&quot;Resource(kind,url,loadingMethod)&quot;] --&gt; MRL[&quot;MainResourceLoader&quot;]
   MRL --&gt; Asset{&quot;asset:// ?&quot;}
   Asset --&gt;|yes| AssetFS[&quot;AssetFileSource&quot;]
@@ -1241,7 +1503,23 @@ Offline operation API:
   Cache --&gt;|no| Network
   Network --&gt;|yes| OnlineFS[&quot;OnlineFileSource&quot;]
   OnlineFS --&gt; HTTPFS[&quot;HTTPFileSource&quot;]
-  Network --&gt;|no| Error[&quot;Unsupported/noContent&quot;]</code></pre></div>
+  Network --&gt;|no| Error[&quot;Unsupported/noContent&quot;]</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>flowchart TD
+  Resource[&quot;Resource(kind,url,loadingMethod)&quot;] --&gt; MRL[&quot;MainResourceLoader&quot;]
+  MRL --&gt; Asset{&quot;asset:// ?&quot;}
+  Asset --&gt;|yes| AssetFS[&quot;AssetFileSource&quot;]
+  Asset --&gt;|no| MBTiles{&quot;mbtiles:// ?&quot;}
+  MBTiles --&gt;|yes| MBTilesFS[&quot;MBTilesFileSource&quot;]
+  MBTiles --&gt;|no| PMTiles{&quot;pmtiles:// ?&quot;}
+  PMTiles --&gt;|yes| PMTilesFS[&quot;PMTilesFileSource&quot;]
+  PMTiles --&gt;|no| File{&quot;file:// ?&quot;}
+  File --&gt;|yes| LocalFS[&quot;LocalFileSource&quot;]
+  File --&gt;|no| Cache{&quot;Cache allowed?&quot;}
+  Cache --&gt;|yes| DBFS[&quot;DatabaseFileSource&quot;]
+  DBFS --&gt;|miss/stale| Network{&quot;Network allowed?&quot;}
+  Cache --&gt;|no| Network
+  Network --&gt;|yes| OnlineFS[&quot;OnlineFileSource&quot;]
+  OnlineFS --&gt; HTTPFS[&quot;HTTPFileSource&quot;]
+  Network --&gt;|no| Error[&quot;Unsupported/noContent&quot;]</pre></details></figure>
 <p>Thứ tự waterfall trong <code>MainResourceLoaderThread::request</code> là: asset, MBTiles, PMTiles, local file, database cache, network. Database cache chỉ request nếu <code>Resource::LoadingMethod</code> có <code>Cache</code>; network chỉ request nếu có <code>Network</code> và <code>OnlineFileSource::canRequest</code>.</p>
 <h3 id="protocol-2-protocol-constants-và-owner">2. Protocol constants và owner</h3>
 <div class="table-wrap"><table><thead><tr><th>Protocol / scheme</th><th>Constant hoặc nhận diện</th><th>Owner</th><th>Ý nghĩa</th></tr></thead><tbody>
@@ -1287,7 +1565,7 @@ Offline operation API:
 <tr><td><code>priorEtag/priorModified/priorExpires/priorData</code></td><td>cache metadata</td><td>Conditional HTTP request và 304 handling.</td></tr>
 </tbody></table></div>
 <h3 id="protocol-6-httphttps-path">6. HTTP/HTTPS path</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>sequenceDiagram
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram PROTOCOL-02</figcaption><div class="mermaid">sequenceDiagram
   participant MRL as MainResourceLoader
   participant Online as OnlineFileSource
   participant HTTP as HTTPFileSource
@@ -1300,7 +1578,20 @@ Offline operation API:
   Server--&gt;&gt;HTTP: status + headers + body
   HTTP--&gt;&gt;Online: Response
   Online--&gt;&gt;MRL: Response or retry/backoff
-  MRL-&gt;&gt;MRL: forward to DB if cacheable</code></pre></div>
+  MRL-&gt;&gt;MRL: forward to DB if cacheable</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>sequenceDiagram
+  participant MRL as MainResourceLoader
+  participant Online as OnlineFileSource
+  participant HTTP as HTTPFileSource
+  participant Server
+
+  MRL-&gt;&gt;Online: request(Resource)
+  Online-&gt;&gt;Online: resourceTransform? queue? max concurrent?
+  Online-&gt;&gt;HTTP: request(transformed Resource)
+  HTTP-&gt;&gt;Server: GET + Range/If-None-Match/If-Modified-Since
+  Server--&gt;&gt;HTTP: status + headers + body
+  HTTP--&gt;&gt;Online: Response
+  Online--&gt;&gt;MRL: Response or retry/backoff
+  MRL-&gt;&gt;MRL: forward to DB if cacheable</pre></details></figure>
 <p>Default platform dùng cURL multi + run loop socket watches trong <code>platform/default/src/mbgl/storage/http_file_source.cpp</code>. Android dùng JNI <code>HTTPFileSource</code> tạo <code>org.maplibre.android.http.NativeHttpRequest</code>, rồi Java module <code>HttpRequest</code> thực hiện transport.</p>
 <h4 id="protocol-61-http-status-mapping">6.1 HTTP status mapping</h4>
 <div class="table-wrap"><table><thead><tr><th>Status / lỗi</th><th><code>Response</code></th></tr></thead><tbody>
@@ -1361,14 +1652,21 @@ Offline operation API:
 </tbody></table></div>
 <p>PMTiles giữ cache trong memory: header cache, metadata cache, directory cache có giới hạn entry. URL bên trong <code>pmtiles://</code> có thể là HTTP hoặc <code>file://</code>, vì nested request đi qua <code>FileSourceType::ResourceLoader</code>.</p>
 <h3 id="protocol-9-android-http-bridge">9. Android HTTP bridge</h3>
-<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart LR
+<figure class="diagram-card"><figcaption><span class="dot"></span>Mermaid diagram PROTOCOL-03</figcaption><div class="mermaid">flowchart LR
   Cpp[&quot;HTTPFileSource::request&quot;] --&gt; Native[&quot;NativeHttpRequest JNI peer&quot;]
   Native --&gt; Java[&quot;org.maplibre.android.http.NativeHttpRequest&quot;]
   Java --&gt; Module[&quot;MapLibre.getModuleProvider().createHttpRequest()&quot;]
   Module --&gt; Impl[&quot;HttpRequest implementation&quot;]
   Impl --&gt; Responder[&quot;HttpResponder.onResponse/handleFailure&quot;]
   Responder --&gt; CppCallback[&quot;nativeOnResponse/nativeOnFailure&quot;]
-  CppCallback --&gt; Response[&quot;mbgl::Response&quot;]</code></pre></div>
+  CppCallback --&gt; Response[&quot;mbgl::Response&quot;]</div><details class="diagram-source"><summary>Xem Mermaid source</summary><pre>flowchart LR
+  Cpp[&quot;HTTPFileSource::request&quot;] --&gt; Native[&quot;NativeHttpRequest JNI peer&quot;]
+  Native --&gt; Java[&quot;org.maplibre.android.http.NativeHttpRequest&quot;]
+  Java --&gt; Module[&quot;MapLibre.getModuleProvider().createHttpRequest()&quot;]
+  Module --&gt; Impl[&quot;HttpRequest implementation&quot;]
+  Impl --&gt; Responder[&quot;HttpResponder.onResponse/handleFailure&quot;]
+  Responder --&gt; CppCallback[&quot;nativeOnResponse/nativeOnFailure&quot;]
+  CppCallback --&gt; Response[&quot;mbgl::Response&quot;]</pre></details></figure>
 <p>Android protocol notes:</p>
 <div class="table-wrap"><table><thead><tr><th>Detail</th><th>Ý nghĩa</th></tr></thead><tbody>
 <tr><td><code>dataRange</code> string</td><td>Tạo từ <code>Resource::dataRange</code> dạng <code>bytes=start-end</code>.</td></tr>
@@ -1611,4 +1909,51 @@ Android protocol notes:
 | Android vs default HTTP | Cùng contract `Response`, nhưng timeout/cache/offline query parameter có thể khác implementation Java/cURL. |
 | Range requests | PMTiles phụ thuộc server/local source hỗ trợ `dataRange`; lỗi range làm header/tile parse fail. |
 
-</pre></details></div></section><section id="source-evidence"><h2>Source Evidence</h2><p>Các nguồn chính đã được đối chiếu khi tạo tài liệu:</p><ul class="source-list"><li><code>ARCHITECTURE.md</code></li><li><code>include/mbgl/storage/file_source.hpp</code></li><li><code>include/mbgl/storage/resource.hpp</code></li><li><code>include/mbgl/storage/response.hpp</code></li><li><code>platform/default/src/mbgl/storage/main_resource_loader.cpp</code></li><li><code>platform/default/src/mbgl/storage/database_file_source.cpp</code></li><li><code>platform/default/src/mbgl/storage/offline_database.cpp</code></li><li><code>platform/default/include/mbgl/storage/offline_schema.sql</code></li><li><code>platform/default/src/mbgl/storage/online_file_source.cpp</code></li><li><code>platform/default/src/mbgl/storage/http_file_source.cpp</code></li><li><code>platform/default/src/mbgl/storage/mbtiles_file_source.cpp</code></li><li><code>platform/default/src/mbgl/storage/pmtiles_file_source.cpp</code></li><li><code>include/mbgl/map/map_observer.hpp</code></li><li><code>include/mbgl/renderer/renderer_observer.hpp</code></li><li><code>src/mbgl/map/map_impl.*</code></li><li><code>src/mbgl/renderer/render_orchestrator.*</code></li><li><code>platform/android/MapLibreAndroid/src/cpp/http_file_source.cpp</code></li><li><code>platform/android/MapLibreAndroid/src/main/java/org/maplibre/android/http/*</code></li></ul></section><footer>Generated as a static, self-contained dependency mapping artifact for local review.</footer></main></div></body></html>
+</pre></details></div></section><section id="source-evidence"><h2>Source Evidence</h2><p>Các nguồn chính đã được đối chiếu khi tạo tài liệu:</p><ul class="source-list"><li><code>ARCHITECTURE.md</code></li><li><code>include/mbgl/storage/file_source.hpp</code></li><li><code>include/mbgl/storage/resource.hpp</code></li><li><code>include/mbgl/storage/response.hpp</code></li><li><code>platform/default/src/mbgl/storage/main_resource_loader.cpp</code></li><li><code>platform/default/src/mbgl/storage/database_file_source.cpp</code></li><li><code>platform/default/src/mbgl/storage/offline_database.cpp</code></li><li><code>platform/default/include/mbgl/storage/offline_schema.sql</code></li><li><code>platform/default/src/mbgl/storage/online_file_source.cpp</code></li><li><code>platform/default/src/mbgl/storage/http_file_source.cpp</code></li><li><code>platform/default/src/mbgl/storage/mbtiles_file_source.cpp</code></li><li><code>platform/default/src/mbgl/storage/pmtiles_file_source.cpp</code></li><li><code>include/mbgl/map/map_observer.hpp</code></li><li><code>include/mbgl/renderer/renderer_observer.hpp</code></li><li><code>src/mbgl/map/map_impl.*</code></li><li><code>src/mbgl/renderer/render_orchestrator.*</code></li><li><code>platform/android/MapLibreAndroid/src/cpp/http_file_source.cpp</code></li><li><code>platform/android/MapLibreAndroid/src/main/java/org/maplibre/android/http/*</code></li></ul></section><footer>Generated as a static dependency mapping artifact for GitHub Pages review.</footer></main></div><div id="render-status" class="render-status">Đang render diagrams...</div><script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.esm.min.mjs';
+const status = document.getElementById('render-status');
+mermaid.initialize({
+  startOnLoad: false,
+  securityLevel: 'loose',
+  theme: 'base',
+  themeVariables: {
+    fontFamily: '-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif',
+    primaryColor: '#f5f9ff',
+    primaryTextColor: '#1d1d1f',
+    primaryBorderColor: '#77b7ff',
+    lineColor: '#8e8e93',
+    secondaryColor: '#f2fbf5',
+    tertiaryColor: '#fff7e8',
+    background: '#ffffff',
+    mainBkg: '#ffffff',
+    secondBkg: '#f5f5f7',
+    tertiaryBkg: '#fbfbfd',
+    noteBkgColor: '#fff7e8',
+    noteTextColor: '#1d1d1f',
+    noteBorderColor: '#ffc36b',
+    actorBkg: '#f5f9ff',
+    actorBorder: '#77b7ff',
+    actorTextColor: '#1d1d1f',
+    signalColor: '#424245',
+    signalTextColor: '#1d1d1f',
+    labelBoxBkgColor: '#ffffff',
+    labelBoxBorderColor: '#d2d2d7',
+    labelTextColor: '#1d1d1f',
+    loopTextColor: '#1d1d1f'
+  },
+  flowchart: { htmlLabels: true, curve: 'basis', padding: 18, nodeSpacing: 42, rankSpacing: 54 },
+  sequence: { mirrorActors: false, showSequenceNumbers: false, boxMargin: 12, messageMargin: 42, actorMargin: 60, width: 160, height: 56 },
+  er: { diagramPadding: 18, layoutDirection: 'TB' }
+});
+try {
+  await mermaid.run({ querySelector: '.mermaid' });
+  const rendered = document.querySelectorAll('.mermaid svg').length;
+  status.textContent = `Đã render ${rendered} diagrams`;
+  setTimeout(() => status.style.opacity = '0', 2400);
+  setTimeout(() => status.remove(), 3200);
+} catch (error) {
+  console.error(error);
+  status.textContent = 'Mermaid render lỗi - xem source bên dưới diagram';
+  status.style.color = '#b42318';
+}
+</script></body></html>
