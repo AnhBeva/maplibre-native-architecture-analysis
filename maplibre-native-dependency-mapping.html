@@ -1,0 +1,1614 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MapLibre Native Dependency Mapping</title><style>:root{--bg:#f5f5f7;--paper:rgba(255,255,255,.9);--ink:#1d1d1f;--muted:#6e6e73;--line:#d2d2d7;--blue:#0071e3;--green:#34c759;--orange:#ff9f0a;--red:#ff3b30;--shadow:0 24px 80px rgba(0,0,0,.08);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",sans-serif}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 18% 0%,rgba(90,200,250,.16),transparent 36rem),linear-gradient(180deg,#fbfbfd 0%,var(--bg) 42%,#fff 100%);color:var(--ink);line-height:1.58}a{color:inherit;text-decoration:none}code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;background:#f2f2f7;border:1px solid #e5e5ea;border-radius:7px;padding:.08rem .32rem}.shell{display:grid;grid-template-columns:292px minmax(0,1fr);min-height:100vh}aside{position:sticky;top:0;height:100vh;padding:28px 22px;border-right:1px solid rgba(210,210,215,.72);background:rgba(245,245,247,.78);backdrop-filter:blur(24px);overflow:auto}.brand{display:flex;align-items:center;gap:11px;margin-bottom:24px;font-weight:760;letter-spacing:0}.mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--blue),#5ac8fa);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}nav a{display:block;padding:9px 11px;margin:4px 0;border-radius:10px;color:#424245;font-size:.95rem}nav a:hover{background:rgba(0,113,227,.08);color:var(--blue)}main{padding:44px clamp(24px,5vw,72px) 72px;max-width:1320px;width:100%}.hero{padding:clamp(34px,6vw,74px);border-radius:32px;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.72));box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.8);margin-bottom:28px}.eyebrow{color:var(--blue);font-weight:740;font-size:.88rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px}h1,h2,h3,h4,h5{letter-spacing:0;line-height:1.12}h1{font-size:clamp(2.5rem,7vw,5.8rem);margin:0 0 18px;max-width:980px}h2{font-size:clamp(2rem,4vw,3.2rem);margin:0 0 18px}h3{font-size:1.8rem;margin:34px 0 12px}h4{font-size:1.35rem;margin:28px 0 10px}h5,h6{font-size:1.08rem;margin:20px 0 8px}p{color:#424245;margin:0 0 14px}.hero p{max-width:860px;font-size:clamp(1.05rem,2vw,1.35rem);color:var(--muted)}.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}.pill{border:1px solid rgba(0,113,227,.18);background:rgba(0,113,227,.07);color:#064f9e;border-radius:999px;padding:8px 12px;font-size:.92rem;font-weight:650}section{margin-top:28px;padding:clamp(24px,4vw,42px);border-radius:22px;background:var(--paper);border:1px solid rgba(210,210,215,.72);box-shadow:0 10px 40px rgba(0,0,0,.04)}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{grid-column:span 3;padding:20px;background:#fff;border:1px solid #e5e5ea;border-radius:18px;min-height:150px}.card.wide{grid-column:span 6}.metric{font-size:2.4rem;font-weight:780;line-height:1;margin-bottom:8px}.doc-body{background:#fff;border:1px solid #e5e5ea;border-radius:18px;padding:clamp(20px,3vw,34px);overflow:hidden}.doc-body>h2:first-child{font-size:2rem}.doc-meta{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 20px}.table-wrap{overflow-x:auto;border:1px solid #e5e5ea;border-radius:16px;background:#fff;margin:16px 0 22px}table{width:100%;border-collapse:collapse;min-width:760px;font-size:.95rem}th,td{padding:13px 15px;border-bottom:1px solid #ededf2;text-align:left;vertical-align:top}th{color:#1d1d1f;background:#fbfbfd;font-weight:730}tr:last-child td{border-bottom:0}.diagram{width:100%;min-height:260px;border-radius:18px;background:linear-gradient(180deg,#fff,#f7f9fc);border:1px solid #e5e5ea;padding:18px;overflow:auto}.codeblock{border:1px solid #e5e5ea;border-radius:16px;overflow:hidden;background:#0b1020;margin:16px 0 22px}.code-title{background:#151b2f;color:#c7d2fe;padding:9px 13px;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}.codeblock pre{margin:0;padding:16px;overflow:auto;color:#f8fafc;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88rem;line-height:1.5}.codeblock code{background:transparent;border:0;color:inherit;padding:0;border-radius:0}.raw-md{margin-top:34px;border:1px solid #d2d2d7;border-radius:16px;background:#fbfbfd;overflow:hidden}.raw-md summary{cursor:pointer;padding:14px 16px;font-weight:760;color:#1d1d1f}.raw-md pre{margin:0;padding:18px;max-height:520px;overflow:auto;background:#fff;border-top:1px solid #e5e5ea;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.86rem;line-height:1.5;color:#1d1d1f}.source-list{columns:2;column-gap:24px;padding-left:18px;color:#424245}.source-list li{break-inside:avoid;margin-bottom:8px}footer{color:var(--muted);padding:30px 0 0;font-size:.94rem}@media(max-width:900px){.shell{display:block}aside{position:static;height:auto;border-right:0;border-bottom:1px solid rgba(210,210,215,.72)}nav{display:flex;flex-wrap:wrap;gap:4px}nav a{margin:0}.card,.card.wide{grid-column:1/-1}.source-list{columns:1}table{min-width:680px}}</style></head><body><div class="shell"><aside><div class="brand"><span class="mark"></span><span>MapLibre Native<br>Dependency Mapping</span></div><nav><a href="#summary">Executive Summary</a><a href="#service">Service Graph</a><a href="#event">Event Graph</a><a href="#db">DB Dependency</a><a href="#protocol">Protocol Dependency</a><a href="#source-evidence">Source Evidence</a></nav></aside><main><header class="hero"><div class="eyebrow">Runtime Architecture Map</div><h1>Dependency Mapping toàn diện cho maplibre-native</h1><p>HTML tổng hợp này render đầy đủ nội dung của cả 4 file Markdown đã tạo. Mỗi phần còn có khối “Nguyên văn Markdown” để đối chiếu đầy đủ, không lược bỏ nội dung.</p><div class="meta"><span class="pill">Static HTML tự chứa</span><span class="pill">Không dùng CDN</span><span class="pill">Tiếng Việt có dấu</span><span class="pill">Bao gồm đầy đủ 4 file .md</span></div></header><section id="summary"><h2>Executive Summary</h2><div class="grid"><article class="card"><div class="metric">4</div><h3>Markdown nguồn</h3><p>Service, event, DB và protocol được giữ nguyên thành file riêng.</p></article><article class="card"><div class="metric">902</div><h3>Dòng Markdown</h3><p>HTML này render đầy đủ toàn bộ nội dung của 4 file `.md`.</p></article><article class="card"><div class="metric">0</div><h3>Phụ thuộc ngoài</h3><p>Không script, không CDN, không stylesheet remote.</p></article><article class="card"><div class="metric">5</div><h3>Artifact</h3><p>4 `.md` và 1 `.html` tổng hợp tại workspace root.</p></article><article class="card wide"><h3>Luồng lõi</h3><p><code>Map::Impl</code> nhận event từ camera/style/renderer, tạo <code>UpdateParameters</code> chứa immutable snapshots và đẩy sang renderer.</p></article><article class="card wide"><h3>Gateway dữ liệu</h3><p><code>MainResourceLoader</code> route qua asset, MBTiles, PMTiles, local file, SQLite cache hoặc network, rồi forward network response vào DB khi cacheable.</p></article></div></section><section id="service"><div class="doc-meta"><span class="pill">Service Graph</span><span class="pill">165 dòng Markdown</span><span class="pill">Render đầy đủ + nguyên văn</span></div><div class="doc-body"><h2 id="service-dependency-mapping---service-graph-của-maplibre-native">Dependency Mapping - Service graph của <code>maplibre-native</code></h2>
+<p>Tài liệu này mô tả graph dịch vụ/runtime subsystem của <code>maplibre-native</code> dựa trên source hiện tại trong <code>maplibre-native/</code>. “Service” ở đây là các khối thực thi lớn trong SDK native, không phải microservice mạng.</p>
+<h3 id="service-1-bức-tranh-tổng-quan">1. Bức tranh tổng quan</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart LR
+  App[&quot;Ứng dụng / SDK wrapper&lt;br/&gt;Android, iOS, macOS, Qt, Node, GLFW&quot;] --&gt; Map[&quot;mbgl::Map&quot;]
+  Map --&gt; Transform[&quot;Transform / Camera&quot;]
+  Map --&gt; Style[&quot;style::Style&quot;]
+  Map --&gt; RendererFrontend[&quot;RendererFrontend&quot;]
+  Map --&gt; FileSource[&quot;MainResourceLoader&lt;br/&gt;(FileSource ResourceLoader)&quot;]
+
+  Style --&gt; StyleParser[&quot;Style parser / conversion&quot;]
+  Style --&gt; Sources[&quot;Style Sources&quot;]
+  Style --&gt; Layers[&quot;Style Layers&quot;]
+  Style --&gt; Sprites[&quot;Sprite + Image definitions&quot;]
+
+  RendererFrontend --&gt; Renderer[&quot;Renderer&quot;]
+  Renderer --&gt; Orchestrator[&quot;RenderOrchestrator&quot;]
+  Orchestrator --&gt; RenderSources[&quot;RenderSource / TilePyramid&quot;]
+  Orchestrator --&gt; RenderLayers[&quot;RenderLayer&quot;]
+  Orchestrator --&gt; GlyphManager[&quot;GlyphManager&quot;]
+  Orchestrator --&gt; ImageManager[&quot;ImageManager&quot;]
+  Orchestrator --&gt; Atlases[&quot;LineAtlas / PatternAtlas&quot;]
+  Renderer --&gt; Backend[&quot;gfx backend&lt;br/&gt;OpenGL / Metal / Vulkan / WebGPU&quot;]
+
+  RenderSources --&gt; Tile[&quot;Tile / RenderTile / Bucket&quot;]
+  Tile --&gt; Workers[&quot;Worker thread pool&lt;br/&gt;layout, parse, placement&quot;]
+  Tile --&gt; FileSource
+  GlyphManager --&gt; FileSource
+  ImageManager --&gt; FileSource
+  Style --&gt; FileSource
+
+  FileSource --&gt; FSM[&quot;FileSourceManager&quot;]
+  FSM --&gt; Asset[&quot;AssetFileSource&quot;]
+  FSM --&gt; Local[&quot;LocalFileSource&quot;]
+  FSM --&gt; DB[&quot;DatabaseFileSource&quot;]
+  FSM --&gt; Online[&quot;OnlineFileSource&quot;]
+  FSM --&gt; MBTiles[&quot;MBTilesFileSource&quot;]
+  FSM --&gt; PMTiles[&quot;PMTilesFileSource&quot;]
+  DB --&gt; SQLite[&quot;OfflineDatabase / SQLite&quot;]
+  Online --&gt; HTTP[&quot;HTTPFileSource&lt;br/&gt;cURL hoặc Android Java HTTP&quot;]
+  PMTiles --&gt; FileSource</code></pre></div>
+<p>Luồng chính bắt đầu từ SDK platform tạo <code>mbgl::Map</code>. <code>Map::Impl</code> sở hữu <code>style::Style</code>, <code>Transform</code>, <code>AnnotationManager</code>, giữ <code>FileSource</code> dùng chung và đăng ký chính nó làm <code>style::Observer</code> + <code>RendererObserver</code>. Mỗi lần trạng thái thay đổi, <code>Map::Impl::onUpdate()</code> đóng gói <code>UpdateParameters</code> gồm snapshot style immutable, camera, sprite/glyph state, nguồn file và gửi sang <code>RendererFrontend</code>.</p>
+<h3 id="service-2-bảng-subsystem-chính">2. Bảng subsystem chính</h3>
+<div class="table-wrap"><table><thead><tr><th>Subsystem</th><th>Vị trí source tiêu biểu</th><th>Vai trò</th><th>Input</th><th>Output / dependency xuống dưới</th><th>Thread sở hữu</th></tr></thead><tbody>
+<tr><td>Public SDK wrapper</td><td><code>platform/android</code>, <code>platform/ios</code>, <code>platform/macos</code>, <code>platform/qt</code>, <code>platform/node</code></td><td>Chuyển API native/platform sang core C++</td><td>Gesture, lifecycle, style API, callbacks</td><td><code>mbgl::Map</code>, <code>FileSource</code>, renderer backend platform</td><td>UI/main thread platform</td></tr>
+<tr><td><code>mbgl::Map</code> / <code>Map::Impl</code></td><td><code>include/mbgl/map/map.hpp</code>, <code>src/mbgl/map/map_impl.*</code></td><td>Điều phối camera, style, render update, observer fan-out</td><td>API người dùng, style events, renderer events</td><td><code>Style</code>, <code>RendererFrontend</code>, <code>Transform</code>, <code>AnnotationManager</code></td><td>Thread tạo map</td></tr>
+<tr><td><code>Transform</code></td><td><code>src/mbgl/map/transform.*</code></td><td>Camera state, zoom/bearing/pitch, constraints</td><td>Camera operations</td><td><code>TransformState</code> trong <code>UpdateParameters</code></td><td>Map thread</td></tr>
+<tr><td><code>style::Style</code></td><td><code>include/mbgl/style/style.hpp</code>, <code>src/mbgl/style/style.*</code>, <code>src/mbgl/style/style_impl.*</code></td><td>Load/parse style JSON, giữ sources/layers/images/light immutable impl</td><td>Style URL/JSON, runtime style mutation</td><td>Immutable source/layer/image/light snapshots; style observer events</td><td>Map thread, async resource callbacks</td></tr>
+<tr><td>Layer manager</td><td><code>src/mbgl/layermanager</code>, <code>include/mbgl/layermanager</code></td><td>Factory tạo <code>Layer</code> và <code>RenderLayer</code> theo type</td><td>Style layer impl</td><td><code>Render*Layer</code>, layer factories, plugin/custom layers</td><td>Map/render update</td></tr>
+<tr><td><code>RendererFrontend</code></td><td><code>include/mbgl/renderer/renderer_frontend.hpp</code>, platform frontend</td><td>Biên giới thread/platform cho renderer</td><td><code>UpdateParameters</code>, observer</td><td>Gọi renderer thread hoặc renderer trực tiếp tùy platform</td><td>Platform-specific</td></tr>
+<tr><td><code>Renderer</code> / <code>Renderer::Impl</code></td><td><code>include/mbgl/renderer/renderer.hpp</code>, <code>src/mbgl/renderer/renderer_impl.cpp</code></td><td>Render frame: upload pass, opaque/translucent pass, shader registry</td><td><code>RenderTree</code>, <code>UpdateParameters</code></td><td>GPU backend, <code>RendererObserver</code> events</td><td>Renderer thread hoặc map thread</td></tr>
+<tr><td><code>RenderOrchestrator</code></td><td><code>src/mbgl/renderer/render_orchestrator.*</code></td><td>Diff style snapshot, quản lý <code>RenderSource</code>, <code>RenderLayer</code>, glyph/image managers, tile params</td><td>Immutable style snapshots, camera, file source</td><td><code>RenderTree</code>, tile load, glyph load, image missing events</td><td>Renderer orchestration thread</td></tr>
+<tr><td><code>RenderSource</code> / <code>TilePyramid</code></td><td><code>src/mbgl/renderer/sources</code>, <code>src/mbgl/renderer/tile_pyramid.*</code></td><td>Quản lý tile cover, cache tile runtime, reload/parse tile</td><td>Source impl, camera state, <code>TileParameters</code></td><td><code>Tile</code>, <code>RenderTile</code>, tile action events</td><td>Renderer + worker</td></tr>
+<tr><td><code>Tile</code> / buckets</td><td><code>src/mbgl/tile</code>, <code>src/mbgl/renderer/buckets</code></td><td>Request, parse, layout, build vertex/index buffers</td><td>Tile resource data, style layers</td><td>Buckets/drawables cho render layers</td><td>Worker thread pool + renderer upload</td></tr>
+<tr><td><code>GlyphManager</code></td><td><code>src/mbgl/text/glyph_manager.*</code></td><td>Request/cache glyph PBF hoặc local glyph rasterizer</td><td>Glyph URL, font stack, range</td><td>Glyph atlas data, glyph observer events</td><td>Renderer/worker + file source</td></tr>
+<tr><td><code>ImageManager</code></td><td><code>src/mbgl/renderer/image_manager.*</code></td><td>Sprite/style images, missing image callback, atlas invalidation</td><td>Style images, sprite load state</td><td>Image atlas, missing/unused image events</td><td>Renderer orchestration</td></tr>
+<tr><td><code>MainResourceLoader</code></td><td><code>src/mbgl/storage/main_resource_loader.hpp</code>, <code>platform/default/src/mbgl/storage/main_resource_loader.cpp</code></td><td>Waterfall resource loader: asset, MBTiles, PMTiles, local, DB cache, network</td><td><code>Resource</code></td><td><code>Response</code>, cache forward, online fallback</td><td><code>ResourceLoaderThread</code></td></tr>
+<tr><td><code>FileSourceManager</code></td><td><code>include/mbgl/storage/file_source_manager.hpp</code>, <code>platform/default/src/mbgl/storage/file_source_manager.cpp</code></td><td>Registry factory cho từng <code>FileSourceType</code></td><td><code>ResourceOptions</code>, <code>ClientOptions</code></td><td>Concrete file sources</td><td>Singleton, tạo theo nhu cầu</td></tr>
+<tr><td><code>DatabaseFileSource</code></td><td><code>include/mbgl/storage/database_file_source.hpp</code>, <code>platform/default/src/mbgl/storage/database_file_source.cpp</code></td><td>Ambient cache + offline region API</td><td><code>Resource</code>, offline operations</td><td><code>OfflineDatabase</code>, <code>OfflineDownload</code>, SQLite</td><td><code>DatabaseFileSource</code> thread</td></tr>
+<tr><td><code>OnlineFileSource</code></td><td><code>include/mbgl/storage/online_file_source.hpp</code>, <code>platform/default/src/mbgl/storage/online_file_source.cpp</code></td><td>Queue, retry, backoff, resource transform, connectivity</td><td>Network-capable <code>Resource</code></td><td><code>HTTPFileSource</code>, <code>Response</code></td><td><code>OnlineFileSource</code> thread</td></tr>
+<tr><td><code>HTTPFileSource</code></td><td><code>platform/default/src/mbgl/storage/http_file_source.cpp</code>, Android JNI/Java HTTP</td><td>HTTP transport</td><td>URL, range, conditional headers</td><td>HTTP response/error/cache headers</td><td>cURL run loop hoặc Android OkHttp module</td></tr>
+<tr><td><code>AssetFileSource</code></td><td><code>platform/default/src/mbgl/storage/asset_file_source.cpp</code>, Android asset source</td><td>Load <code>asset://</code></td><td>Asset URL</td><td>Local file bytes</td><td>File thread</td></tr>
+<tr><td><code>LocalFileSource</code></td><td><code>platform/default/src/mbgl/storage/local_file_source.cpp</code></td><td>Load <code>file://</code></td><td>File URL</td><td>Local file bytes</td><td>File thread</td></tr>
+<tr><td><code>MBTilesFileSource</code></td><td><code>platform/default/src/mbgl/storage/mbtiles_file_source.cpp</code></td><td>Đọc TileJSON/tile data từ <code>.mbtiles</code> SQLite</td><td><code>mbtiles://</code> URL</td><td>TileJSON hoặc tile bytes</td><td>File source thread</td></tr>
+<tr><td><code>PMTilesFileSource</code></td><td><code>platform/default/src/mbgl/storage/pmtiles_file_source.cpp</code></td><td>Đọc PMTiles v3 qua byte range, cache header/metadata/directory</td><td><code>pmtiles://</code> URL</td><td>TileJSON hoặc tile bytes</td><td>File source thread + nested ResourceLoader</td></tr>
+</tbody></table></div>
+<h3 id="service-3-dependency-chiều-xuôi">3. Dependency chiều xuôi</h3>
+<h4 id="service-31-từ-ứng-dụng-tới-render">3.1 Từ ứng dụng tới render</h4>
+<ol>
+<li>1. Ứng dụng gọi API platform, ví dụ Android <code>NativeMapView</code>, iOS/macOS Darwin wrapper, Qt hoặc Node.</li>
+<li>2. Wrapper gọi <code>mbgl::Map</code>.</li>
+<li>3. <code>Map::Impl</code> cập nhật camera/style và phát <code>UpdateParameters</code>.</li>
+<li>4. <code>RendererFrontend</code> chuyển update sang renderer.</li>
+<li>5. <code>RenderOrchestrator</code> diff các snapshot immutable của source/layer/image/light.</li>
+<li>6. <code>RenderSource</code> cập nhật tile pyramid, tile state, parse/layout.</li>
+<li>7. <code>Renderer::Impl</code> tạo <code>PaintParameters</code>, upload GPU resources, render qua <code>gfx::RendererBackend</code>.</li>
+</ol>
+<h4 id="service-32-từ-render-tới-dữ-liệu">3.2 Từ render tới dữ liệu</h4>
+<ol>
+<li>1. <code>RenderOrchestrator</code> tạo <code>TileParameters</code> chứa <code>fileSource</code>, <code>glyphManager</code>, <code>imageManager</code>, thread pool.</li>
+<li>2. <code>RenderTile</code> hoặc tile source request <code>Resource::tile(...)</code>.</li>
+<li>3. <code>GlyphManager</code> request <code>Resource::glyphs(...)</code>.</li>
+<li>4. Sprite/image/style/source request đi qua cùng <code>FileSource</code>.</li>
+<li>5. <code>MainResourceLoader</code> quyết định nguồn: asset, MBTiles, PMTiles, local file, SQLite cache, network.</li>
+<li>6. Response quay về callback ban đầu và tiếp tục parse/layout/render.</li>
+</ol>
+<h3 id="service-4-dependency-chiều-ngược-callback">4. Dependency chiều ngược / callback</h3>
+<div class="table-wrap"><table><thead><tr><th>Emitter</th><th>Callback / observer</th><th>Consumer</th><th>Ý nghĩa</th></tr></thead><tbody>
+<tr><td><code>Transform</code></td><td><code>TransformObserver</code> methods trên <code>Map::Impl</code></td><td><code>MapObserver</code> platform</td><td>Camera will/is/did change</td></tr>
+<tr><td><code>style::Style::Impl</code></td><td><code>style::Observer</code> trên <code>Map::Impl</code></td><td><code>MapObserver</code>, renderer update</td><td>Style loading, loaded, error, source changed, sprite events</td></tr>
+<tr><td><code>Renderer::Impl</code></td><td><code>RendererObserver</code> trên <code>Map::Impl</code></td><td><code>MapObserver</code>, still image callback</td><td>Render frame lifecycle, invalidate, resource/render error</td></tr>
+<tr><td><code>RenderOrchestrator</code></td><td><code>RendererObserver</code></td><td><code>Renderer::Impl</code> rồi <code>Map::Impl</code></td><td>Tile/glyph/image/render events được fan-out lên app</td></tr>
+<tr><td><code>RenderSource</code></td><td><code>RenderSourceObserver</code> trên <code>RenderOrchestrator</code></td><td><code>RendererObserver</code></td><td>Tile changed/error/action</td></tr>
+<tr><td><code>GlyphManager</code></td><td><code>GlyphManagerObserver</code> trên <code>RenderOrchestrator</code></td><td><code>RendererObserver</code></td><td>Glyph requested/loaded/error</td></tr>
+<tr><td><code>ImageManager</code></td><td><code>ImageManagerObserver</code> trên <code>RenderOrchestrator</code></td><td><code>RendererObserver</code></td><td>Missing style image, remove unused images</td></tr>
+<tr><td><code>OfflineDownload</code></td><td><code>OfflineRegionObserver</code></td><td>SDK offline manager</td><td>Offline status/error/mapbox tile count limit</td></tr>
+<tr><td><code>FileSourceRequest</code></td><td>bound callback</td><td>requester</td><td>Async response hoặc cancellation</td></tr>
+</tbody></table></div>
+<h3 id="service-5-thread-và-actor-boundaries">5. Thread và actor boundaries</h3>
+<p><code>maplibre-native</code> hạn chế shared mutable state bằng snapshot immutable và actor-style invocation:</p>
+<div class="table-wrap"><table><thead><tr><th>Boundary</th><th>Cơ chế</th><th>Dữ liệu đi qua</th><th>Ghi chú rủi ro</th></tr></thead><tbody>
+<tr><td>Map thread -&gt; renderer</td><td><code>RendererFrontend::update</code></td><td><code>std::shared_ptr&lt;UpdateParameters&gt;</code> chứa immutable impls</td><td>Snapshot phải đủ dữ liệu; không truyền mutable style object</td></tr>
+<tr><td>Renderer -&gt; worker pool</td><td><code>TaggedScheduler</code>, worker tasks</td><td>Tile parse/layout parameters</td><td>Parsing vector tile, text shaping, bucket generation tốn CPU</td></tr>
+<tr><td>MainResourceLoader -&gt; concrete source</td><td><code>util::Thread&lt;MainResourceLoaderThread&gt;</code>, <code>ActorRef</code></td><td><code>Resource</code>, <code>FileSourceRequest</code> actor</td><td>Waterfall và cache/network chaining nằm ở thread này</td></tr>
+<tr><td>DatabaseFileSource -&gt; SQLite</td><td><code>util::Thread&lt;DatabaseFileSourceThread&gt;</code></td><td>DB operations, callbacks</td><td>Callback offline DB chạy trên DB thread, SDK phải marshal về main nếu cần</td></tr>
+<tr><td>OnlineFileSource -&gt; HTTP</td><td><code>OnlineFileSourceThread</code>, timers, pending queue</td><td>Network <code>Resource</code>, retry state</td><td>Concurrency limit, resource transform, backoff</td></tr>
+<tr><td>Android HTTP -&gt; Java</td><td>JNI native peer <code>NativeHttpRequest</code></td><td>URL, range, ETag, modified, offline flag</td><td>Java callback dùng lock để tránh native ptr đã hủy</td></tr>
+</tbody></table></div>
+<h3 id="service-6-vendorruntime-dependencies-có-tác-động-kiến-trúc">6. Vendor/runtime dependencies có tác động kiến trúc</h3>
+<div class="table-wrap"><table><thead><tr><th>Dependency</th><th>Vị trí</th><th>Vai trò trong graph</th></tr></thead><tbody>
+<tr><td>SQLite</td><td><code>vendor/sqlite</code>, <code>platform/default/src/mbgl/storage/sqlite3.cpp</code></td><td>Offline DB, ambient cache, MBTiles</td></tr>
+<tr><td>cURL</td><td>default HTTP source</td><td>HTTP/HTTPS transport trên default platform</td></tr>
+<tr><td>RapidJSON</td><td>style conversion, MBTiles TileJSON, nhiều parser</td><td>Parse/serialize JSON</td></tr>
+<tr><td>protozero/vector-tile</td><td><code>vendor/protozero</code>, <code>vendor/vector-tile</code></td><td>Vector tile PBF decoding</td></tr>
+<tr><td>PMTiles</td><td><code>vendor/PMTiles</code>, <code>platform/default/src/mbgl/storage/pmtiles_file_source.cpp</code></td><td>PMTiles header/directory/tile addressing</td></tr>
+<tr><td>zlib/compression</td><td>storage/tile utilities</td><td>Decompress tile/resource data, compress DB blobs</td></tr>
+<tr><td>HarfBuzz/Freetype/ICU/nunicode</td><td>text stack</td><td>Glyph shaping, bidi/localization, local glyph rasterization</td></tr>
+<tr><td>GPU backends</td><td><code>src/mbgl/gl</code>, <code>src/mbgl/mtl</code>, <code>src/mbgl/vulkan</code>, <code>src/mbgl/webgpu</code></td><td>Backend abstraction cho renderer</td></tr>
+</tbody></table></div>
+<h3 id="service-7-critical-service-paths">7. Critical service paths</h3>
+<h4 id="service-style-url-load">Style URL load</h4>
+<p><code>SDK -&gt; Map::Style::loadURL -&gt; Style::Impl -&gt; FileSource(Resource::Style) -&gt; MainResourceLoader -&gt; cache/network/local -&gt; Style parse -&gt; style::Observer::onStyleLoaded/onStyleError -&gt; MapObserver + renderer update</code>.</p>
+<h4 id="service-tile-render">Tile render</h4>
+<p><code>Renderer update -&gt; RenderOrchestrator -&gt; RenderTileSource/TilePyramid -&gt; Tile request -&gt; MainResourceLoader -&gt; cache hit hoặc network fallback -&gt; Tile parse/layout worker -&gt; Bucket/Drawable -&gt; Renderer upload/render</code>.</p>
+<h4 id="service-glyph-render">Glyph render</h4>
+<p><code>RenderOrchestrator -&gt; GlyphManager -&gt; Resource::glyphs(urlTemplate,fontstack,range) -&gt; FileSource -&gt; Glyph PBF parse hoặc LocalGlyphRasterizer -&gt; Symbol bucket placement -&gt; render</code>.</p>
+<h4 id="service-offline-download">Offline download</h4>
+<p><code>SDK OfflineManager -&gt; DatabaseFileSource offline API -&gt; OfflineDatabase region metadata -&gt; OfflineDownload -&gt; online FileSource requests -&gt; OfflineDatabase put + region_resources/region_tiles -&gt; OfflineRegionObserver status</code>.</p>
+<h3 id="service-8-điểm-nóng-dependency">8. Điểm nóng dependency</h3>
+<div class="table-wrap"><table><thead><tr><th>Điểm nóng</th><th>Vì sao quan trọng</th></tr></thead><tbody>
+<tr><td><code>MainResourceLoader</code> waterfall</td><td>Đây là nơi quyết định dữ liệu lấy từ local/offline/cache/network; sai thứ tự có thể làm mất offline behavior hoặc cache validation.</td></tr>
+<tr><td><code>DatabaseFileSource</code> vừa cache vừa offline</td><td>Một class gánh hai vai trò, dễ lẫn giữa ambient cache và offline regions.</td></tr>
+<tr><td>PMTiles nested ResourceLoader</td><td>PMTiles có thể request byte range qua ResourceLoader, nên cần tránh vòng lặp sai protocol hoặc cache policy không mong muốn.</td></tr>
+<tr><td>Immutable style diff</td><td>RenderOrchestrator dựa vào identity/diff immutable impls; mutation sai cách có thể khiến render không cập nhật hoặc cập nhật quá nhiều.</td></tr>
+<tr><td>Observer fan-out</td><td><code>Map::Impl</code> vừa là style observer vừa là renderer observer; thứ tự event ảnh hưởng SDK callbacks.</td></tr>
+<tr><td>Platform HTTP bridge</td><td>Default dùng cURL, Android dùng Java module; cùng <code>Response</code> contract nhưng implementation khác.</td></tr>
+</tbody></table></div><details class="raw-md"><summary>Nguyên văn Markdown đầy đủ của maplibre-native-service-graph.md</summary><pre># Dependency Mapping - Service graph của `maplibre-native`
+
+Tài liệu này mô tả graph dịch vụ/runtime subsystem của `maplibre-native` dựa trên source hiện tại trong `maplibre-native/`. “Service” ở đây là các khối thực thi lớn trong SDK native, không phải microservice mạng.
+
+## 1. Bức tranh tổng quan
+
+```mermaid
+flowchart LR
+  App[&quot;Ứng dụng / SDK wrapper&lt;br/&gt;Android, iOS, macOS, Qt, Node, GLFW&quot;] --&gt; Map[&quot;mbgl::Map&quot;]
+  Map --&gt; Transform[&quot;Transform / Camera&quot;]
+  Map --&gt; Style[&quot;style::Style&quot;]
+  Map --&gt; RendererFrontend[&quot;RendererFrontend&quot;]
+  Map --&gt; FileSource[&quot;MainResourceLoader&lt;br/&gt;(FileSource ResourceLoader)&quot;]
+
+  Style --&gt; StyleParser[&quot;Style parser / conversion&quot;]
+  Style --&gt; Sources[&quot;Style Sources&quot;]
+  Style --&gt; Layers[&quot;Style Layers&quot;]
+  Style --&gt; Sprites[&quot;Sprite + Image definitions&quot;]
+
+  RendererFrontend --&gt; Renderer[&quot;Renderer&quot;]
+  Renderer --&gt; Orchestrator[&quot;RenderOrchestrator&quot;]
+  Orchestrator --&gt; RenderSources[&quot;RenderSource / TilePyramid&quot;]
+  Orchestrator --&gt; RenderLayers[&quot;RenderLayer&quot;]
+  Orchestrator --&gt; GlyphManager[&quot;GlyphManager&quot;]
+  Orchestrator --&gt; ImageManager[&quot;ImageManager&quot;]
+  Orchestrator --&gt; Atlases[&quot;LineAtlas / PatternAtlas&quot;]
+  Renderer --&gt; Backend[&quot;gfx backend&lt;br/&gt;OpenGL / Metal / Vulkan / WebGPU&quot;]
+
+  RenderSources --&gt; Tile[&quot;Tile / RenderTile / Bucket&quot;]
+  Tile --&gt; Workers[&quot;Worker thread pool&lt;br/&gt;layout, parse, placement&quot;]
+  Tile --&gt; FileSource
+  GlyphManager --&gt; FileSource
+  ImageManager --&gt; FileSource
+  Style --&gt; FileSource
+
+  FileSource --&gt; FSM[&quot;FileSourceManager&quot;]
+  FSM --&gt; Asset[&quot;AssetFileSource&quot;]
+  FSM --&gt; Local[&quot;LocalFileSource&quot;]
+  FSM --&gt; DB[&quot;DatabaseFileSource&quot;]
+  FSM --&gt; Online[&quot;OnlineFileSource&quot;]
+  FSM --&gt; MBTiles[&quot;MBTilesFileSource&quot;]
+  FSM --&gt; PMTiles[&quot;PMTilesFileSource&quot;]
+  DB --&gt; SQLite[&quot;OfflineDatabase / SQLite&quot;]
+  Online --&gt; HTTP[&quot;HTTPFileSource&lt;br/&gt;cURL hoặc Android Java HTTP&quot;]
+  PMTiles --&gt; FileSource
+```
+
+Luồng chính bắt đầu từ SDK platform tạo `mbgl::Map`. `Map::Impl` sở hữu `style::Style`, `Transform`, `AnnotationManager`, giữ `FileSource` dùng chung và đăng ký chính nó làm `style::Observer` + `RendererObserver`. Mỗi lần trạng thái thay đổi, `Map::Impl::onUpdate()` đóng gói `UpdateParameters` gồm snapshot style immutable, camera, sprite/glyph state, nguồn file và gửi sang `RendererFrontend`.
+
+## 2. Bảng subsystem chính
+
+| Subsystem | Vị trí source tiêu biểu | Vai trò | Input | Output / dependency xuống dưới | Thread sở hữu |
+|---|---|---|---|---|---|
+| Public SDK wrapper | `platform/android`, `platform/ios`, `platform/macos`, `platform/qt`, `platform/node` | Chuyển API native/platform sang core C++ | Gesture, lifecycle, style API, callbacks | `mbgl::Map`, `FileSource`, renderer backend platform | UI/main thread platform |
+| `mbgl::Map` / `Map::Impl` | `include/mbgl/map/map.hpp`, `src/mbgl/map/map_impl.*` | Điều phối camera, style, render update, observer fan-out | API người dùng, style events, renderer events | `Style`, `RendererFrontend`, `Transform`, `AnnotationManager` | Thread tạo map |
+| `Transform` | `src/mbgl/map/transform.*` | Camera state, zoom/bearing/pitch, constraints | Camera operations | `TransformState` trong `UpdateParameters` | Map thread |
+| `style::Style` | `include/mbgl/style/style.hpp`, `src/mbgl/style/style.*`, `src/mbgl/style/style_impl.*` | Load/parse style JSON, giữ sources/layers/images/light immutable impl | Style URL/JSON, runtime style mutation | Immutable source/layer/image/light snapshots; style observer events | Map thread, async resource callbacks |
+| Layer manager | `src/mbgl/layermanager`, `include/mbgl/layermanager` | Factory tạo `Layer` và `RenderLayer` theo type | Style layer impl | `Render*Layer`, layer factories, plugin/custom layers | Map/render update |
+| `RendererFrontend` | `include/mbgl/renderer/renderer_frontend.hpp`, platform frontend | Biên giới thread/platform cho renderer | `UpdateParameters`, observer | Gọi renderer thread hoặc renderer trực tiếp tùy platform | Platform-specific |
+| `Renderer` / `Renderer::Impl` | `include/mbgl/renderer/renderer.hpp`, `src/mbgl/renderer/renderer_impl.cpp` | Render frame: upload pass, opaque/translucent pass, shader registry | `RenderTree`, `UpdateParameters` | GPU backend, `RendererObserver` events | Renderer thread hoặc map thread |
+| `RenderOrchestrator` | `src/mbgl/renderer/render_orchestrator.*` | Diff style snapshot, quản lý `RenderSource`, `RenderLayer`, glyph/image managers, tile params | Immutable style snapshots, camera, file source | `RenderTree`, tile load, glyph load, image missing events | Renderer orchestration thread |
+| `RenderSource` / `TilePyramid` | `src/mbgl/renderer/sources`, `src/mbgl/renderer/tile_pyramid.*` | Quản lý tile cover, cache tile runtime, reload/parse tile | Source impl, camera state, `TileParameters` | `Tile`, `RenderTile`, tile action events | Renderer + worker |
+| `Tile` / buckets | `src/mbgl/tile`, `src/mbgl/renderer/buckets` | Request, parse, layout, build vertex/index buffers | Tile resource data, style layers | Buckets/drawables cho render layers | Worker thread pool + renderer upload |
+| `GlyphManager` | `src/mbgl/text/glyph_manager.*` | Request/cache glyph PBF hoặc local glyph rasterizer | Glyph URL, font stack, range | Glyph atlas data, glyph observer events | Renderer/worker + file source |
+| `ImageManager` | `src/mbgl/renderer/image_manager.*` | Sprite/style images, missing image callback, atlas invalidation | Style images, sprite load state | Image atlas, missing/unused image events | Renderer orchestration |
+| `MainResourceLoader` | `src/mbgl/storage/main_resource_loader.hpp`, `platform/default/src/mbgl/storage/main_resource_loader.cpp` | Waterfall resource loader: asset, MBTiles, PMTiles, local, DB cache, network | `Resource` | `Response`, cache forward, online fallback | `ResourceLoaderThread` |
+| `FileSourceManager` | `include/mbgl/storage/file_source_manager.hpp`, `platform/default/src/mbgl/storage/file_source_manager.cpp` | Registry factory cho từng `FileSourceType` | `ResourceOptions`, `ClientOptions` | Concrete file sources | Singleton, tạo theo nhu cầu |
+| `DatabaseFileSource` | `include/mbgl/storage/database_file_source.hpp`, `platform/default/src/mbgl/storage/database_file_source.cpp` | Ambient cache + offline region API | `Resource`, offline operations | `OfflineDatabase`, `OfflineDownload`, SQLite | `DatabaseFileSource` thread |
+| `OnlineFileSource` | `include/mbgl/storage/online_file_source.hpp`, `platform/default/src/mbgl/storage/online_file_source.cpp` | Queue, retry, backoff, resource transform, connectivity | Network-capable `Resource` | `HTTPFileSource`, `Response` | `OnlineFileSource` thread |
+| `HTTPFileSource` | `platform/default/src/mbgl/storage/http_file_source.cpp`, Android JNI/Java HTTP | HTTP transport | URL, range, conditional headers | HTTP response/error/cache headers | cURL run loop hoặc Android OkHttp module |
+| `AssetFileSource` | `platform/default/src/mbgl/storage/asset_file_source.cpp`, Android asset source | Load `asset://` | Asset URL | Local file bytes | File thread |
+| `LocalFileSource` | `platform/default/src/mbgl/storage/local_file_source.cpp` | Load `file://` | File URL | Local file bytes | File thread |
+| `MBTilesFileSource` | `platform/default/src/mbgl/storage/mbtiles_file_source.cpp` | Đọc TileJSON/tile data từ `.mbtiles` SQLite | `mbtiles://` URL | TileJSON hoặc tile bytes | File source thread |
+| `PMTilesFileSource` | `platform/default/src/mbgl/storage/pmtiles_file_source.cpp` | Đọc PMTiles v3 qua byte range, cache header/metadata/directory | `pmtiles://` URL | TileJSON hoặc tile bytes | File source thread + nested ResourceLoader |
+
+## 3. Dependency chiều xuôi
+
+### 3.1 Từ ứng dụng tới render
+
+1. Ứng dụng gọi API platform, ví dụ Android `NativeMapView`, iOS/macOS Darwin wrapper, Qt hoặc Node.
+2. Wrapper gọi `mbgl::Map`.
+3. `Map::Impl` cập nhật camera/style và phát `UpdateParameters`.
+4. `RendererFrontend` chuyển update sang renderer.
+5. `RenderOrchestrator` diff các snapshot immutable của source/layer/image/light.
+6. `RenderSource` cập nhật tile pyramid, tile state, parse/layout.
+7. `Renderer::Impl` tạo `PaintParameters`, upload GPU resources, render qua `gfx::RendererBackend`.
+
+### 3.2 Từ render tới dữ liệu
+
+1. `RenderOrchestrator` tạo `TileParameters` chứa `fileSource`, `glyphManager`, `imageManager`, thread pool.
+2. `RenderTile` hoặc tile source request `Resource::tile(...)`.
+3. `GlyphManager` request `Resource::glyphs(...)`.
+4. Sprite/image/style/source request đi qua cùng `FileSource`.
+5. `MainResourceLoader` quyết định nguồn: asset, MBTiles, PMTiles, local file, SQLite cache, network.
+6. Response quay về callback ban đầu và tiếp tục parse/layout/render.
+
+## 4. Dependency chiều ngược / callback
+
+| Emitter | Callback / observer | Consumer | Ý nghĩa |
+|---|---|---|---|
+| `Transform` | `TransformObserver` methods trên `Map::Impl` | `MapObserver` platform | Camera will/is/did change |
+| `style::Style::Impl` | `style::Observer` trên `Map::Impl` | `MapObserver`, renderer update | Style loading, loaded, error, source changed, sprite events |
+| `Renderer::Impl` | `RendererObserver` trên `Map::Impl` | `MapObserver`, still image callback | Render frame lifecycle, invalidate, resource/render error |
+| `RenderOrchestrator` | `RendererObserver` | `Renderer::Impl` rồi `Map::Impl` | Tile/glyph/image/render events được fan-out lên app |
+| `RenderSource` | `RenderSourceObserver` trên `RenderOrchestrator` | `RendererObserver` | Tile changed/error/action |
+| `GlyphManager` | `GlyphManagerObserver` trên `RenderOrchestrator` | `RendererObserver` | Glyph requested/loaded/error |
+| `ImageManager` | `ImageManagerObserver` trên `RenderOrchestrator` | `RendererObserver` | Missing style image, remove unused images |
+| `OfflineDownload` | `OfflineRegionObserver` | SDK offline manager | Offline status/error/mapbox tile count limit |
+| `FileSourceRequest` | bound callback | requester | Async response hoặc cancellation |
+
+## 5. Thread và actor boundaries
+
+`maplibre-native` hạn chế shared mutable state bằng snapshot immutable và actor-style invocation:
+
+| Boundary | Cơ chế | Dữ liệu đi qua | Ghi chú rủi ro |
+|---|---|---|---|
+| Map thread -&gt; renderer | `RendererFrontend::update` | `std::shared_ptr&lt;UpdateParameters&gt;` chứa immutable impls | Snapshot phải đủ dữ liệu; không truyền mutable style object |
+| Renderer -&gt; worker pool | `TaggedScheduler`, worker tasks | Tile parse/layout parameters | Parsing vector tile, text shaping, bucket generation tốn CPU |
+| MainResourceLoader -&gt; concrete source | `util::Thread&lt;MainResourceLoaderThread&gt;`, `ActorRef` | `Resource`, `FileSourceRequest` actor | Waterfall và cache/network chaining nằm ở thread này |
+| DatabaseFileSource -&gt; SQLite | `util::Thread&lt;DatabaseFileSourceThread&gt;` | DB operations, callbacks | Callback offline DB chạy trên DB thread, SDK phải marshal về main nếu cần |
+| OnlineFileSource -&gt; HTTP | `OnlineFileSourceThread`, timers, pending queue | Network `Resource`, retry state | Concurrency limit, resource transform, backoff |
+| Android HTTP -&gt; Java | JNI native peer `NativeHttpRequest` | URL, range, ETag, modified, offline flag | Java callback dùng lock để tránh native ptr đã hủy |
+
+## 6. Vendor/runtime dependencies có tác động kiến trúc
+
+| Dependency | Vị trí | Vai trò trong graph |
+|---|---|---|
+| SQLite | `vendor/sqlite`, `platform/default/src/mbgl/storage/sqlite3.cpp` | Offline DB, ambient cache, MBTiles |
+| cURL | default HTTP source | HTTP/HTTPS transport trên default platform |
+| RapidJSON | style conversion, MBTiles TileJSON, nhiều parser | Parse/serialize JSON |
+| protozero/vector-tile | `vendor/protozero`, `vendor/vector-tile` | Vector tile PBF decoding |
+| PMTiles | `vendor/PMTiles`, `platform/default/src/mbgl/storage/pmtiles_file_source.cpp` | PMTiles header/directory/tile addressing |
+| zlib/compression | storage/tile utilities | Decompress tile/resource data, compress DB blobs |
+| HarfBuzz/Freetype/ICU/nunicode | text stack | Glyph shaping, bidi/localization, local glyph rasterization |
+| GPU backends | `src/mbgl/gl`, `src/mbgl/mtl`, `src/mbgl/vulkan`, `src/mbgl/webgpu` | Backend abstraction cho renderer |
+
+## 7. Critical service paths
+
+### Style URL load
+
+`SDK -&gt; Map::Style::loadURL -&gt; Style::Impl -&gt; FileSource(Resource::Style) -&gt; MainResourceLoader -&gt; cache/network/local -&gt; Style parse -&gt; style::Observer::onStyleLoaded/onStyleError -&gt; MapObserver + renderer update`.
+
+### Tile render
+
+`Renderer update -&gt; RenderOrchestrator -&gt; RenderTileSource/TilePyramid -&gt; Tile request -&gt; MainResourceLoader -&gt; cache hit hoặc network fallback -&gt; Tile parse/layout worker -&gt; Bucket/Drawable -&gt; Renderer upload/render`.
+
+### Glyph render
+
+`RenderOrchestrator -&gt; GlyphManager -&gt; Resource::glyphs(urlTemplate,fontstack,range) -&gt; FileSource -&gt; Glyph PBF parse hoặc LocalGlyphRasterizer -&gt; Symbol bucket placement -&gt; render`.
+
+### Offline download
+
+`SDK OfflineManager -&gt; DatabaseFileSource offline API -&gt; OfflineDatabase region metadata -&gt; OfflineDownload -&gt; online FileSource requests -&gt; OfflineDatabase put + region_resources/region_tiles -&gt; OfflineRegionObserver status`.
+
+## 8. Điểm nóng dependency
+
+| Điểm nóng | Vì sao quan trọng |
+|---|---|
+| `MainResourceLoader` waterfall | Đây là nơi quyết định dữ liệu lấy từ local/offline/cache/network; sai thứ tự có thể làm mất offline behavior hoặc cache validation. |
+| `DatabaseFileSource` vừa cache vừa offline | Một class gánh hai vai trò, dễ lẫn giữa ambient cache và offline regions. |
+| PMTiles nested ResourceLoader | PMTiles có thể request byte range qua ResourceLoader, nên cần tránh vòng lặp sai protocol hoặc cache policy không mong muốn. |
+| Immutable style diff | RenderOrchestrator dựa vào identity/diff immutable impls; mutation sai cách có thể khiến render không cập nhật hoặc cập nhật quá nhiều. |
+| Observer fan-out | `Map::Impl` vừa là style observer vừa là renderer observer; thứ tự event ảnh hưởng SDK callbacks. |
+| Platform HTTP bridge | Default dùng cURL, Android dùng Java module; cùng `Response` contract nhưng implementation khác. |
+
+</pre></details></div></section><section id="event"><div class="doc-meta"><span class="pill">Event Graph</span><span class="pill">212 dòng Markdown</span><span class="pill">Render đầy đủ + nguyên văn</span></div><div class="doc-body"><h2 id="event-dependency-mapping---event-graph-của-maplibre-native">Dependency Mapping - Event graph của <code>maplibre-native</code></h2>
+<p>Tài liệu này mô tả các luồng event/callback chính trong <code>maplibre-native</code>, bao gồm observer ở tầng map/render/style, actor mailbox, async request, tile/glyph/sprite và offline download.</p>
+<h3 id="event-1-bản-đồ-observer-tổng-quát">1. Bản đồ observer tổng quát</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart TD
+  Transform[&quot;Transform&quot;] --&gt;|TransformObserver| MapImpl[&quot;Map::Impl&quot;]
+  StyleImpl[&quot;style::Style::Impl&quot;] --&gt;|style::Observer| MapImpl
+  Renderer[&quot;Renderer / RenderOrchestrator&quot;] --&gt;|RendererObserver| MapImpl
+  MapImpl --&gt;|MapObserver| SDK[&quot;SDK platform callbacks&quot;]
+  MapImpl --&gt;|ActionJournal| Journal[&quot;ActionJournal tùy chọn&quot;]
+
+  RenderSource[&quot;RenderSource&quot;] --&gt;|RenderSourceObserver| Orchestrator[&quot;RenderOrchestrator&quot;]
+  GlyphManager[&quot;GlyphManager&quot;] --&gt;|GlyphManagerObserver| Orchestrator
+  ImageManager[&quot;ImageManager&quot;] --&gt;|ImageManagerObserver| Orchestrator
+  Orchestrator --&gt;|RendererObserver| Renderer
+  Renderer --&gt; MapImpl
+
+  FileSource[&quot;FileSourceRequest&quot;] --&gt;|Callback(Response)| Requester[&quot;Style / Tile / Glyph / Sprite / Offline&quot;]
+  OfflineDownload[&quot;OfflineDownload&quot;] --&gt;|OfflineRegionObserver| OfflineSDK[&quot;Offline SDK callbacks&quot;]</code></pre></div>
+<p><code>Map::Impl</code> là nút hợp nhất event quan trọng nhất: nó nhận event từ camera/style/renderer rồi chuyển lên <code>MapObserver</code> của SDK. <code>RenderOrchestrator</code> là nút hợp nhất event của renderer data plane: tile, glyph, image.</p>
+<h3 id="event-2-event-catalog">2. Event catalog</h3>
+<div class="table-wrap"><table><thead><tr><th>Event family</th><th>Emitter</th><th>Interface</th><th>Receiver chính</th><th>Ý nghĩa</th></tr></thead><tbody>
+<tr><td>Camera lifecycle</td><td><code>Transform</code></td><td><code>TransformObserver</code> methods trong <code>Map::Impl</code></td><td><code>MapObserver</code></td><td><code>onCameraWillChange</code>, <code>onCameraIsChanging</code>, <code>onCameraDidChange</code></td></tr>
+<tr><td>Style loading</td><td><code>style::Style::Impl</code></td><td><code>style::Observer</code></td><td><code>Map::Impl</code></td><td><code>onStyleLoading</code>, <code>onStyleLoaded</code>, <code>onStyleError</code>, <code>onUpdate</code></td></tr>
+<tr><td>Source changed</td><td><code>style::Source</code> / style impl</td><td><code>style::Observer::onSourceChanged</code></td><td><code>Map::Impl</code></td><td>Runtime source data changed, cần update render</td></tr>
+<tr><td>Sprite request/load</td><td>Style/sprite loader</td><td><code>style::Observer</code> và <code>MapObserver</code></td><td>SDK + renderer update</td><td><code>onSpriteRequested</code>, <code>onSpriteLoaded</code>, <code>onSpriteError</code></td></tr>
+<tr><td>Render lifecycle</td><td><code>Renderer::Impl</code></td><td><code>RendererObserver</code></td><td><code>Map::Impl</code></td><td>Invalidate, start/end frame/map, render stats</td></tr>
+<tr><td>Missing image</td><td><code>ImageManager</code> -&gt; <code>RenderOrchestrator</code></td><td><code>ImageManagerObserver</code>, <code>RendererObserver::onStyleImageMissing</code></td><td>SDK</td><td>App có cơ hội add image bị thiếu</td></tr>
+<tr><td>Glyph lifecycle</td><td><code>GlyphManager</code> -&gt; <code>RenderOrchestrator</code></td><td><code>GlyphManagerObserver</code>, <code>RendererObserver</code></td><td>SDK</td><td>Glyph requested/loaded/error</td></tr>
+<tr><td>Tile lifecycle</td><td><code>RenderSource</code> -&gt; <code>RenderOrchestrator</code></td><td><code>RenderSourceObserver</code>, <code>RendererObserver::onTileAction</code></td><td>SDK</td><td>Request/load/parse/error/cancel tile</td></tr>
+<tr><td>Resource async</td><td>File sources</td><td><code>FileSource::Callback</code>, <code>AsyncRequest</code></td><td>Requester</td><td><code>Response</code>, cancellation, unsupported resource</td></tr>
+<tr><td>Offline region</td><td><code>OfflineDownload</code></td><td><code>OfflineRegionObserver</code></td><td>SDK offline wrapper</td><td>Status, response error, tile-count-limit error</td></tr>
+<tr><td>Shader lifecycle</td><td><code>gfx::Context</code> / renderer</td><td><code>RendererObserver</code>, <code>MapObserver</code></td><td>SDK</td><td>Register/pre/post/fail shader compile</td></tr>
+</tbody></table></div>
+<h3 id="event-3-luồng-style-load">3. Luồng style load</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>sequenceDiagram
+  participant SDK
+  participant Map as Map::Impl
+  participant Style as style::Style::Impl
+  participant FS as MainResourceLoader
+  participant R as RendererFrontend
+
+  SDK-&gt;&gt;Style: loadURL(url)
+  Style-&gt;&gt;Map: onStyleLoading()
+  Map-&gt;&gt;SDK: onWillStartLoadingMap()
+  Style-&gt;&gt;FS: request(Resource::Style)
+  FS--&gt;&gt;Style: Callback(Response)
+  alt parse OK
+    Style-&gt;&gt;Map: onStyleLoaded()
+    Map-&gt;&gt;SDK: onDidFinishLoadingStyle()
+    Map-&gt;&gt;R: update(UpdateParameters)
+  else parse/load error
+    Style-&gt;&gt;Map: onStyleError(exception)
+    Map-&gt;&gt;SDK: onDidFailLoadingMap(type, message)
+  end</code></pre></div>
+<p>Các điểm cần chú ý:</p>
+<div class="table-wrap"><table><thead><tr><th>Bước</th><th>Dependency</th><th>Ghi chú</th></tr></thead><tbody>
+<tr><td><code>onStyleLoading</code></td><td>Style -&gt; Map -&gt; SDK</td><td>Đánh dấu <code>loading = true</code>, reset trạng thái renderer fully loaded.</td></tr>
+<tr><td>Resource request</td><td>Style -&gt; <code>FileSource</code></td><td>Có thể đi qua asset/local/cache/network/MBTiles/PMTiles tùy URL.</td></tr>
+<tr><td>Parse style</td><td>Style conversion + RapidJSON</td><td>Lỗi parse chuyển thành <code>MapLoadError::StyleParseError</code>.</td></tr>
+<tr><td><code>onUpdate</code></td><td>Style -&gt; Map -&gt; RendererFrontend</td><td>Không render ở still mode nếu chưa có still-image request.</td></tr>
+</tbody></table></div>
+<h3 id="event-4-luồng-camera-event">4. Luồng camera event</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart LR
+  API[&quot;SDK camera API / gesture&quot;] --&gt; Transform
+  Transform --&gt; Will[&quot;Map::Impl::onCameraWillChange&quot;]
+  Transform --&gt; Is[&quot;Map::Impl::onCameraIsChanging&quot;]
+  Transform --&gt; Did[&quot;Map::Impl::onCameraDidChange&quot;]
+  Will --&gt; Observer[&quot;MapObserver&quot;]
+  Is --&gt; Observer
+  Did --&gt; Observer
+  Did --&gt; Update[&quot;Map::Impl::onUpdate&quot;]
+  Update --&gt; RendererFrontend</code></pre></div>
+<p>Camera event có hai lớp tác dụng: callback cho app và render invalidation. Các thay đổi camera làm <code>TransformState</code> đổi, từ đó <code>RenderOrchestrator</code> cập nhật tile cover, placement, transition và render tree.</p>
+<h3 id="event-5-luồng-render-frame">5. Luồng render frame</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>sequenceDiagram
+  participant Map as Map::Impl
+  participant Frontend as RendererFrontend
+  participant Renderer
+  participant Orch as RenderOrchestrator
+  participant SDK as MapObserver
+
+  Map-&gt;&gt;Frontend: update(shared UpdateParameters)
+  Frontend-&gt;&gt;Orch: createRenderTree/update
+  Orch--&gt;&gt;Renderer: RenderTree
+  Renderer-&gt;&gt;SDK: onWillStartRenderingMap/frame qua Map::Impl
+  Renderer-&gt;&gt;Renderer: upload + render passes
+  Renderer-&gt;&gt;Map: onDidFinishRenderingFrame(mode,repaint,placement,stats)
+  Map-&gt;&gt;SDK: onDidFinishRenderingFrame(RenderFrameStatus)
+  alt full render complete
+    Renderer-&gt;&gt;Map: onDidFinishRenderingMap()
+    Map-&gt;&gt;SDK: onDidFinishRenderingMap(Full/Partial)
+  end</code></pre></div>
+<p><code>Renderer::Impl</code> gọi <code>observer-&gt;onWillStartRenderingMap()</code> khi <code>renderState == Never</code>, gọi <code>onWillStartRenderingFrame()</code> mỗi frame, và trả <code>RenderingStats</code>. <code>Map::Impl</code> chỉ forward frame lifecycle cho SDK trong continuous mode.</p>
+<h3 id="event-6-luồng-tile-event">6. Luồng tile event</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart TD
+  Update[&quot;UpdateParameters&quot;] --&gt; TP[&quot;TileParameters&quot;]
+  TP --&gt; Source[&quot;RenderTileSource / TilePyramid&quot;]
+  Source --&gt; Request[&quot;Tile request Resource::Tile&quot;]
+  Request --&gt; FS[&quot;MainResourceLoader&quot;]
+  FS --&gt; Response[&quot;Response data/error/noContent&quot;]
+  Response --&gt; Tile[&quot;Tile parse/layout&quot;]
+  Tile --&gt; Action[&quot;TileOperation&quot;]
+  Action --&gt; RSO[&quot;RenderSourceObserver&quot;]
+  RSO --&gt; Orch[&quot;RenderOrchestrator&quot;]
+  Orch --&gt; RO[&quot;RendererObserver::onTileAction&quot;]
+  RO --&gt; Map[&quot;Map::Impl&quot;]
+  Map --&gt; SDK[&quot;MapObserver::onTileAction&quot;]</code></pre></div>
+<p><code>TileOperation</code> được bridge lên platform. Darwin có enum <code>MLNTileOperation</code> tương ứng: requested from cache/network, load from cache/network, start/end parse, error, cancelled, null op. Android bridge nằm ở <code>platform/android/MapLibreAndroid/src/cpp/tile/tile_operation.cpp</code>.</p>
+<h3 id="event-7-luồng-glyph-và-spriteimage">7. Luồng glyph và sprite/image</h3>
+<div class="table-wrap"><table><thead><tr><th>Luồng</th><th>Chuỗi event</th><th>Điểm cần nhớ</th></tr></thead><tbody>
+<tr><td>Glyph request</td><td><code>RenderOrchestrator</code> cập nhật <code>GlyphManager</code> URL/font faces -&gt; <code>GlyphManager</code> request <code>Resource::Glyphs</code> -&gt; <code>onGlyphsRequested</code> -&gt; response parse -&gt; <code>onGlyphsLoaded</code> hoặc <code>onGlyphsError</code></td><td>Glyph event được forward qua <code>RendererObserver</code> rồi <code>MapObserver</code>.</td></tr>
+<tr><td>Sprite load</td><td>Style parse có sprite URL -&gt; request sprite JSON/image -&gt; <code>onSpriteRequested</code> -&gt; <code>onSpriteLoaded</code> hoặc <code>onSpriteError</code></td><td>Sprite state (<code>spriteLoaded</code>) đi vào <code>UpdateParameters</code>.</td></tr>
+<tr><td>Missing style image</td><td>Symbol/layout cần image chưa có -&gt; <code>ImageManagerObserver::onStyleImageMissing</code> -&gt; <code>RendererObserver::onStyleImageMissing(id, done)</code> -&gt; SDK add image rồi gọi done</td><td>Callback <code>done</code> quan trọng để render tiếp, default implementation gọi ngay.</td></tr>
+<tr><td>Remove unused images</td><td><code>ImageManager</code> phát danh sách image không dùng</td><td>SDK có thể giữ lại bằng <code>MapObserver::onCanRemoveUnusedStyleImage</code>.</td></tr>
+</tbody></table></div>
+<h3 id="event-8-actor-mailbox-và-async-request">8. Actor, mailbox và async request</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart LR
+  Caller[&quot;Caller thread&quot;] --&gt; Async[&quot;AsyncRequest owner&quot;]
+  Caller --&gt; Req[&quot;FileSourceRequest&quot;]
+  Req --&gt; Mailbox[&quot;Mailbox&quot;]
+  Mailbox --&gt; Scheduler[&quot;Scheduler / RunLoop&quot;]
+  Scheduler --&gt; Target[&quot;Target thread actor&quot;]
+  Target --&gt; Callback[&quot;setResponse(Response)&quot;]
+  Callback --&gt; CallerLoop[&quot;Callback bound về requesting thread&quot;]
+  Async --&gt;|destroy/cancel| Cancel[&quot;onCancel&quot;]
+  Cancel --&gt; Target</code></pre></div>
+<p>Các primitive chính:</p>
+<div class="table-wrap"><table><thead><tr><th>Primitive</th><th>Vai trò</th></tr></thead><tbody>
+<tr><td><code>ActorRef&lt;T&gt;</code></td><td>Gọi method của object ở thread/scheduler khác bằng message.</td></tr>
+<tr><td><code>Mailbox</code></td><td>Hàng đợi message, có <code>open</code>, <code>close</code>, <code>abandon</code>, <code>push</code>, <code>receive</code>.</td></tr>
+<tr><td><code>Scheduler</code> / <code>RunLoop</code></td><td>Lịch chạy message, timer, socket watch.</td></tr>
+<tr><td><code>AsyncRequest</code></td><td>Token ownership của request. Hủy token nghĩa là callback không còn cần thiết.</td></tr>
+<tr><td><code>FileSourceRequest</code></td><td>Gói callback response và actor để <code>setResponse</code> an toàn qua thread.</td></tr>
+<tr><td><code>util::Thread&lt;T&gt;</code></td><td>Tạo object T trên thread riêng và expose actor.</td></tr>
+</tbody></table></div>
+<h3 id="event-9-offline-event-graph">9. Offline event graph</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>sequenceDiagram
+  participant SDK as Offline SDK
+  participant DFS as DatabaseFileSource
+  participant DBT as DatabaseFileSourceThread
+  participant DB as OfflineDatabase
+  participant DL as OfflineDownload
+  participant Net as OnlineFileSource
+
+  SDK-&gt;&gt;DFS: create/list/get region
+  DFS-&gt;&gt;DBT: actor invoke
+  DBT-&gt;&gt;DB: SQL operation
+  DB--&gt;&gt;SDK: callback expected/result
+  SDK-&gt;&gt;DFS: setOfflineRegionObserver(region)
+  SDK-&gt;&gt;DFS: setOfflineRegionDownloadState(Active)
+  DBT-&gt;&gt;DL: get/create OfflineDownload
+  DL-&gt;&gt;Net: request style/source/sprite/glyph/tile
+  Net--&gt;&gt;DL: Response
+  DL-&gt;&gt;DB: putRegionResource/putRegionTile
+  DL--&gt;&gt;SDK: OfflineRegionObserver status/error</code></pre></div>
+<p>Offline callbacks chạy từ database/offline machinery; platform SDK chịu trách nhiệm marshal callback về thread phù hợp. Android <code>OfflineRegion</code> tạo observer C++ wrapper rồi gọi Java callback qua JNI.</p>
+<h3 id="event-10-failure-propagation">10. Failure propagation</h3>
+<div class="table-wrap"><table><thead><tr><th>Nguồn lỗi</th><th>Mapping</th><th>Receiver</th></tr></thead><tbody>
+<tr><td>Style parse/load</td><td><code>StyleParseException</code>, <code>StyleLoadException</code>, <code>NotFoundException</code>, generic</td><td><code>MapObserver::onDidFailLoadingMap(MapLoadError, message)</code></td></tr>
+<tr><td>HTTP 404 style/source</td><td><code>Response::Error::NotFound</code></td><td>Requester, sau đó style/tile error</td></tr>
+<tr><td>HTTP 404 tile</td><td><code>Response::noContent = true</code> theo compatibility</td><td>Tile xử lý như tile rỗng</td></tr>
+<tr><td>HTTP 429</td><td><code>Response::Error::RateLimit</code>, <code>retryAfter</code></td><td>Online retry/backoff hoặc requester</td></tr>
+<tr><td>Server 5xx</td><td><code>Response::Error::Server</code></td><td>Online retry/backoff, renderer/resource error</td></tr>
+<tr><td>Render exception</td><td><code>RendererObserver::onRenderError</code></td><td><code>MapObserver::onRenderError</code></td></tr>
+<tr><td>Tile error</td><td><code>RenderSourceObserver::onTileError</code></td><td>Renderer/Map observer</td></tr>
+<tr><td>DB corrupt/not DB</td><td><code>OfflineDatabase::handleError</code>, remove/reinitialize nếu cần</td><td>Log <code>Event::Database</code>, callbacks có exception nếu operation offline</td></tr>
+</tbody></table></div><details class="raw-md"><summary>Nguyên văn Markdown đầy đủ của maplibre-native-event-graph.md</summary><pre># Dependency Mapping - Event graph của `maplibre-native`
+
+Tài liệu này mô tả các luồng event/callback chính trong `maplibre-native`, bao gồm observer ở tầng map/render/style, actor mailbox, async request, tile/glyph/sprite và offline download.
+
+## 1. Bản đồ observer tổng quát
+
+```mermaid
+flowchart TD
+  Transform[&quot;Transform&quot;] --&gt;|TransformObserver| MapImpl[&quot;Map::Impl&quot;]
+  StyleImpl[&quot;style::Style::Impl&quot;] --&gt;|style::Observer| MapImpl
+  Renderer[&quot;Renderer / RenderOrchestrator&quot;] --&gt;|RendererObserver| MapImpl
+  MapImpl --&gt;|MapObserver| SDK[&quot;SDK platform callbacks&quot;]
+  MapImpl --&gt;|ActionJournal| Journal[&quot;ActionJournal tùy chọn&quot;]
+
+  RenderSource[&quot;RenderSource&quot;] --&gt;|RenderSourceObserver| Orchestrator[&quot;RenderOrchestrator&quot;]
+  GlyphManager[&quot;GlyphManager&quot;] --&gt;|GlyphManagerObserver| Orchestrator
+  ImageManager[&quot;ImageManager&quot;] --&gt;|ImageManagerObserver| Orchestrator
+  Orchestrator --&gt;|RendererObserver| Renderer
+  Renderer --&gt; MapImpl
+
+  FileSource[&quot;FileSourceRequest&quot;] --&gt;|Callback(Response)| Requester[&quot;Style / Tile / Glyph / Sprite / Offline&quot;]
+  OfflineDownload[&quot;OfflineDownload&quot;] --&gt;|OfflineRegionObserver| OfflineSDK[&quot;Offline SDK callbacks&quot;]
+```
+
+`Map::Impl` là nút hợp nhất event quan trọng nhất: nó nhận event từ camera/style/renderer rồi chuyển lên `MapObserver` của SDK. `RenderOrchestrator` là nút hợp nhất event của renderer data plane: tile, glyph, image.
+
+## 2. Event catalog
+
+| Event family | Emitter | Interface | Receiver chính | Ý nghĩa |
+|---|---|---|---|---|
+| Camera lifecycle | `Transform` | `TransformObserver` methods trong `Map::Impl` | `MapObserver` | `onCameraWillChange`, `onCameraIsChanging`, `onCameraDidChange` |
+| Style loading | `style::Style::Impl` | `style::Observer` | `Map::Impl` | `onStyleLoading`, `onStyleLoaded`, `onStyleError`, `onUpdate` |
+| Source changed | `style::Source` / style impl | `style::Observer::onSourceChanged` | `Map::Impl` | Runtime source data changed, cần update render |
+| Sprite request/load | Style/sprite loader | `style::Observer` và `MapObserver` | SDK + renderer update | `onSpriteRequested`, `onSpriteLoaded`, `onSpriteError` |
+| Render lifecycle | `Renderer::Impl` | `RendererObserver` | `Map::Impl` | Invalidate, start/end frame/map, render stats |
+| Missing image | `ImageManager` -&gt; `RenderOrchestrator` | `ImageManagerObserver`, `RendererObserver::onStyleImageMissing` | SDK | App có cơ hội add image bị thiếu |
+| Glyph lifecycle | `GlyphManager` -&gt; `RenderOrchestrator` | `GlyphManagerObserver`, `RendererObserver` | SDK | Glyph requested/loaded/error |
+| Tile lifecycle | `RenderSource` -&gt; `RenderOrchestrator` | `RenderSourceObserver`, `RendererObserver::onTileAction` | SDK | Request/load/parse/error/cancel tile |
+| Resource async | File sources | `FileSource::Callback`, `AsyncRequest` | Requester | `Response`, cancellation, unsupported resource |
+| Offline region | `OfflineDownload` | `OfflineRegionObserver` | SDK offline wrapper | Status, response error, tile-count-limit error |
+| Shader lifecycle | `gfx::Context` / renderer | `RendererObserver`, `MapObserver` | SDK | Register/pre/post/fail shader compile |
+
+## 3. Luồng style load
+
+```mermaid
+sequenceDiagram
+  participant SDK
+  participant Map as Map::Impl
+  participant Style as style::Style::Impl
+  participant FS as MainResourceLoader
+  participant R as RendererFrontend
+
+  SDK-&gt;&gt;Style: loadURL(url)
+  Style-&gt;&gt;Map: onStyleLoading()
+  Map-&gt;&gt;SDK: onWillStartLoadingMap()
+  Style-&gt;&gt;FS: request(Resource::Style)
+  FS--&gt;&gt;Style: Callback(Response)
+  alt parse OK
+    Style-&gt;&gt;Map: onStyleLoaded()
+    Map-&gt;&gt;SDK: onDidFinishLoadingStyle()
+    Map-&gt;&gt;R: update(UpdateParameters)
+  else parse/load error
+    Style-&gt;&gt;Map: onStyleError(exception)
+    Map-&gt;&gt;SDK: onDidFailLoadingMap(type, message)
+  end
+```
+
+Các điểm cần chú ý:
+
+| Bước | Dependency | Ghi chú |
+|---|---|---|
+| `onStyleLoading` | Style -&gt; Map -&gt; SDK | Đánh dấu `loading = true`, reset trạng thái renderer fully loaded. |
+| Resource request | Style -&gt; `FileSource` | Có thể đi qua asset/local/cache/network/MBTiles/PMTiles tùy URL. |
+| Parse style | Style conversion + RapidJSON | Lỗi parse chuyển thành `MapLoadError::StyleParseError`. |
+| `onUpdate` | Style -&gt; Map -&gt; RendererFrontend | Không render ở still mode nếu chưa có still-image request. |
+
+## 4. Luồng camera event
+
+```mermaid
+flowchart LR
+  API[&quot;SDK camera API / gesture&quot;] --&gt; Transform
+  Transform --&gt; Will[&quot;Map::Impl::onCameraWillChange&quot;]
+  Transform --&gt; Is[&quot;Map::Impl::onCameraIsChanging&quot;]
+  Transform --&gt; Did[&quot;Map::Impl::onCameraDidChange&quot;]
+  Will --&gt; Observer[&quot;MapObserver&quot;]
+  Is --&gt; Observer
+  Did --&gt; Observer
+  Did --&gt; Update[&quot;Map::Impl::onUpdate&quot;]
+  Update --&gt; RendererFrontend
+```
+
+Camera event có hai lớp tác dụng: callback cho app và render invalidation. Các thay đổi camera làm `TransformState` đổi, từ đó `RenderOrchestrator` cập nhật tile cover, placement, transition và render tree.
+
+## 5. Luồng render frame
+
+```mermaid
+sequenceDiagram
+  participant Map as Map::Impl
+  participant Frontend as RendererFrontend
+  participant Renderer
+  participant Orch as RenderOrchestrator
+  participant SDK as MapObserver
+
+  Map-&gt;&gt;Frontend: update(shared UpdateParameters)
+  Frontend-&gt;&gt;Orch: createRenderTree/update
+  Orch--&gt;&gt;Renderer: RenderTree
+  Renderer-&gt;&gt;SDK: onWillStartRenderingMap/frame qua Map::Impl
+  Renderer-&gt;&gt;Renderer: upload + render passes
+  Renderer-&gt;&gt;Map: onDidFinishRenderingFrame(mode,repaint,placement,stats)
+  Map-&gt;&gt;SDK: onDidFinishRenderingFrame(RenderFrameStatus)
+  alt full render complete
+    Renderer-&gt;&gt;Map: onDidFinishRenderingMap()
+    Map-&gt;&gt;SDK: onDidFinishRenderingMap(Full/Partial)
+  end
+```
+
+`Renderer::Impl` gọi `observer-&gt;onWillStartRenderingMap()` khi `renderState == Never`, gọi `onWillStartRenderingFrame()` mỗi frame, và trả `RenderingStats`. `Map::Impl` chỉ forward frame lifecycle cho SDK trong continuous mode.
+
+## 6. Luồng tile event
+
+```mermaid
+flowchart TD
+  Update[&quot;UpdateParameters&quot;] --&gt; TP[&quot;TileParameters&quot;]
+  TP --&gt; Source[&quot;RenderTileSource / TilePyramid&quot;]
+  Source --&gt; Request[&quot;Tile request Resource::Tile&quot;]
+  Request --&gt; FS[&quot;MainResourceLoader&quot;]
+  FS --&gt; Response[&quot;Response data/error/noContent&quot;]
+  Response --&gt; Tile[&quot;Tile parse/layout&quot;]
+  Tile --&gt; Action[&quot;TileOperation&quot;]
+  Action --&gt; RSO[&quot;RenderSourceObserver&quot;]
+  RSO --&gt; Orch[&quot;RenderOrchestrator&quot;]
+  Orch --&gt; RO[&quot;RendererObserver::onTileAction&quot;]
+  RO --&gt; Map[&quot;Map::Impl&quot;]
+  Map --&gt; SDK[&quot;MapObserver::onTileAction&quot;]
+```
+
+`TileOperation` được bridge lên platform. Darwin có enum `MLNTileOperation` tương ứng: requested from cache/network, load from cache/network, start/end parse, error, cancelled, null op. Android bridge nằm ở `platform/android/MapLibreAndroid/src/cpp/tile/tile_operation.cpp`.
+
+## 7. Luồng glyph và sprite/image
+
+| Luồng | Chuỗi event | Điểm cần nhớ |
+|---|---|---|
+| Glyph request | `RenderOrchestrator` cập nhật `GlyphManager` URL/font faces -&gt; `GlyphManager` request `Resource::Glyphs` -&gt; `onGlyphsRequested` -&gt; response parse -&gt; `onGlyphsLoaded` hoặc `onGlyphsError` | Glyph event được forward qua `RendererObserver` rồi `MapObserver`. |
+| Sprite load | Style parse có sprite URL -&gt; request sprite JSON/image -&gt; `onSpriteRequested` -&gt; `onSpriteLoaded` hoặc `onSpriteError` | Sprite state (`spriteLoaded`) đi vào `UpdateParameters`. |
+| Missing style image | Symbol/layout cần image chưa có -&gt; `ImageManagerObserver::onStyleImageMissing` -&gt; `RendererObserver::onStyleImageMissing(id, done)` -&gt; SDK add image rồi gọi done | Callback `done` quan trọng để render tiếp, default implementation gọi ngay. |
+| Remove unused images | `ImageManager` phát danh sách image không dùng | SDK có thể giữ lại bằng `MapObserver::onCanRemoveUnusedStyleImage`. |
+
+## 8. Actor, mailbox và async request
+
+```mermaid
+flowchart LR
+  Caller[&quot;Caller thread&quot;] --&gt; Async[&quot;AsyncRequest owner&quot;]
+  Caller --&gt; Req[&quot;FileSourceRequest&quot;]
+  Req --&gt; Mailbox[&quot;Mailbox&quot;]
+  Mailbox --&gt; Scheduler[&quot;Scheduler / RunLoop&quot;]
+  Scheduler --&gt; Target[&quot;Target thread actor&quot;]
+  Target --&gt; Callback[&quot;setResponse(Response)&quot;]
+  Callback --&gt; CallerLoop[&quot;Callback bound về requesting thread&quot;]
+  Async --&gt;|destroy/cancel| Cancel[&quot;onCancel&quot;]
+  Cancel --&gt; Target
+```
+
+Các primitive chính:
+
+| Primitive | Vai trò |
+|---|---|
+| `ActorRef&lt;T&gt;` | Gọi method của object ở thread/scheduler khác bằng message. |
+| `Mailbox` | Hàng đợi message, có `open`, `close`, `abandon`, `push`, `receive`. |
+| `Scheduler` / `RunLoop` | Lịch chạy message, timer, socket watch. |
+| `AsyncRequest` | Token ownership của request. Hủy token nghĩa là callback không còn cần thiết. |
+| `FileSourceRequest` | Gói callback response và actor để `setResponse` an toàn qua thread. |
+| `util::Thread&lt;T&gt;` | Tạo object T trên thread riêng và expose actor. |
+
+## 9. Offline event graph
+
+```mermaid
+sequenceDiagram
+  participant SDK as Offline SDK
+  participant DFS as DatabaseFileSource
+  participant DBT as DatabaseFileSourceThread
+  participant DB as OfflineDatabase
+  participant DL as OfflineDownload
+  participant Net as OnlineFileSource
+
+  SDK-&gt;&gt;DFS: create/list/get region
+  DFS-&gt;&gt;DBT: actor invoke
+  DBT-&gt;&gt;DB: SQL operation
+  DB--&gt;&gt;SDK: callback expected/result
+  SDK-&gt;&gt;DFS: setOfflineRegionObserver(region)
+  SDK-&gt;&gt;DFS: setOfflineRegionDownloadState(Active)
+  DBT-&gt;&gt;DL: get/create OfflineDownload
+  DL-&gt;&gt;Net: request style/source/sprite/glyph/tile
+  Net--&gt;&gt;DL: Response
+  DL-&gt;&gt;DB: putRegionResource/putRegionTile
+  DL--&gt;&gt;SDK: OfflineRegionObserver status/error
+```
+
+Offline callbacks chạy từ database/offline machinery; platform SDK chịu trách nhiệm marshal callback về thread phù hợp. Android `OfflineRegion` tạo observer C++ wrapper rồi gọi Java callback qua JNI.
+
+## 10. Failure propagation
+
+| Nguồn lỗi | Mapping | Receiver |
+|---|---|---|
+| Style parse/load | `StyleParseException`, `StyleLoadException`, `NotFoundException`, generic | `MapObserver::onDidFailLoadingMap(MapLoadError, message)` |
+| HTTP 404 style/source | `Response::Error::NotFound` | Requester, sau đó style/tile error |
+| HTTP 404 tile | `Response::noContent = true` theo compatibility | Tile xử lý như tile rỗng |
+| HTTP 429 | `Response::Error::RateLimit`, `retryAfter` | Online retry/backoff hoặc requester |
+| Server 5xx | `Response::Error::Server` | Online retry/backoff, renderer/resource error |
+| Render exception | `RendererObserver::onRenderError` | `MapObserver::onRenderError` |
+| Tile error | `RenderSourceObserver::onTileError` | Renderer/Map observer |
+| DB corrupt/not DB | `OfflineDatabase::handleError`, remove/reinitialize nếu cần | Log `Event::Database`, callbacks có exception nếu operation offline |
+
+</pre></details></div></section><section id="db"><div class="doc-meta"><span class="pill">DB Dependency</span><span class="pill">300 dòng Markdown</span><span class="pill">Render đầy đủ + nguyên văn</span></div><div class="doc-body"><h2 id="db-dependency-mapping---db-dependency-của-maplibre-native">Dependency Mapping - DB dependency của <code>maplibre-native</code></h2>
+<p>Tài liệu này mô tả dependency dữ liệu SQLite/offline/cache trong <code>maplibre-native</code>, tập trung vào <code>DatabaseFileSource</code>, <code>OfflineDatabase</code>, <code>OfflineDownload</code>, schema và lifecycle cache/offline.</p>
+<h3 id="db-1-bản-đồ-db-runtime">1. Bản đồ DB runtime</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart TD
+  Requester[&quot;Style / Tile / Glyph / Sprite requester&quot;] --&gt; MRL[&quot;MainResourceLoader&quot;]
+  MRL --&gt;|cache-capable request| DFS[&quot;DatabaseFileSource&quot;]
+  DFS --&gt; DBThread[&quot;DatabaseFileSourceThread&quot;]
+  DBThread --&gt; ODB[&quot;OfflineDatabase&quot;]
+  ODB --&gt; SQLite[&quot;mapbox::sqlite::Database&quot;]
+  SQLite --&gt; Tables[&quot;resources, tiles, regions,&lt;br/&gt;region_resources, region_tiles&quot;]
+
+  MRL --&gt;|network fallback| Online[&quot;OnlineFileSource&quot;]
+  Online --&gt; HTTP[&quot;HTTPFileSource&quot;]
+  HTTP --&gt; Response[&quot;Response&quot;]
+  Response --&gt;|forward| DFS
+  DFS --&gt;|put| ODB
+
+  OfflineAPI[&quot;OfflineManager / SDK&quot;] --&gt; DFS
+  DFS --&gt; Downloads[&quot;OfflineDownload map&quot;]
+  Downloads --&gt; Online
+  Downloads --&gt; ODB
+  Downloads --&gt; Observer[&quot;OfflineRegionObserver&quot;]</code></pre></div>
+<p><code>DatabaseFileSource</code> là adapter async public cho DB. <code>OfflineDatabase</code> là implementation SQLite thực tế. <code>MainResourceLoader</code> dùng <code>DatabaseFileSource</code> cho ambient cache và dùng <code>forward()</code> để ghi response network vào DB. Offline region API cũng đi qua <code>DatabaseFileSource</code>.</p>
+<h3 id="db-2-thành-phần-chính">2. Thành phần chính</h3>
+<div class="table-wrap"><table><thead><tr><th>Thành phần</th><th>Source</th><th>Vai trò</th><th>Dependency</th></tr></thead><tbody>
+<tr><td><code>DatabaseFileSource</code></td><td><code>include/mbgl/storage/database_file_source.hpp</code>, <code>platform/default/src/mbgl/storage/database_file_source.cpp</code></td><td>FileSource cache/offline, exposes ambient cache + offline region API</td><td><code>DatabaseFileSourceThread</code>, <code>FileSourceManager::Network</code></td></tr>
+<tr><td><code>DatabaseFileSourceThread</code></td><td><code>database_file_source.cpp</code></td><td>Sở hữu <code>OfflineDatabase</code>, map <code>downloads</code>, chạy DB operation</td><td><code>OfflineDatabase</code>, <code>OfflineDownload</code>, <code>OnlineFileSource</code></td></tr>
+<tr><td><code>OfflineDatabase</code></td><td><code>platform/default/include/mbgl/storage/offline_database.hpp</code>, <code>platform/default/src/mbgl/storage/offline_database.cpp</code></td><td>SQLite schema, migration, get/put resource/tile, eviction, regions</td><td><code>mapbox::sqlite</code>, compression, tile server options</td></tr>
+<tr><td><code>OfflineDownload</code></td><td><code>platform/default/include/mbgl/storage/offline_download.hpp</code>, <code>platform/default/src/mbgl/storage/offline_download.cpp</code></td><td>Resolve resources của region và tải xuống</td><td><code>OfflineDatabase</code>, <code>FileSource</code>, <code>OfflineRegionObserver</code></td></tr>
+<tr><td>SQLite wrapper</td><td><code>platform/default/include/mbgl/storage/sqlite3.hpp</code>, <code>platform/default/src/mbgl/storage/sqlite3.cpp</code></td><td>Thin wrapper trên SQLite C API</td><td><code>vendor/sqlite</code></td></tr>
+<tr><td>MBTiles DB</td><td><code>platform/default/src/mbgl/storage/mbtiles_file_source.cpp</code></td><td>Đọc SQLite <code>.mbtiles</code> riêng, không dùng offline schema</td><td><code>mapbox::sqlite</code></td></tr>
+</tbody></table></div>
+<h3 id="db-3-schema-dependency">3. Schema dependency</h3>
+<p>Schema chính nằm ở <code>platform/default/include/mbgl/storage/offline_schema.sql</code>.</p>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>erDiagram
+  resources {
+    integer id PK
+    text url UK
+    integer kind
+    integer expires
+    integer modified
+    text etag
+    blob data
+    integer compressed
+    integer accessed
+    integer must_revalidate
+  }
+
+  tiles {
+    integer id PK
+    text url_template
+    integer pixel_ratio
+    integer z
+    integer x
+    integer y
+    integer expires
+    integer modified
+    text etag
+    blob data
+    integer compressed
+    integer accessed
+    integer must_revalidate
+  }
+
+  regions {
+    integer id PK
+    text definition
+    blob description
+  }
+
+  region_resources {
+    integer region_id FK
+    integer resource_id FK
+  }
+
+  region_tiles {
+    integer region_id FK
+    integer tile_id FK
+  }
+
+  regions ||--o{ region_resources : owns
+  resources ||--o{ region_resources : included_by
+  regions ||--o{ region_tiles : owns
+  tiles ||--o{ region_tiles : included_by</code></pre></div>
+<h4 id="db-31-resources">3.1 <code>resources</code></h4>
+<p>Chứa mọi resource không phải tile: style, source TileJSON, glyphs, sprite image, sprite JSON, image. Khóa unique là <code>url</code>.</p>
+<div class="table-wrap"><table><thead><tr><th>Cột</th><th>Ý nghĩa</th></tr></thead><tbody>
+<tr><td><code>kind</code></td><td>Mapping từ <code>Resource::Kind</code>: Style=1, Source=2, Tile=3, Glyphs=4, SpriteImage=5, SpriteJSON=6, Image=7.</td></tr>
+<tr><td><code>expires</code>, <code>modified</code>, <code>etag</code></td><td>Metadata HTTP cache validation.</td></tr>
+<tr><td><code>must_revalidate</code></td><td>Nếu true, resource không được dùng trước khi revalidate server.</td></tr>
+<tr><td><code>data</code>, <code>compressed</code></td><td>Blob có thể được deflate nếu lợi về kích thước.</td></tr>
+<tr><td><code>accessed</code></td><td>LRU eviction cho ambient cache.</td></tr>
+</tbody></table></div>
+<h4 id="db-32-tiles">3.2 <code>tiles</code></h4>
+<p>Chứa vector/raster/DEM tiles. Khóa unique là <code>(url_template, pixel_ratio, z, x, y)</code>, không phải URL đã substitute.</p>
+<div class="table-wrap"><table><thead><tr><th>Cột</th><th>Ý nghĩa</th></tr></thead><tbody>
+<tr><td><code>url_template</code></td><td>Template chưa thay <code>{z}/{x}/{y}</code>; giúp canonical cache key ổn định.</td></tr>
+<tr><td><code>pixel_ratio</code></td><td>1 hoặc 2 tùy <code>{ratio}</code> và device pixel ratio.</td></tr>
+<tr><td><code>z/x/y</code></td><td>Tile coordinate đã xử lý scheme trong <code>Resource::tile</code>.</td></tr>
+<tr><td><code>expires</code>, <code>modified</code>, <code>etag</code>, <code>must_revalidate</code></td><td>HTTP cache validation giống <code>resources</code>.</td></tr>
+<tr><td><code>accessed</code></td><td>LRU eviction.</td></tr>
+</tbody></table></div>
+<h4 id="db-33-regions-regionresources-regiontiles">3.3 <code>regions</code>, <code>region_resources</code>, <code>region_tiles</code></h4>
+<p><code>regions.definition</code> là JSON định nghĩa offline region: bounding box hoặc GeoJSON geometry, style URL, zoom range, pixel ratio, include ideographs. <code>region_resources</code> và <code>region_tiles</code> nối nhiều-nhiều để các region chồng lấn chia sẻ data. Resource/tile không thuộc region nào được xem là ambient cache.</p>
+<h3 id="db-4-lifecycle-db-và-migration">4. Lifecycle DB và migration</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart TD
+  Open[&quot;OfflineDatabase(path, TileServerOptions)&quot;] --&gt; Init[&quot;initialize()&quot;]
+  Init --&gt; Mode{&quot;readOnly?&quot;}
+  Mode --&gt;|yes| RO[&quot;open ReadOnly&lt;br/&gt;PRAGMA foreign_keys=ON&quot;]
+  Mode --&gt;|no| RW[&quot;open ReadWriteCreate&lt;br/&gt;busy timeout, foreign keys&quot;]
+  RW --&gt; Version[&quot;PRAGMA user_version&quot;]
+  Version --&gt; V0[&quot;0/1: drop old http_cache,&lt;br/&gt;create schema, user_version=6&quot;]
+  Version --&gt; V2[&quot;2: migrateToVersion3&quot;]
+  V2 --&gt; V5[&quot;migrateToVersion5&quot;]
+  Version --&gt; V4[&quot;4: migrateToVersion5&quot;]
+  V4 --&gt; V6[&quot;migrateToVersion6&quot;]
+  V5 --&gt; V6
+  Version --&gt; OK[&quot;6: ready&quot;]
+  Version --&gt; Bad[&quot;unknown/downgrade: removeExisting + initialize&quot;]</code></pre></div>
+<p>Các pragma quan trọng:</p>
+<div class="table-wrap"><table><thead><tr><th>PRAGMA / mode</th><th>Tác dụng</th></tr></thead><tbody>
+<tr><td><code>foreign_keys = ON</code></td><td>Bảo toàn cascade/delete relation giữa region và join tables.</td></tr>
+<tr><td><code>journal_mode = DELETE</code></td><td>Schema version hiện tại dùng DELETE journal.</td></tr>
+<tr><td><code>synchronous = FULL</code></td><td>Ưu tiên an toàn dữ liệu.</td></tr>
+<tr><td><code>auto_vacuum = INCREMENTAL</code></td><td>Cho phép reclaim disk space từng phần.</td></tr>
+<tr><td><code>user_version = 6</code></td><td>Version schema hiện hành theo code.</td></tr>
+</tbody></table></div>
+<h3 id="db-5-read-path-cache-lookup">5. Read path: cache lookup</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>sequenceDiagram
+  participant MRL as MainResourceLoader
+  participant DFS as DatabaseFileSource
+  participant DBT as DB thread
+  participant DB as OfflineDatabase
+
+  MRL-&gt;&gt;DFS: request(Resource)
+  DFS-&gt;&gt;DBT: actor request(resource)
+  DBT-&gt;&gt;DB: get(resource)
+  alt storagePolicy == Volatile
+    DBT--&gt;&gt;MRL: noContent NotFound
+  else Tile
+    DB-&gt;&gt;DB: getTile(url_template,pixel_ratio,z,x,y)
+    DB--&gt;&gt;DBT: Response + size
+  else Resource
+    DB-&gt;&gt;DB: getResource(url)
+    DB--&gt;&gt;DBT: Response + size
+  end
+  DBT--&gt;&gt;MRL: Response</code></pre></div>
+<p>Read behavior:</p>
+<div class="table-wrap"><table><thead><tr><th>Điều kiện</th><th>Hành vi</th></tr></thead><tbody>
+<tr><td><code>Resource::StoragePolicy::Volatile</code></td><td>Bỏ qua DB, trả not found/noContent.</td></tr>
+<tr><td>DB disabled</td><td>Nếu <code>maximumAmbientCacheSize == 0</code> và không có offline region, DB coi như disabled.</td></tr>
+<tr><td>Cache hit usable</td><td>Có thể trả response ngay cho caller.</td></tr>
+<tr><td>Cache hit stale nhưng usable</td><td><code>MainResourceLoader</code> trả data stale trước, rồi revalidate network priority low.</td></tr>
+<tr><td>Cache hit unusable/must revalidate</td><td>Không trả data; dùng prior metadata/data cho network conditional request.</td></tr>
+<tr><td>Cache miss</td><td>Network fallback nếu <code>Resource::LoadingMethod</code> cho phép network.</td></tr>
+</tbody></table></div>
+<h3 id="db-6-write-path-network-response-vào-cache">6. Write path: network response vào cache</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>sequenceDiagram
+  participant Online as OnlineFileSource
+  participant MRL as MainResourceLoader
+  participant DFS as DatabaseFileSource
+  participant DB as OfflineDatabase
+
+  Online--&gt;&gt;MRL: Response
+  MRL-&gt;&gt;DFS: forward(resource,response)
+  DFS-&gt;&gt;DB: put(resource,response)
+  DB-&gt;&gt;DB: compress if useful
+  DB-&gt;&gt;DB: evict(size) nếu cần
+  alt response.notModified
+    DB-&gt;&gt;DB: update expires/must_revalidate/accessed
+  else Tile
+    DB-&gt;&gt;DB: update/insert tiles
+  else Resource
+    DB-&gt;&gt;DB: update/insert resources
+  end</code></pre></div>
+<p>Write rules:</p>
+<div class="table-wrap"><table><thead><tr><th>Rule</th><th>Ý nghĩa</th></tr></thead><tbody>
+<tr><td>Không ghi <code>response.error</code></td><td>Error response không cache.</td></tr>
+<tr><td>Không ghi <code>StoragePolicy::Volatile</code></td><td><code>DatabaseFileSource::forward</code> return sớm.</td></tr>
+<tr><td>Read-only mode</td><td><code>OfflineDatabase::put</code> không ghi.</td></tr>
+<tr><td>Compression tùy lợi ích</td><td><code>util::compress</code>, chỉ đánh dấu compressed nếu nhỏ hơn original.</td></tr>
+<tr><td><code>notModified</code></td><td>Chỉ update <code>expires</code>, <code>must_revalidate</code>, <code>accessed</code>, giữ data cũ.</td></tr>
+<tr><td>Eviction trước insert</td><td>DB cố tạo chỗ dựa trên maximum ambient cache size và offline usage.</td></tr>
+</tbody></table></div>
+<h3 id="db-7-ambient-cache-vs-offline-region">7. Ambient cache vs offline region</h3>
+<div class="table-wrap"><table><thead><tr><th>Loại dữ liệu</th><th>Nhận diện</th><th>Eviction/clear/invalidate</th></tr></thead><tbody>
+<tr><td>Ambient cache</td><td><code>resources</code>/<code>tiles</code> không xuất hiện trong <code>region_resources</code>/<code>region_tiles</code></td><td>Có thể bị clear/evict/invalidate bởi ambient cache APIs.</td></tr>
+<tr><td>Offline region data</td><td>Có row join với <code>region_resources</code> hoặc <code>region_tiles</code></td><td>Không bị ambient clear/invalidate; chỉ bị ảnh hưởng khi xóa region và không region khác cần nữa.</td></tr>
+<tr><td>Shared region data</td><td>Một resource/tile thuộc nhiều region</td><td>Xóa một region không xóa data nếu region khác còn reference.</td></tr>
+</tbody></table></div>
+<p>Ambient APIs trên <code>DatabaseFileSource</code>:</p>
+<div class="table-wrap"><table><thead><tr><th>API</th><th>Operation</th></tr></thead><tbody>
+<tr><td><code>put</code></td><td>Insert resource/tile vào ambient cache.</td></tr>
+<tr><td><code>invalidateAmbientCache</code></td><td>Set <code>expires = 0</code>, <code>must_revalidate = 1</code> cho data không thuộc region.</td></tr>
+<tr><td><code>clearAmbientCache</code></td><td>Delete data không thuộc region.</td></tr>
+<tr><td><code>setMaximumAmbientCacheSize</code></td><td>Đặt giới hạn byte; region offline chiếm trước dung lượng.</td></tr>
+<tr><td><code>resetDatabase</code></td><td>Xóa/reinitialize DB.</td></tr>
+<tr><td><code>packDatabase</code></td><td>Vacuum/incremental vacuum để thu hồi disk.</td></tr>
+<tr><td><code>runPackDatabaseAutomatically</code></td><td>Bật/tắt vacuum tự động sau clear/delete.</td></tr>
+</tbody></table></div>
+<h3 id="db-8-offline-region-lifecycle">8. Offline region lifecycle</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart TD
+  Create[&quot;createOfflineRegion(definition, metadata)&quot;] --&gt; Region[&quot;regions row&quot;]
+  Region --&gt; Observer[&quot;setOfflineRegionObserver&quot;]
+  Observer --&gt; Active[&quot;setOfflineRegionDownloadState(Active)&quot;]
+  Active --&gt; Download[&quot;OfflineDownload&quot;]
+  Download --&gt; Style[&quot;Download style&quot;]
+  Style --&gt; Resources[&quot;Resolve source, sprite, glyphs, images&quot;]
+  Resources --&gt; Tiles[&quot;Compute/download covering tiles&quot;]
+  Tiles --&gt; Put[&quot;putRegionResource / putRegionTile&quot;]
+  Put --&gt; Status[&quot;OfflineRegionStatus&quot;]
+  Status --&gt; Complete{&quot;complete?&quot;}
+  Complete --&gt;|no| Download
+  Complete --&gt;|yes| Done[&quot;Observer status complete&quot;]</code></pre></div>
+<p>Offline operation API:</p>
+<div class="table-wrap"><table><thead><tr><th>API</th><th>Dependency</th></tr></thead><tbody>
+<tr><td><code>listOfflineRegions</code></td><td>SELECT <code>regions</code>, deserialize definition/metadata.</td></tr>
+<tr><td><code>getOfflineRegion</code></td><td>SELECT one region.</td></tr>
+<tr><td><code>createOfflineRegion</code></td><td>INSERT <code>regions</code>, region inactive ban đầu.</td></tr>
+<tr><td><code>setOfflineRegionObserver</code></td><td>Gắn observer vào <code>OfflineDownload</code> nếu tạo được.</td></tr>
+<tr><td><code>setOfflineRegionDownloadState</code></td><td>Active/inactive download.</td></tr>
+<tr><td><code>getOfflineRegionStatus</code></td><td>Nếu download đang tồn tại, hỏi <code>OfflineDownload</code>; nếu không, compute từ DB.</td></tr>
+<tr><td><code>invalidateOfflineRegion</code></td><td>Force revalidate tiles/resources của region.</td></tr>
+<tr><td><code>deleteOfflineRegion</code></td><td>Delete region, xóa join rows cascade, evict data không còn region nào cần.</td></tr>
+<tr><td><code>mergeOfflineRegions</code></td><td>Merge DB phụ, có thể migrate DB phụ in-place.</td></tr>
+</tbody></table></div>
+<h3 id="db-9-db-dependency-với-http-cache-semantics">9. DB dependency với HTTP cache semantics</h3>
+<div class="table-wrap"><table><thead><tr><th>Field trong <code>Resource</code></th><th>Field trong <code>Response</code></th><th>DB field</th><th>Hành vi</th></tr></thead><tbody>
+<tr><td><code>priorModified</code></td><td><code>modified</code></td><td><code>modified</code></td><td>Dùng <code>If-Modified-Since</code> khi request network.</td></tr>
+<tr><td><code>priorEtag</code></td><td><code>etag</code></td><td><code>etag</code></td><td>Dùng <code>If-None-Match</code>; 304 update expiry.</td></tr>
+<tr><td><code>priorExpires</code></td><td><code>expires</code></td><td><code>expires</code></td><td>Quyết định fresh/stale.</td></tr>
+<tr><td><code>priorData</code></td><td><code>data</code></td><td><code>data</code></td><td>Dùng khi network trả 304 hoặc cần giữ data cũ.</td></tr>
+<tr><td><code>minimumUpdateInterval</code></td><td><code>expires</code></td><td>Không lưu riêng</td><td>Online request delay/retry policy.</td></tr>
+<tr><td><code>storagePolicy</code></td><td>n/a</td><td>n/a</td><td><code>Volatile</code> không lưu DB.</td></tr>
+<tr><td><code>loadingMethod</code></td><td>n/a</td><td>n/a</td><td>Cho phép cache-only/network-only/all.</td></tr>
+</tbody></table></div>
+<h3 id="db-10-rủi-ro-và-điểm-cần-kiểm-soát">10. Rủi ro và điểm cần kiểm soát</h3>
+<div class="table-wrap"><table><thead><tr><th>Rủi ro</th><th>Tác động</th><th>Vùng code cần xem</th></tr></thead><tbody>
+<tr><td>Lẫn ambient cache với offline data</td><td>Xóa nhầm offline resource hoặc cache không được clear</td><td><code>OfflineDatabase::clearAmbientCache</code>, join tables</td></tr>
+<tr><td><code>must_revalidate</code> xử lý sai</td><td>Render stale data khi server yêu cầu revalidate, hoặc không dùng cache được</td><td><code>Response::isUsable</code>, <code>MainResourceLoader</code> cache fallback</td></tr>
+<tr><td>Read-only mode</td><td>Offline/cache APIs ghi silently fail hoặc throw nếu modify</td><td><code>OfflineDatabase::checkFlags</code>, <code>DatabaseFileSource::setProperty(READ_ONLY_MODE_KEY)</code></td></tr>
+<tr><td>DB corrupt/moved</td><td>Xóa DB và reinitialize có thể làm mất cache/offline package</td><td><code>OfflineDatabase::handleError/removeExisting</code></td></tr>
+<tr><td>Eviction dưới offline quota</td><td>Ambient cache thực tế nhỏ hơn <code>maximumAmbientCacheSize</code> nếu offline data chiếm nhiều</td><td>eviction + <code>setMaximumAmbientCacheSize</code></td></tr>
+<tr><td>Compression/decompression</td><td>CPU overhead, lỗi corrupt blob</td><td><code>util::compress/decompress</code>, <code>getResource/getTile</code></td></tr>
+<tr><td>Merge side database</td><td>Cần write access để migrate DB phụ; tile count limit có thể fail</td><td><code>mergeOfflineRegions</code>, <code>MapboxTileLimitExceededException</code></td></tr>
+</tbody></table></div><details class="raw-md"><summary>Nguyên văn Markdown đầy đủ của maplibre-native-db-dependency.md</summary><pre># Dependency Mapping - DB dependency của `maplibre-native`
+
+Tài liệu này mô tả dependency dữ liệu SQLite/offline/cache trong `maplibre-native`, tập trung vào `DatabaseFileSource`, `OfflineDatabase`, `OfflineDownload`, schema và lifecycle cache/offline.
+
+## 1. Bản đồ DB runtime
+
+```mermaid
+flowchart TD
+  Requester[&quot;Style / Tile / Glyph / Sprite requester&quot;] --&gt; MRL[&quot;MainResourceLoader&quot;]
+  MRL --&gt;|cache-capable request| DFS[&quot;DatabaseFileSource&quot;]
+  DFS --&gt; DBThread[&quot;DatabaseFileSourceThread&quot;]
+  DBThread --&gt; ODB[&quot;OfflineDatabase&quot;]
+  ODB --&gt; SQLite[&quot;mapbox::sqlite::Database&quot;]
+  SQLite --&gt; Tables[&quot;resources, tiles, regions,&lt;br/&gt;region_resources, region_tiles&quot;]
+
+  MRL --&gt;|network fallback| Online[&quot;OnlineFileSource&quot;]
+  Online --&gt; HTTP[&quot;HTTPFileSource&quot;]
+  HTTP --&gt; Response[&quot;Response&quot;]
+  Response --&gt;|forward| DFS
+  DFS --&gt;|put| ODB
+
+  OfflineAPI[&quot;OfflineManager / SDK&quot;] --&gt; DFS
+  DFS --&gt; Downloads[&quot;OfflineDownload map&quot;]
+  Downloads --&gt; Online
+  Downloads --&gt; ODB
+  Downloads --&gt; Observer[&quot;OfflineRegionObserver&quot;]
+```
+
+`DatabaseFileSource` là adapter async public cho DB. `OfflineDatabase` là implementation SQLite thực tế. `MainResourceLoader` dùng `DatabaseFileSource` cho ambient cache và dùng `forward()` để ghi response network vào DB. Offline region API cũng đi qua `DatabaseFileSource`.
+
+## 2. Thành phần chính
+
+| Thành phần | Source | Vai trò | Dependency |
+|---|---|---|---|
+| `DatabaseFileSource` | `include/mbgl/storage/database_file_source.hpp`, `platform/default/src/mbgl/storage/database_file_source.cpp` | FileSource cache/offline, exposes ambient cache + offline region API | `DatabaseFileSourceThread`, `FileSourceManager::Network` |
+| `DatabaseFileSourceThread` | `database_file_source.cpp` | Sở hữu `OfflineDatabase`, map `downloads`, chạy DB operation | `OfflineDatabase`, `OfflineDownload`, `OnlineFileSource` |
+| `OfflineDatabase` | `platform/default/include/mbgl/storage/offline_database.hpp`, `platform/default/src/mbgl/storage/offline_database.cpp` | SQLite schema, migration, get/put resource/tile, eviction, regions | `mapbox::sqlite`, compression, tile server options |
+| `OfflineDownload` | `platform/default/include/mbgl/storage/offline_download.hpp`, `platform/default/src/mbgl/storage/offline_download.cpp` | Resolve resources của region và tải xuống | `OfflineDatabase`, `FileSource`, `OfflineRegionObserver` |
+| SQLite wrapper | `platform/default/include/mbgl/storage/sqlite3.hpp`, `platform/default/src/mbgl/storage/sqlite3.cpp` | Thin wrapper trên SQLite C API | `vendor/sqlite` |
+| MBTiles DB | `platform/default/src/mbgl/storage/mbtiles_file_source.cpp` | Đọc SQLite `.mbtiles` riêng, không dùng offline schema | `mapbox::sqlite` |
+
+## 3. Schema dependency
+
+Schema chính nằm ở `platform/default/include/mbgl/storage/offline_schema.sql`.
+
+```mermaid
+erDiagram
+  resources {
+    integer id PK
+    text url UK
+    integer kind
+    integer expires
+    integer modified
+    text etag
+    blob data
+    integer compressed
+    integer accessed
+    integer must_revalidate
+  }
+
+  tiles {
+    integer id PK
+    text url_template
+    integer pixel_ratio
+    integer z
+    integer x
+    integer y
+    integer expires
+    integer modified
+    text etag
+    blob data
+    integer compressed
+    integer accessed
+    integer must_revalidate
+  }
+
+  regions {
+    integer id PK
+    text definition
+    blob description
+  }
+
+  region_resources {
+    integer region_id FK
+    integer resource_id FK
+  }
+
+  region_tiles {
+    integer region_id FK
+    integer tile_id FK
+  }
+
+  regions ||--o{ region_resources : owns
+  resources ||--o{ region_resources : included_by
+  regions ||--o{ region_tiles : owns
+  tiles ||--o{ region_tiles : included_by
+```
+
+### 3.1 `resources`
+
+Chứa mọi resource không phải tile: style, source TileJSON, glyphs, sprite image, sprite JSON, image. Khóa unique là `url`.
+
+| Cột | Ý nghĩa |
+|---|---|
+| `kind` | Mapping từ `Resource::Kind`: Style=1, Source=2, Tile=3, Glyphs=4, SpriteImage=5, SpriteJSON=6, Image=7. |
+| `expires`, `modified`, `etag` | Metadata HTTP cache validation. |
+| `must_revalidate` | Nếu true, resource không được dùng trước khi revalidate server. |
+| `data`, `compressed` | Blob có thể được deflate nếu lợi về kích thước. |
+| `accessed` | LRU eviction cho ambient cache. |
+
+### 3.2 `tiles`
+
+Chứa vector/raster/DEM tiles. Khóa unique là `(url_template, pixel_ratio, z, x, y)`, không phải URL đã substitute.
+
+| Cột | Ý nghĩa |
+|---|---|
+| `url_template` | Template chưa thay `{z}/{x}/{y}`; giúp canonical cache key ổn định. |
+| `pixel_ratio` | 1 hoặc 2 tùy `{ratio}` và device pixel ratio. |
+| `z/x/y` | Tile coordinate đã xử lý scheme trong `Resource::tile`. |
+| `expires`, `modified`, `etag`, `must_revalidate` | HTTP cache validation giống `resources`. |
+| `accessed` | LRU eviction. |
+
+### 3.3 `regions`, `region_resources`, `region_tiles`
+
+`regions.definition` là JSON định nghĩa offline region: bounding box hoặc GeoJSON geometry, style URL, zoom range, pixel ratio, include ideographs. `region_resources` và `region_tiles` nối nhiều-nhiều để các region chồng lấn chia sẻ data. Resource/tile không thuộc region nào được xem là ambient cache.
+
+## 4. Lifecycle DB và migration
+
+```mermaid
+flowchart TD
+  Open[&quot;OfflineDatabase(path, TileServerOptions)&quot;] --&gt; Init[&quot;initialize()&quot;]
+  Init --&gt; Mode{&quot;readOnly?&quot;}
+  Mode --&gt;|yes| RO[&quot;open ReadOnly&lt;br/&gt;PRAGMA foreign_keys=ON&quot;]
+  Mode --&gt;|no| RW[&quot;open ReadWriteCreate&lt;br/&gt;busy timeout, foreign keys&quot;]
+  RW --&gt; Version[&quot;PRAGMA user_version&quot;]
+  Version --&gt; V0[&quot;0/1: drop old http_cache,&lt;br/&gt;create schema, user_version=6&quot;]
+  Version --&gt; V2[&quot;2: migrateToVersion3&quot;]
+  V2 --&gt; V5[&quot;migrateToVersion5&quot;]
+  Version --&gt; V4[&quot;4: migrateToVersion5&quot;]
+  V4 --&gt; V6[&quot;migrateToVersion6&quot;]
+  V5 --&gt; V6
+  Version --&gt; OK[&quot;6: ready&quot;]
+  Version --&gt; Bad[&quot;unknown/downgrade: removeExisting + initialize&quot;]
+```
+
+Các pragma quan trọng:
+
+| PRAGMA / mode | Tác dụng |
+|---|---|
+| `foreign_keys = ON` | Bảo toàn cascade/delete relation giữa region và join tables. |
+| `journal_mode = DELETE` | Schema version hiện tại dùng DELETE journal. |
+| `synchronous = FULL` | Ưu tiên an toàn dữ liệu. |
+| `auto_vacuum = INCREMENTAL` | Cho phép reclaim disk space từng phần. |
+| `user_version = 6` | Version schema hiện hành theo code. |
+
+## 5. Read path: cache lookup
+
+```mermaid
+sequenceDiagram
+  participant MRL as MainResourceLoader
+  participant DFS as DatabaseFileSource
+  participant DBT as DB thread
+  participant DB as OfflineDatabase
+
+  MRL-&gt;&gt;DFS: request(Resource)
+  DFS-&gt;&gt;DBT: actor request(resource)
+  DBT-&gt;&gt;DB: get(resource)
+  alt storagePolicy == Volatile
+    DBT--&gt;&gt;MRL: noContent NotFound
+  else Tile
+    DB-&gt;&gt;DB: getTile(url_template,pixel_ratio,z,x,y)
+    DB--&gt;&gt;DBT: Response + size
+  else Resource
+    DB-&gt;&gt;DB: getResource(url)
+    DB--&gt;&gt;DBT: Response + size
+  end
+  DBT--&gt;&gt;MRL: Response
+```
+
+Read behavior:
+
+| Điều kiện | Hành vi |
+|---|---|
+| `Resource::StoragePolicy::Volatile` | Bỏ qua DB, trả not found/noContent. |
+| DB disabled | Nếu `maximumAmbientCacheSize == 0` và không có offline region, DB coi như disabled. |
+| Cache hit usable | Có thể trả response ngay cho caller. |
+| Cache hit stale nhưng usable | `MainResourceLoader` trả data stale trước, rồi revalidate network priority low. |
+| Cache hit unusable/must revalidate | Không trả data; dùng prior metadata/data cho network conditional request. |
+| Cache miss | Network fallback nếu `Resource::LoadingMethod` cho phép network. |
+
+## 6. Write path: network response vào cache
+
+```mermaid
+sequenceDiagram
+  participant Online as OnlineFileSource
+  participant MRL as MainResourceLoader
+  participant DFS as DatabaseFileSource
+  participant DB as OfflineDatabase
+
+  Online--&gt;&gt;MRL: Response
+  MRL-&gt;&gt;DFS: forward(resource,response)
+  DFS-&gt;&gt;DB: put(resource,response)
+  DB-&gt;&gt;DB: compress if useful
+  DB-&gt;&gt;DB: evict(size) nếu cần
+  alt response.notModified
+    DB-&gt;&gt;DB: update expires/must_revalidate/accessed
+  else Tile
+    DB-&gt;&gt;DB: update/insert tiles
+  else Resource
+    DB-&gt;&gt;DB: update/insert resources
+  end
+```
+
+Write rules:
+
+| Rule | Ý nghĩa |
+|---|---|
+| Không ghi `response.error` | Error response không cache. |
+| Không ghi `StoragePolicy::Volatile` | `DatabaseFileSource::forward` return sớm. |
+| Read-only mode | `OfflineDatabase::put` không ghi. |
+| Compression tùy lợi ích | `util::compress`, chỉ đánh dấu compressed nếu nhỏ hơn original. |
+| `notModified` | Chỉ update `expires`, `must_revalidate`, `accessed`, giữ data cũ. |
+| Eviction trước insert | DB cố tạo chỗ dựa trên maximum ambient cache size và offline usage. |
+
+## 7. Ambient cache vs offline region
+
+| Loại dữ liệu | Nhận diện | Eviction/clear/invalidate |
+|---|---|---|
+| Ambient cache | `resources`/`tiles` không xuất hiện trong `region_resources`/`region_tiles` | Có thể bị clear/evict/invalidate bởi ambient cache APIs. |
+| Offline region data | Có row join với `region_resources` hoặc `region_tiles` | Không bị ambient clear/invalidate; chỉ bị ảnh hưởng khi xóa region và không region khác cần nữa. |
+| Shared region data | Một resource/tile thuộc nhiều region | Xóa một region không xóa data nếu region khác còn reference. |
+
+Ambient APIs trên `DatabaseFileSource`:
+
+| API | Operation |
+|---|---|
+| `put` | Insert resource/tile vào ambient cache. |
+| `invalidateAmbientCache` | Set `expires = 0`, `must_revalidate = 1` cho data không thuộc region. |
+| `clearAmbientCache` | Delete data không thuộc region. |
+| `setMaximumAmbientCacheSize` | Đặt giới hạn byte; region offline chiếm trước dung lượng. |
+| `resetDatabase` | Xóa/reinitialize DB. |
+| `packDatabase` | Vacuum/incremental vacuum để thu hồi disk. |
+| `runPackDatabaseAutomatically` | Bật/tắt vacuum tự động sau clear/delete. |
+
+## 8. Offline region lifecycle
+
+```mermaid
+flowchart TD
+  Create[&quot;createOfflineRegion(definition, metadata)&quot;] --&gt; Region[&quot;regions row&quot;]
+  Region --&gt; Observer[&quot;setOfflineRegionObserver&quot;]
+  Observer --&gt; Active[&quot;setOfflineRegionDownloadState(Active)&quot;]
+  Active --&gt; Download[&quot;OfflineDownload&quot;]
+  Download --&gt; Style[&quot;Download style&quot;]
+  Style --&gt; Resources[&quot;Resolve source, sprite, glyphs, images&quot;]
+  Resources --&gt; Tiles[&quot;Compute/download covering tiles&quot;]
+  Tiles --&gt; Put[&quot;putRegionResource / putRegionTile&quot;]
+  Put --&gt; Status[&quot;OfflineRegionStatus&quot;]
+  Status --&gt; Complete{&quot;complete?&quot;}
+  Complete --&gt;|no| Download
+  Complete --&gt;|yes| Done[&quot;Observer status complete&quot;]
+```
+
+Offline operation API:
+
+| API | Dependency |
+|---|---|
+| `listOfflineRegions` | SELECT `regions`, deserialize definition/metadata. |
+| `getOfflineRegion` | SELECT one region. |
+| `createOfflineRegion` | INSERT `regions`, region inactive ban đầu. |
+| `setOfflineRegionObserver` | Gắn observer vào `OfflineDownload` nếu tạo được. |
+| `setOfflineRegionDownloadState` | Active/inactive download. |
+| `getOfflineRegionStatus` | Nếu download đang tồn tại, hỏi `OfflineDownload`; nếu không, compute từ DB. |
+| `invalidateOfflineRegion` | Force revalidate tiles/resources của region. |
+| `deleteOfflineRegion` | Delete region, xóa join rows cascade, evict data không còn region nào cần. |
+| `mergeOfflineRegions` | Merge DB phụ, có thể migrate DB phụ in-place. |
+
+## 9. DB dependency với HTTP cache semantics
+
+| Field trong `Resource` | Field trong `Response` | DB field | Hành vi |
+|---|---|---|---|
+| `priorModified` | `modified` | `modified` | Dùng `If-Modified-Since` khi request network. |
+| `priorEtag` | `etag` | `etag` | Dùng `If-None-Match`; 304 update expiry. |
+| `priorExpires` | `expires` | `expires` | Quyết định fresh/stale. |
+| `priorData` | `data` | `data` | Dùng khi network trả 304 hoặc cần giữ data cũ. |
+| `minimumUpdateInterval` | `expires` | Không lưu riêng | Online request delay/retry policy. |
+| `storagePolicy` | n/a | n/a | `Volatile` không lưu DB. |
+| `loadingMethod` | n/a | n/a | Cho phép cache-only/network-only/all. |
+
+## 10. Rủi ro và điểm cần kiểm soát
+
+| Rủi ro | Tác động | Vùng code cần xem |
+|---|---|---|
+| Lẫn ambient cache với offline data | Xóa nhầm offline resource hoặc cache không được clear | `OfflineDatabase::clearAmbientCache`, join tables |
+| `must_revalidate` xử lý sai | Render stale data khi server yêu cầu revalidate, hoặc không dùng cache được | `Response::isUsable`, `MainResourceLoader` cache fallback |
+| Read-only mode | Offline/cache APIs ghi silently fail hoặc throw nếu modify | `OfflineDatabase::checkFlags`, `DatabaseFileSource::setProperty(READ_ONLY_MODE_KEY)` |
+| DB corrupt/moved | Xóa DB và reinitialize có thể làm mất cache/offline package | `OfflineDatabase::handleError/removeExisting` |
+| Eviction dưới offline quota | Ambient cache thực tế nhỏ hơn `maximumAmbientCacheSize` nếu offline data chiếm nhiều | eviction + `setMaximumAmbientCacheSize` |
+| Compression/decompression | CPU overhead, lỗi corrupt blob | `util::compress/decompress`, `getResource/getTile` |
+| Merge side database | Cần write access để migrate DB phụ; tile count limit có thể fail | `mergeOfflineRegions`, `MapboxTileLimitExceededException` |
+
+</pre></details></div></section><section id="protocol"><div class="doc-meta"><span class="pill">Protocol Dependency</span><span class="pill">225 dòng Markdown</span><span class="pill">Render đầy đủ + nguyên văn</span></div><div class="doc-body"><h2 id="protocol-dependency-mapping---protocol-dependency-của-maplibre-native">Dependency Mapping - Protocol dependency của <code>maplibre-native</code></h2>
+<p>Tài liệu này mô tả dependency protocol/URL/resource routing trong <code>maplibre-native</code>: <code>asset://</code>, <code>file://</code>, <code>mbtiles://</code>, <code>pmtiles://</code>, HTTP/HTTPS, canonical tile server URLs, resource kinds, cache/network loading methods, Android HTTP bridge và cURL default path.</p>
+<h3 id="protocol-1-protocol-routing-tổng-quát">1. Protocol routing tổng quát</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart TD
+  Resource[&quot;Resource(kind,url,loadingMethod)&quot;] --&gt; MRL[&quot;MainResourceLoader&quot;]
+  MRL --&gt; Asset{&quot;asset:// ?&quot;}
+  Asset --&gt;|yes| AssetFS[&quot;AssetFileSource&quot;]
+  Asset --&gt;|no| MBTiles{&quot;mbtiles:// ?&quot;}
+  MBTiles --&gt;|yes| MBTilesFS[&quot;MBTilesFileSource&quot;]
+  MBTiles --&gt;|no| PMTiles{&quot;pmtiles:// ?&quot;}
+  PMTiles --&gt;|yes| PMTilesFS[&quot;PMTilesFileSource&quot;]
+  PMTiles --&gt;|no| File{&quot;file:// ?&quot;}
+  File --&gt;|yes| LocalFS[&quot;LocalFileSource&quot;]
+  File --&gt;|no| Cache{&quot;Cache allowed?&quot;}
+  Cache --&gt;|yes| DBFS[&quot;DatabaseFileSource&quot;]
+  DBFS --&gt;|miss/stale| Network{&quot;Network allowed?&quot;}
+  Cache --&gt;|no| Network
+  Network --&gt;|yes| OnlineFS[&quot;OnlineFileSource&quot;]
+  OnlineFS --&gt; HTTPFS[&quot;HTTPFileSource&quot;]
+  Network --&gt;|no| Error[&quot;Unsupported/noContent&quot;]</code></pre></div>
+<p>Thứ tự waterfall trong <code>MainResourceLoaderThread::request</code> là: asset, MBTiles, PMTiles, local file, database cache, network. Database cache chỉ request nếu <code>Resource::LoadingMethod</code> có <code>Cache</code>; network chỉ request nếu có <code>Network</code> và <code>OnlineFileSource::canRequest</code>.</p>
+<h3 id="protocol-2-protocol-constants-và-owner">2. Protocol constants và owner</h3>
+<div class="table-wrap"><table><thead><tr><th>Protocol / scheme</th><th>Constant hoặc nhận diện</th><th>Owner</th><th>Ý nghĩa</th></tr></thead><tbody>
+<tr><td><code>asset://</code></td><td><code>util::ASSET_PROTOCOL</code></td><td><code>AssetFileSource</code>, Android <code>AssetManagerFileSource</code></td><td>File đóng gói trong app/assets.</td></tr>
+<tr><td><code>file://</code></td><td><code>util::FILE_PROTOCOL</code></td><td><code>LocalFileSource</code></td><td>File path local sau percent decode.</td></tr>
+<tr><td><code>mbtiles://</code></td><td><code>util::MBTILES_PROTOCOL</code></td><td><code>MBTilesFileSource</code></td><td>SQLite MBTiles file, generate TileJSON hoặc đọc tile.</td></tr>
+<tr><td><code>pmtiles://</code></td><td><code>util::PMTILES_PROTOCOL</code></td><td><code>PMTilesFileSource</code></td><td>PMTiles v3 archive, hỗ trợ byte range qua nested ResourceLoader.</td></tr>
+<tr><td><code>http://</code>, <code>https://</code></td><td>URL thường</td><td><code>OnlineFileSource</code> + <code>HTTPFileSource</code></td><td>Network resources.</td></tr>
+<tr><td><code>maplibre://</code></td><td><code>TileServerOptions::uriSchemeAlias()</code> default MapLibre</td><td><code>util::mapbox::*normalize*URL</code></td><td>Canonical style/source/tile/sprite/glyph URL chuyển sang base URL.</td></tr>
+<tr><td><code>mapbox://</code></td><td>Mapbox configuration</td><td><code>TileServerOptions::MapboxConfiguration</code></td><td>Canonical Mapbox URL, có access token query.</td></tr>
+<tr><td><code>local://</code> Android</td><td>Java <code>NativeHttpRequest</code> special case</td><td>Android render tests</td><td>Load từ Android assets qua <code>LocalRequestTask</code>.</td></tr>
+</tbody></table></div>
+<h3 id="protocol-3-resource-kinds">3. Resource kinds</h3>
+<p><code>Resource</code> là envelope chung cho mọi request dữ liệu.</p>
+<div class="table-wrap"><table><thead><tr><th><code>Resource::Kind</code></th><th>Static constructor</th><th>URL/data shape</th><th>Consumer chính</th></tr></thead><tbody>
+<tr><td><code>Style</code></td><td><code>Resource::style(url)</code></td><td>Style JSON</td><td><code>style::Style::Impl</code></td></tr>
+<tr><td><code>Source</code></td><td><code>Resource::source(url)</code></td><td>TileJSON, GeoJSON source, PMTiles/MBTiles metadata</td><td>Style/source loaders</td></tr>
+<tr><td><code>Tile</code></td><td><code>Resource::tile(urlTemplate,pixelRatio,x,y,z,scheme,loadingMethod)</code></td><td>Vector/raster/DEM tile bytes</td><td><code>Tile</code>, <code>TilePyramid</code>, render sources</td></tr>
+<tr><td><code>Glyphs</code></td><td><code>Resource::glyphs(urlTemplate,fontStack,range)</code> hoặc <code>fontFace(url)</code></td><td>PBF glyph range hoặc font face</td><td><code>GlyphManager</code></td></tr>
+<tr><td><code>SpriteImage</code></td><td><code>Resource::spriteImage(base,pixelRatio)</code></td><td><code>.png</code> hoặc <code>@2x.png</code></td><td>Sprite loader/ImageManager</td></tr>
+<tr><td><code>SpriteJSON</code></td><td><code>Resource::spriteJSON(base,pixelRatio)</code></td><td><code>.json</code> hoặc <code>@2x.json</code></td><td>Sprite loader</td></tr>
+<tr><td><code>Image</code></td><td><code>Resource::image(url)</code></td><td>Raster image</td><td>Image source/style image workflows</td></tr>
+</tbody></table></div>
+<h3 id="protocol-4-tile-url-token-dependency">4. Tile URL token dependency</h3>
+<p><code>Resource::tile</code> thay token từ URL template:</p>
+<div class="table-wrap"><table><thead><tr><th>Token</th><th>Giá trị</th></tr></thead><tbody>
+<tr><td><code>{z}</code></td><td>Zoom level.</td></tr>
+<tr><td><code>{x}</code></td><td>Tile x.</td></tr>
+<tr><td><code>{y}</code></td><td>Tile y, đã đảo nếu source scheme là TMS.</td></tr>
+<tr><td><code>{quadkey}</code></td><td>Bing quadkey tính từ x/y/z.</td></tr>
+<tr><td><code>{bbox-epsg-3857}</code></td><td>Bounding box Web Mercator của tile.</td></tr>
+<tr><td><code>{prefix}</code></td><td>Hai ký tự hex từ x/y để shard path.</td></tr>
+<tr><td><code>{ratio}</code></td><td><code>@2x</code> nếu pixel ratio &gt; 1 và template hỗ trợ.</td></tr>
+</tbody></table></div>
+<p>Cache key tile trong DB không chỉ là URL đã thay token; DB lưu <code>url_template</code>, <code>pixel_ratio</code>, <code>z</code>, <code>x</code>, <code>y</code>. Điều này làm cache ổn định với cùng template và tile coordinate.</p>
+<h3 id="protocol-5-loading-methods-và-storage-policy">5. Loading methods và storage policy</h3>
+<div class="table-wrap"><table><thead><tr><th>Field</th><th>Values</th><th>Ảnh hưởng routing</th></tr></thead><tbody>
+<tr><td><code>Resource::LoadingMethod</code></td><td><code>CacheOnly</code>, <code>NetworkOnly</code>, <code>All</code></td><td>Quyết định <code>DatabaseFileSource</code> và <code>OnlineFileSource</code> có được gọi không.</td></tr>
+<tr><td><code>Resource::Usage</code></td><td><code>Online</code>, <code>Offline</code></td><td>Android HTTP nhận <code>offlineUsage</code>; online file source ưu tiên/throttle offline có thể khác.</td></tr>
+<tr><td><code>Resource::Priority</code></td><td><code>Regular</code>, <code>Low</code></td><td><code>OnlineFileSource</code> queue ưu tiên regular trước low. Stale cache usable thường revalidate low priority.</td></tr>
+<tr><td><code>Resource::StoragePolicy</code></td><td><code>Permanent</code>, <code>Volatile</code></td><td><code>Volatile</code> không đọc/ghi DB cache.</td></tr>
+<tr><td><code>Resource::dataRange</code></td><td>byte range pair</td><td>HTTP Range header; PMTiles dùng rất nhiều.</td></tr>
+<tr><td><code>priorEtag/priorModified/priorExpires/priorData</code></td><td>cache metadata</td><td>Conditional HTTP request và 304 handling.</td></tr>
+</tbody></table></div>
+<h3 id="protocol-6-httphttps-path">6. HTTP/HTTPS path</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>sequenceDiagram
+  participant MRL as MainResourceLoader
+  participant Online as OnlineFileSource
+  participant HTTP as HTTPFileSource
+  participant Server
+
+  MRL-&gt;&gt;Online: request(Resource)
+  Online-&gt;&gt;Online: resourceTransform? queue? max concurrent?
+  Online-&gt;&gt;HTTP: request(transformed Resource)
+  HTTP-&gt;&gt;Server: GET + Range/If-None-Match/If-Modified-Since
+  Server--&gt;&gt;HTTP: status + headers + body
+  HTTP--&gt;&gt;Online: Response
+  Online--&gt;&gt;MRL: Response or retry/backoff
+  MRL-&gt;&gt;MRL: forward to DB if cacheable</code></pre></div>
+<p>Default platform dùng cURL multi + run loop socket watches trong <code>platform/default/src/mbgl/storage/http_file_source.cpp</code>. Android dùng JNI <code>HTTPFileSource</code> tạo <code>org.maplibre.android.http.NativeHttpRequest</code>, rồi Java module <code>HttpRequest</code> thực hiện transport.</p>
+<h4 id="protocol-61-http-status-mapping">6.1 HTTP status mapping</h4>
+<div class="table-wrap"><table><thead><tr><th>Status / lỗi</th><th><code>Response</code></th></tr></thead><tbody>
+<tr><td><code>200</code>, <code>206</code></td><td><code>data</code> có body.</td></tr>
+<tr><td><code>204</code></td><td><code>noContent = true</code>.</td></tr>
+<tr><td><code>304</code></td><td><code>notModified = true</code>.</td></tr>
+<tr><td><code>404</code> tile</td><td><code>noContent = true</code> để tương thích.</td></tr>
+<tr><td><code>404</code> non-tile</td><td><code>Response::Error::NotFound</code>.</td></tr>
+<tr><td><code>429</code></td><td><code>Response::Error::RateLimit</code>, parse <code>Retry-After</code> / <code>X-Rate-Limit-Reset</code>.</td></tr>
+<tr><td><code>5xx</code></td><td><code>Response::Error::Server</code>.</td></tr>
+<tr><td>connection failure</td><td><code>Response::Error::Connection</code>.</td></tr>
+<tr><td>khác</td><td><code>Response::Error::Other</code>.</td></tr>
+</tbody></table></div>
+<h4 id="protocol-62-cache-control-fields">6.2 Cache-control fields</h4>
+<div class="table-wrap"><table><thead><tr><th>Header / field</th><th>Mapping</th></tr></thead><tbody>
+<tr><td><code>ETag</code></td><td><code>Response::etag</code>, sau đó DB <code>etag</code>.</td></tr>
+<tr><td><code>Last-Modified</code></td><td><code>Response::modified</code>, sau đó DB <code>modified</code>.</td></tr>
+<tr><td><code>Cache-Control</code></td><td><code>Response::expires</code>, <code>mustRevalidate</code>.</td></tr>
+<tr><td><code>Expires</code></td><td>Override/đặt <code>Response::expires</code>.</td></tr>
+<tr><td><code>Retry-After</code>, <code>X-Rate-Limit-Reset</code></td><td><code>Response::Error::retryAfter</code>.</td></tr>
+<tr><td><code>Range</code></td><td>Request header từ <code>Resource::dataRange</code>.</td></tr>
+</tbody></table></div>
+<h3 id="protocol-7-canonical-tile-server-urls">7. Canonical tile server URLs</h3>
+<p><code>src/mbgl/util/mapbox.cpp</code> xử lý normalize/canonicalize URL dựa trên <code>TileServerOptions</code>.</p>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th>Input canonical</th><th>Output normalized</th><th>Dùng cho</th></tr></thead><tbody>
+<tr><td><code>normalizeStyleURL</code></td><td><code>maplibre://maps/style</code>, <code>mapbox://styles/...</code></td><td>Base URL + style template + API key nếu cần</td><td>Style load</td></tr>
+<tr><td><code>normalizeSourceURL</code></td><td>canonical source URL</td><td>TileJSON/source URL thực tế</td><td>Source load</td></tr>
+<tr><td><code>normalizeTileURL</code></td><td>canonical tile URL</td><td>Tile URL thực tế</td><td>Tile request</td></tr>
+<tr><td><code>normalizeSpriteURL</code></td><td>canonical sprite URL</td><td>Sprite URL thực tế</td><td>Sprite JSON/image</td></tr>
+<tr><td><code>normalizeGlyphsURL</code></td><td>canonical glyph URL</td><td>Glyph URL thực tế</td><td>Glyph PBF</td></tr>
+<tr><td><code>canonicalizeTileURL</code></td><td>normalized HTTP tile URL</td><td>canonical URL trừ token</td><td>Cache/source canonicalization</td></tr>
+<tr><td><code>canonicalizeSourceURL/Sprite/Glyph</code></td><td>normalized URL</td><td>canonical scheme alias URL</td><td>Style/source normalization</td></tr>
+</tbody></table></div>
+<p>MapLibre default style trong <code>tile_server_options.cpp</code> dùng <code>maplibre://maps/style</code> và base URL <code>https://demotiles.maplibre.org</code>. Mapbox configuration dùng <code>https://api.mapbox.com</code> và <code>mapbox://...</code> canonical scheme.</p>
+<h3 id="protocol-8-local-protocols">8. Local protocols</h3>
+<h4 id="protocol-81-asset">8.1 <code>asset://</code></h4>
+<p><code>AssetFileSource</code> nhận URL bắt đầu <code>asset://</code>, bỏ prefix, percent-decode path và prefix bằng <code>ResourceOptions::assetPath()</code>. Android có source riêng dựa trên <code>AssetManager</code>.</p>
+<p>Path shape:</p>
+<div class="codeblock"><div class="code-title">text</div><pre><code>asset://styles/basic.json -&gt; &lt;assetPath&gt;/styles/basic.json</code></pre></div>
+<h4 id="protocol-82-file">8.2 <code>file://</code></h4>
+<p><code>LocalFileSource</code> nhận URL bắt đầu <code>file://</code>, bỏ prefix, percent-decode thành path local rồi đọc bằng <code>requestLocalFile</code>.</p>
+<p>Path shape:</p>
+<div class="codeblock"><div class="code-title">text</div><pre><code>file:///tmp/style.json -&gt; /tmp/style.json</code></pre></div>
+<h4 id="protocol-83-mbtiles">8.3 <code>mbtiles://</code></h4>
+<p><code>MBTilesFileSource</code> đọc SQLite MBTiles:</p>
+<div class="table-wrap"><table><thead><tr><th>Request</th><th>Hành vi</th></tr></thead><tbody>
+<tr><td><code>Resource::Source</code></td><td>Mở DB read-only, đọc <code>metadata</code>, tạo TileJSON.</td></tr>
+<tr><td><code>Resource::Tile</code></td><td>Query <code>tiles.tile_data</code> với <code>zoom_level</code>, <code>tile_column</code>, <code>tile_row</code>; đảo y theo MBTiles/TMS; decompress nếu cần.</td></tr>
+</tbody></table></div>
+<p>TileJSON generated thêm <code>tiles: [resource.url + &quot;?file={x}/{y}/{z}.&lt;format&gt;&quot;]</code>, set <code>tilejson = 2.0.0</code>, <code>scheme = xyz</code>, <code>encoding = mlt</code> nếu format là MLT.</p>
+<h4 id="protocol-84-pmtiles">8.4 <code>pmtiles://</code></h4>
+<p><code>PMTilesFileSource</code> đọc PMTiles v3:</p>
+<div class="table-wrap"><table><thead><tr><th>Giai đoạn</th><th>Hành vi</th></tr></thead><tbody>
+<tr><td>Header</td><td>Request byte range <code>0-126</code>, deserialize <code>pmtiles::headerv3</code>.</td></tr>
+<tr><td>Metadata</td><td>Dùng header offsets để request metadata range, deserialize JSON.</td></tr>
+<tr><td>Directory</td><td>Duyệt root/leaf directory để tìm tile address theo tile id.</td></tr>
+<tr><td>Tile</td><td>Request byte range tile data qua nested <code>ResourceLoader</code>, decompress gzip nếu header yêu cầu.</td></tr>
+</tbody></table></div>
+<p>PMTiles giữ cache trong memory: header cache, metadata cache, directory cache có giới hạn entry. URL bên trong <code>pmtiles://</code> có thể là HTTP hoặc <code>file://</code>, vì nested request đi qua <code>FileSourceType::ResourceLoader</code>.</p>
+<h3 id="protocol-9-android-http-bridge">9. Android HTTP bridge</h3>
+<div class="codeblock"><div class="code-title">mermaid</div><pre><code>flowchart LR
+  Cpp[&quot;HTTPFileSource::request&quot;] --&gt; Native[&quot;NativeHttpRequest JNI peer&quot;]
+  Native --&gt; Java[&quot;org.maplibre.android.http.NativeHttpRequest&quot;]
+  Java --&gt; Module[&quot;MapLibre.getModuleProvider().createHttpRequest()&quot;]
+  Module --&gt; Impl[&quot;HttpRequest implementation&quot;]
+  Impl --&gt; Responder[&quot;HttpResponder.onResponse/handleFailure&quot;]
+  Responder --&gt; CppCallback[&quot;nativeOnResponse/nativeOnFailure&quot;]
+  CppCallback --&gt; Response[&quot;mbgl::Response&quot;]</code></pre></div>
+<p>Android protocol notes:</p>
+<div class="table-wrap"><table><thead><tr><th>Detail</th><th>Ý nghĩa</th></tr></thead><tbody>
+<tr><td><code>dataRange</code> string</td><td>Tạo từ <code>Resource::dataRange</code> dạng <code>bytes=start-end</code>.</td></tr>
+<tr><td><code>etag</code> hoặc <code>modified</code></td><td>Conditional request header.</td></tr>
+<tr><td><code>offlineUsage</code></td><td>Java implementation có thể thêm <code>offline=true</code> hoặc policy riêng.</td></tr>
+<tr><td><code>local://</code></td><td>Shortcut render-test để đọc assets bằng <code>LocalRequestTask</code>.</td></tr>
+<tr><td>native pointer lock</td><td>Java lock tránh callback vào native request đã cancel.</td></tr>
+</tbody></table></div>
+<h3 id="protocol-10-protocol-risk-hotspots">10. Protocol risk hotspots</h3>
+<div class="table-wrap"><table><thead><tr><th>Hotspot</th><th>Rủi ro</th></tr></thead><tbody>
+<tr><td>Waterfall order</td><td><code>mbtiles://</code>/<code>pmtiles://</code>/<code>file://</code> phải được xử lý trước DB/network, nếu không URL local có thể bị route sai.</td></tr>
+<tr><td>Cache-only request</td><td>Nếu source không hỗ trợ cache-only hoặc loadingMethod sai, tile placeholder/cache warmup bị ảnh hưởng.</td></tr>
+<tr><td>PMTiles nested ResourceLoader</td><td>Có thể tạo vòng routing nếu URL inner vẫn là <code>pmtiles://</code>; implementation extract URL và request inner URL nên cần giữ invariant này.</td></tr>
+<tr><td>HTTP 404 tile as noContent</td><td>Behavior đặc biệt này tránh coi tile missing là fatal; thay đổi có thể làm nhiều style fail.</td></tr>
+<tr><td>Canonical URL + API key</td><td>Cache key phải tránh nhúng access token; normalization/canonicalization sai làm cache miss hoặc lộ token.</td></tr>
+<tr><td>Android vs default HTTP</td><td>Cùng contract <code>Response</code>, nhưng timeout/cache/offline query parameter có thể khác implementation Java/cURL.</td></tr>
+<tr><td>Range requests</td><td>PMTiles phụ thuộc server/local source hỗ trợ <code>dataRange</code>; lỗi range làm header/tile parse fail.</td></tr>
+</tbody></table></div><details class="raw-md"><summary>Nguyên văn Markdown đầy đủ của maplibre-native-protocol-dependency.md</summary><pre># Dependency Mapping - Protocol dependency của `maplibre-native`
+
+Tài liệu này mô tả dependency protocol/URL/resource routing trong `maplibre-native`: `asset://`, `file://`, `mbtiles://`, `pmtiles://`, HTTP/HTTPS, canonical tile server URLs, resource kinds, cache/network loading methods, Android HTTP bridge và cURL default path.
+
+## 1. Protocol routing tổng quát
+
+```mermaid
+flowchart TD
+  Resource[&quot;Resource(kind,url,loadingMethod)&quot;] --&gt; MRL[&quot;MainResourceLoader&quot;]
+  MRL --&gt; Asset{&quot;asset:// ?&quot;}
+  Asset --&gt;|yes| AssetFS[&quot;AssetFileSource&quot;]
+  Asset --&gt;|no| MBTiles{&quot;mbtiles:// ?&quot;}
+  MBTiles --&gt;|yes| MBTilesFS[&quot;MBTilesFileSource&quot;]
+  MBTiles --&gt;|no| PMTiles{&quot;pmtiles:// ?&quot;}
+  PMTiles --&gt;|yes| PMTilesFS[&quot;PMTilesFileSource&quot;]
+  PMTiles --&gt;|no| File{&quot;file:// ?&quot;}
+  File --&gt;|yes| LocalFS[&quot;LocalFileSource&quot;]
+  File --&gt;|no| Cache{&quot;Cache allowed?&quot;}
+  Cache --&gt;|yes| DBFS[&quot;DatabaseFileSource&quot;]
+  DBFS --&gt;|miss/stale| Network{&quot;Network allowed?&quot;}
+  Cache --&gt;|no| Network
+  Network --&gt;|yes| OnlineFS[&quot;OnlineFileSource&quot;]
+  OnlineFS --&gt; HTTPFS[&quot;HTTPFileSource&quot;]
+  Network --&gt;|no| Error[&quot;Unsupported/noContent&quot;]
+```
+
+Thứ tự waterfall trong `MainResourceLoaderThread::request` là: asset, MBTiles, PMTiles, local file, database cache, network. Database cache chỉ request nếu `Resource::LoadingMethod` có `Cache`; network chỉ request nếu có `Network` và `OnlineFileSource::canRequest`.
+
+## 2. Protocol constants và owner
+
+| Protocol / scheme | Constant hoặc nhận diện | Owner | Ý nghĩa |
+|---|---|---|---|
+| `asset://` | `util::ASSET_PROTOCOL` | `AssetFileSource`, Android `AssetManagerFileSource` | File đóng gói trong app/assets. |
+| `file://` | `util::FILE_PROTOCOL` | `LocalFileSource` | File path local sau percent decode. |
+| `mbtiles://` | `util::MBTILES_PROTOCOL` | `MBTilesFileSource` | SQLite MBTiles file, generate TileJSON hoặc đọc tile. |
+| `pmtiles://` | `util::PMTILES_PROTOCOL` | `PMTilesFileSource` | PMTiles v3 archive, hỗ trợ byte range qua nested ResourceLoader. |
+| `http://`, `https://` | URL thường | `OnlineFileSource` + `HTTPFileSource` | Network resources. |
+| `maplibre://` | `TileServerOptions::uriSchemeAlias()` default MapLibre | `util::mapbox::*normalize*URL` | Canonical style/source/tile/sprite/glyph URL chuyển sang base URL. |
+| `mapbox://` | Mapbox configuration | `TileServerOptions::MapboxConfiguration` | Canonical Mapbox URL, có access token query. |
+| `local://` Android | Java `NativeHttpRequest` special case | Android render tests | Load từ Android assets qua `LocalRequestTask`. |
+
+## 3. Resource kinds
+
+`Resource` là envelope chung cho mọi request dữ liệu.
+
+| `Resource::Kind` | Static constructor | URL/data shape | Consumer chính |
+|---|---|---|---|
+| `Style` | `Resource::style(url)` | Style JSON | `style::Style::Impl` |
+| `Source` | `Resource::source(url)` | TileJSON, GeoJSON source, PMTiles/MBTiles metadata | Style/source loaders |
+| `Tile` | `Resource::tile(urlTemplate,pixelRatio,x,y,z,scheme,loadingMethod)` | Vector/raster/DEM tile bytes | `Tile`, `TilePyramid`, render sources |
+| `Glyphs` | `Resource::glyphs(urlTemplate,fontStack,range)` hoặc `fontFace(url)` | PBF glyph range hoặc font face | `GlyphManager` |
+| `SpriteImage` | `Resource::spriteImage(base,pixelRatio)` | `.png` hoặc `@2x.png` | Sprite loader/ImageManager |
+| `SpriteJSON` | `Resource::spriteJSON(base,pixelRatio)` | `.json` hoặc `@2x.json` | Sprite loader |
+| `Image` | `Resource::image(url)` | Raster image | Image source/style image workflows |
+
+## 4. Tile URL token dependency
+
+`Resource::tile` thay token từ URL template:
+
+| Token | Giá trị |
+|---|---|
+| `{z}` | Zoom level. |
+| `{x}` | Tile x. |
+| `{y}` | Tile y, đã đảo nếu source scheme là TMS. |
+| `{quadkey}` | Bing quadkey tính từ x/y/z. |
+| `{bbox-epsg-3857}` | Bounding box Web Mercator của tile. |
+| `{prefix}` | Hai ký tự hex từ x/y để shard path. |
+| `{ratio}` | `@2x` nếu pixel ratio &gt; 1 và template hỗ trợ. |
+
+Cache key tile trong DB không chỉ là URL đã thay token; DB lưu `url_template`, `pixel_ratio`, `z`, `x`, `y`. Điều này làm cache ổn định với cùng template và tile coordinate.
+
+## 5. Loading methods và storage policy
+
+| Field | Values | Ảnh hưởng routing |
+|---|---|---|
+| `Resource::LoadingMethod` | `CacheOnly`, `NetworkOnly`, `All` | Quyết định `DatabaseFileSource` và `OnlineFileSource` có được gọi không. |
+| `Resource::Usage` | `Online`, `Offline` | Android HTTP nhận `offlineUsage`; online file source ưu tiên/throttle offline có thể khác. |
+| `Resource::Priority` | `Regular`, `Low` | `OnlineFileSource` queue ưu tiên regular trước low. Stale cache usable thường revalidate low priority. |
+| `Resource::StoragePolicy` | `Permanent`, `Volatile` | `Volatile` không đọc/ghi DB cache. |
+| `Resource::dataRange` | byte range pair | HTTP Range header; PMTiles dùng rất nhiều. |
+| `priorEtag/priorModified/priorExpires/priorData` | cache metadata | Conditional HTTP request và 304 handling. |
+
+## 6. HTTP/HTTPS path
+
+```mermaid
+sequenceDiagram
+  participant MRL as MainResourceLoader
+  participant Online as OnlineFileSource
+  participant HTTP as HTTPFileSource
+  participant Server
+
+  MRL-&gt;&gt;Online: request(Resource)
+  Online-&gt;&gt;Online: resourceTransform? queue? max concurrent?
+  Online-&gt;&gt;HTTP: request(transformed Resource)
+  HTTP-&gt;&gt;Server: GET + Range/If-None-Match/If-Modified-Since
+  Server--&gt;&gt;HTTP: status + headers + body
+  HTTP--&gt;&gt;Online: Response
+  Online--&gt;&gt;MRL: Response or retry/backoff
+  MRL-&gt;&gt;MRL: forward to DB if cacheable
+```
+
+Default platform dùng cURL multi + run loop socket watches trong `platform/default/src/mbgl/storage/http_file_source.cpp`. Android dùng JNI `HTTPFileSource` tạo `org.maplibre.android.http.NativeHttpRequest`, rồi Java module `HttpRequest` thực hiện transport.
+
+### 6.1 HTTP status mapping
+
+| Status / lỗi | `Response` |
+|---|---|
+| `200`, `206` | `data` có body. |
+| `204` | `noContent = true`. |
+| `304` | `notModified = true`. |
+| `404` tile | `noContent = true` để tương thích. |
+| `404` non-tile | `Response::Error::NotFound`. |
+| `429` | `Response::Error::RateLimit`, parse `Retry-After` / `X-Rate-Limit-Reset`. |
+| `5xx` | `Response::Error::Server`. |
+| connection failure | `Response::Error::Connection`. |
+| khác | `Response::Error::Other`. |
+
+### 6.2 Cache-control fields
+
+| Header / field | Mapping |
+|---|---|
+| `ETag` | `Response::etag`, sau đó DB `etag`. |
+| `Last-Modified` | `Response::modified`, sau đó DB `modified`. |
+| `Cache-Control` | `Response::expires`, `mustRevalidate`. |
+| `Expires` | Override/đặt `Response::expires`. |
+| `Retry-After`, `X-Rate-Limit-Reset` | `Response::Error::retryAfter`. |
+| `Range` | Request header từ `Resource::dataRange`. |
+
+## 7. Canonical tile server URLs
+
+`src/mbgl/util/mapbox.cpp` xử lý normalize/canonicalize URL dựa trên `TileServerOptions`.
+
+| Function | Input canonical | Output normalized | Dùng cho |
+|---|---|---|---|
+| `normalizeStyleURL` | `maplibre://maps/style`, `mapbox://styles/...` | Base URL + style template + API key nếu cần | Style load |
+| `normalizeSourceURL` | canonical source URL | TileJSON/source URL thực tế | Source load |
+| `normalizeTileURL` | canonical tile URL | Tile URL thực tế | Tile request |
+| `normalizeSpriteURL` | canonical sprite URL | Sprite URL thực tế | Sprite JSON/image |
+| `normalizeGlyphsURL` | canonical glyph URL | Glyph URL thực tế | Glyph PBF |
+| `canonicalizeTileURL` | normalized HTTP tile URL | canonical URL trừ token | Cache/source canonicalization |
+| `canonicalizeSourceURL/Sprite/Glyph` | normalized URL | canonical scheme alias URL | Style/source normalization |
+
+MapLibre default style trong `tile_server_options.cpp` dùng `maplibre://maps/style` và base URL `https://demotiles.maplibre.org`. Mapbox configuration dùng `https://api.mapbox.com` và `mapbox://...` canonical scheme.
+
+## 8. Local protocols
+
+### 8.1 `asset://`
+
+`AssetFileSource` nhận URL bắt đầu `asset://`, bỏ prefix, percent-decode path và prefix bằng `ResourceOptions::assetPath()`. Android có source riêng dựa trên `AssetManager`.
+
+Path shape:
+
+```text
+asset://styles/basic.json -&gt; &lt;assetPath&gt;/styles/basic.json
+```
+
+### 8.2 `file://`
+
+`LocalFileSource` nhận URL bắt đầu `file://`, bỏ prefix, percent-decode thành path local rồi đọc bằng `requestLocalFile`.
+
+Path shape:
+
+```text
+file:///tmp/style.json -&gt; /tmp/style.json
+```
+
+### 8.3 `mbtiles://`
+
+`MBTilesFileSource` đọc SQLite MBTiles:
+
+| Request | Hành vi |
+|---|---|
+| `Resource::Source` | Mở DB read-only, đọc `metadata`, tạo TileJSON. |
+| `Resource::Tile` | Query `tiles.tile_data` với `zoom_level`, `tile_column`, `tile_row`; đảo y theo MBTiles/TMS; decompress nếu cần. |
+
+TileJSON generated thêm `tiles: [resource.url + &quot;?file={x}/{y}/{z}.&lt;format&gt;&quot;]`, set `tilejson = 2.0.0`, `scheme = xyz`, `encoding = mlt` nếu format là MLT.
+
+### 8.4 `pmtiles://`
+
+`PMTilesFileSource` đọc PMTiles v3:
+
+| Giai đoạn | Hành vi |
+|---|---|
+| Header | Request byte range `0-126`, deserialize `pmtiles::headerv3`. |
+| Metadata | Dùng header offsets để request metadata range, deserialize JSON. |
+| Directory | Duyệt root/leaf directory để tìm tile address theo tile id. |
+| Tile | Request byte range tile data qua nested `ResourceLoader`, decompress gzip nếu header yêu cầu. |
+
+PMTiles giữ cache trong memory: header cache, metadata cache, directory cache có giới hạn entry. URL bên trong `pmtiles://` có thể là HTTP hoặc `file://`, vì nested request đi qua `FileSourceType::ResourceLoader`.
+
+## 9. Android HTTP bridge
+
+```mermaid
+flowchart LR
+  Cpp[&quot;HTTPFileSource::request&quot;] --&gt; Native[&quot;NativeHttpRequest JNI peer&quot;]
+  Native --&gt; Java[&quot;org.maplibre.android.http.NativeHttpRequest&quot;]
+  Java --&gt; Module[&quot;MapLibre.getModuleProvider().createHttpRequest()&quot;]
+  Module --&gt; Impl[&quot;HttpRequest implementation&quot;]
+  Impl --&gt; Responder[&quot;HttpResponder.onResponse/handleFailure&quot;]
+  Responder --&gt; CppCallback[&quot;nativeOnResponse/nativeOnFailure&quot;]
+  CppCallback --&gt; Response[&quot;mbgl::Response&quot;]
+```
+
+Android protocol notes:
+
+| Detail | Ý nghĩa |
+|---|---|
+| `dataRange` string | Tạo từ `Resource::dataRange` dạng `bytes=start-end`. |
+| `etag` hoặc `modified` | Conditional request header. |
+| `offlineUsage` | Java implementation có thể thêm `offline=true` hoặc policy riêng. |
+| `local://` | Shortcut render-test để đọc assets bằng `LocalRequestTask`. |
+| native pointer lock | Java lock tránh callback vào native request đã cancel. |
+
+## 10. Protocol risk hotspots
+
+| Hotspot | Rủi ro |
+|---|---|
+| Waterfall order | `mbtiles://`/`pmtiles://`/`file://` phải được xử lý trước DB/network, nếu không URL local có thể bị route sai. |
+| Cache-only request | Nếu source không hỗ trợ cache-only hoặc loadingMethod sai, tile placeholder/cache warmup bị ảnh hưởng. |
+| PMTiles nested ResourceLoader | Có thể tạo vòng routing nếu URL inner vẫn là `pmtiles://`; implementation extract URL và request inner URL nên cần giữ invariant này. |
+| HTTP 404 tile as noContent | Behavior đặc biệt này tránh coi tile missing là fatal; thay đổi có thể làm nhiều style fail. |
+| Canonical URL + API key | Cache key phải tránh nhúng access token; normalization/canonicalization sai làm cache miss hoặc lộ token. |
+| Android vs default HTTP | Cùng contract `Response`, nhưng timeout/cache/offline query parameter có thể khác implementation Java/cURL. |
+| Range requests | PMTiles phụ thuộc server/local source hỗ trợ `dataRange`; lỗi range làm header/tile parse fail. |
+
+</pre></details></div></section><section id="source-evidence"><h2>Source Evidence</h2><p>Các nguồn chính đã được đối chiếu khi tạo tài liệu:</p><ul class="source-list"><li><code>ARCHITECTURE.md</code></li><li><code>include/mbgl/storage/file_source.hpp</code></li><li><code>include/mbgl/storage/resource.hpp</code></li><li><code>include/mbgl/storage/response.hpp</code></li><li><code>platform/default/src/mbgl/storage/main_resource_loader.cpp</code></li><li><code>platform/default/src/mbgl/storage/database_file_source.cpp</code></li><li><code>platform/default/src/mbgl/storage/offline_database.cpp</code></li><li><code>platform/default/include/mbgl/storage/offline_schema.sql</code></li><li><code>platform/default/src/mbgl/storage/online_file_source.cpp</code></li><li><code>platform/default/src/mbgl/storage/http_file_source.cpp</code></li><li><code>platform/default/src/mbgl/storage/mbtiles_file_source.cpp</code></li><li><code>platform/default/src/mbgl/storage/pmtiles_file_source.cpp</code></li><li><code>include/mbgl/map/map_observer.hpp</code></li><li><code>include/mbgl/renderer/renderer_observer.hpp</code></li><li><code>src/mbgl/map/map_impl.*</code></li><li><code>src/mbgl/renderer/render_orchestrator.*</code></li><li><code>platform/android/MapLibreAndroid/src/cpp/http_file_source.cpp</code></li><li><code>platform/android/MapLibreAndroid/src/main/java/org/maplibre/android/http/*</code></li></ul></section><footer>Generated as a static, self-contained dependency mapping artifact for local review.</footer></main></div></body></html>
